@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
   if(rblxname == "cancel") return message.author.send("**Prompt cancelled.**")
   const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 60000);
   if(urrblxname == "cancel") return message.author.send("**Prompt cancelled.**")
-  const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send any links to proof here. If you have no proof, say **skip**.\nSay **cancel** to cancel prompt.`, 60000);
+  const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, say **skip**.\nSay **cancel** to cancel prompt.`, 60000);
   if(proof == "cancel") return message.author.send("**Prompt cancelled.**")
   const describe = await awaitReply(message, "Anything else you would like us to know? If not, just say **skip**.\nSay **cancel** to cancel prompt.", 60000);
   if(describe == "cancel") return message.author.send("**Prompt cancelled.**")
