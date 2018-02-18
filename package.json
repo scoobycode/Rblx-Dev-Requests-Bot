@@ -1,15 +1,13 @@
 {
-  "name": "ebot",
+  "name": "rblxdevrequestsbot",
   "version": "1.0.0",
-  "description": "Cooler bot",
+  "description": "a scam reporting bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
- 
-
-  "author": "ethanlaj",
+  "author": "ethanlaj#8805",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.3.0"
