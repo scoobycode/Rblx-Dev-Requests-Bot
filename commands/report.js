@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Proof Of Scam", proof)
     .addField("Extra Information", describe);
 
-    let reportchannel = message.guild.channels.find(`name`, "danger-zone");
+    let reportchannel = message.guild.channels.find(`name`, "scamming-reports");
     reportchannel.send(reportEmbed);
     message.author.send("**Report Sent Successfully!** \u2705");
     return;
