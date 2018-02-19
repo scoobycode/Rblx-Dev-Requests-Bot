@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
   if(proof == "cancel") return message.author.send("**Prompt cancelled.**")
   const describe = await awaitReply(message, "Anything else you would like us to know? If not, just say **skip**.\nSay **cancel** to cancel prompt.", 60000);
   if(describe == "cancel") return message.author.send("**Prompt cancelled.**")
-  const confirm = await awaitReply(message, `**The following information will be sent:**\n__Scammer's Roblox Username:__ ${rblxname}\n__Your Roblox Username:__ ${urrblxname}\n__Proof Of Scam:__ ${proof}\n__Other Information:__ ${describe}\n------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 60000);
+  const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 60000);
   if(confirm == "cancel") return message.author.send("**Prompt cancelled.**")
 
     let reportEmbed = new Discord.RichEmbed()
