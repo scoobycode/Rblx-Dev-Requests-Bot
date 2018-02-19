@@ -9,9 +9,9 @@ bot.user.setActivity(`${tbh}`, {type: "PLAYING"});
 let tbh = args.join(" ")
 bot.user.setActivity(`${tbh}`, {type: "PLAYING"});
       message.react("\u2705")
-
     }
-
+else {
+      console.log("no")
 }
 
 module.exports.help = {
