@@ -5,7 +5,7 @@ async function awaitReply(message,question, limit = 300000){
       const collected = await message.author.dmChannel.awaitMessages(filter, { max: 1, time: limit, errors: ['time'] });
       return collected.first().content;
     } catch (error) {
-return message.author.send("**Prompt Cancelled -- There Was No Response After Five Minutes.**");
+return message.author.send("**Prompt Cancelled -- There Was No Response After Five Minutes**");
     }
   }
 
