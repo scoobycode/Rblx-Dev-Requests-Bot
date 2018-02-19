@@ -1,12 +1,11 @@
-async function awaitReply(message,question, limit = 60000){
+async function awaitReply(message,question, limit = 1000){
     const filter = m => m.author.id === message.author.id;
     await message.author.send(question);
     try {
       const collected = await message.author.dmChannel.awaitMessages(filter, { max: 1, time: limit, errors: ['time'] });
       return collected.first().content;
     } catch (error) {
-return message.author.send("**Prompt cancelled because there was no response after one minute.**")
-    return false;
+return message.author.send("**Prompt cancelled because there was no response after one minute.**");
     }
   }
 
@@ -16,15 +15,15 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
-  const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 60000);
+  const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 1000);
   if(rblxname == "cancel") return message.author.send("**Prompt cancelled.**")
-  const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 60000);
+  const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 1000);
   if(urrblxname == "cancel") return message.author.send("**Prompt cancelled.**")
   const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, say **skip**.\nSay **cancel** to cancel prompt.`, 60000);
   if(proof == "cancel") return message.author.send("**Prompt cancelled.**")
-  const describe = await awaitReply(message, "Anything else you would like us to know? If not, just say **skip**.\nSay **cancel** to cancel prompt.", 60000);
+  const describe = await awaitReply(message, "Anything else you would like us to know? If not, just say **skip**.\nSay **cancel** to cancel prompt.", 1000);
   if(describe == "cancel") return message.author.send("**Prompt cancelled.**")
-  const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 60000);
+  const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 1000);
   if(confirm == "cancel") return message.author.send("**Prompt cancelled.**")
 
     let reportEmbed = new Discord.RichEmbed()
