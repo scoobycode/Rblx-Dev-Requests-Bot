@@ -13,6 +13,7 @@ bot.user.setActivity(`${tbh}`, {type: "PLAYING"});
 else {
       console.log("no")
 }
+}
 
 module.exports.help = {
     name: "setstatus"
