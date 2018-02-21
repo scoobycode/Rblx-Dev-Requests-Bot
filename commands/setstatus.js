@@ -3,10 +3,10 @@ module.exports.run = async (bot, message, args) => {
 let tbh = args.join(" ")
 return message.channel.send(`${bot.ActivityType.toUpperCase()}`);
 if(message.author.id === "291367352476631040") {
-bot.user.setActivity(`${tbh}`, {type: `${bot.user.presence.ActivityType}`});
+bot.user.setActivity(`${tbh}`, {type: `${bot.user.presence.game.type}`});
       message.react("\u2705")
 } else if(message.author.id === "245877990938902529") {
-bot.user.setActivity(`${tbh}`, {type: `${bot.user.presence.ActivityType}`});
+bot.user.setActivity(`${tbh}`, {type: `${bot.user.presence.game.type}`});
       message.react("\u2705")
     }
 
