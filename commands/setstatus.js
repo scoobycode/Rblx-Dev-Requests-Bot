@@ -24,13 +24,13 @@ if(message.author.id === "291367352476631040") {
   if(activity === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
   if(activity.toLowerCase() === "playing") {
       bot.user.setActivity(`${status}`, {type: "PLAYING"});
-      message.react("\u2705")
+      message.channel.send(`\u2705 Success! Changed Status To **Playing ${status}**! \u2705`)
   } else if (activity.toLowerCase() === "listening") {
       bot.user.setActivity(`${status}`, {type: "LISTENING"});
-      message.react("\u2705")
+      message.channel.send(`\u2705 Success! Changed Status To **Listening to ${status}**! \u2705`)
         } else if (activity.toLowerCase() === "watching") {
       bot.user.setActivity(`${status}`, {type: "WATCHING"});
-      message.react("\u2705")
+      message.channel.send(`\u2705 Success! Changed Status To **Watching ${status}**! \u2705`)
         }     
               
               
@@ -43,14 +43,14 @@ const status = await awaitReply(message, "What should the status be?\nSay **canc
   if(activity === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
   if(activity.toLowerCase() === "playing") {
       bot.user.setActivity(`${status}`, {type: "PLAYING"});
-      message.react("\u2705")
+      message.channel.send(`\u2705 Success! Changed Status To **Playing ${status}**! \u2705`)
   } else if (activity.toLowerCase() === "listening") {
       bot.user.setActivity(`${status}`, {type: "LISTENING"});
-      message.react("\u2705")
+      message.channel.send(`\u2705 Success! Changed Status To **Listening to ${status}**! \u2705`)
         } else if (activity.toLowerCase() === "watching") {
       bot.user.setActivity(`${status}`, {type: "WATCHING"});
-      message.react("\u2705")
-        }     
+      message.channel.send(`\u2705 Success! Changed Status To **Watching ${status}**! \u2705`)
+        } else return message.channel.send("**Prompt Cancelled -- Invalid Activity Choice**")
     }
 
 }
