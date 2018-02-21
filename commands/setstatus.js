@@ -13,5 +13,5 @@ bot.user.setActivity(`${tbh}`, {type: `${bot.ActivityType}`});
 }
 
 module.exports.help = {
-    name: "setstatus"
+    name: "aaasetstatus"
 }
