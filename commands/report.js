@@ -16,20 +16,20 @@ module.exports.run = async (bot, message, args) => {
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
   const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
-  if(rblxname == "cancel") return message.author.send("**Prompt Cancelled**")
-  if(rblxname == "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
+  if(rblxname.toLowerCase() === "cancel") return message.author.send("**Prompt Cancelled**")
+  if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
   const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 300000);
-  if(urrblxname == "cancel") return message.author.send("**Prompt Cancelled**")
-  if(urrblxname == "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
+  if(urrblxname === "cancel") return message.author.send("**Prompt Cancelled**")
+  if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
   const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, say **skip**.\nSay **cancel** to cancel prompt.`, 300000);
-  if(proof == "cancel") return message.author.send("**Prompt Cancelled**")
-  if(proof == "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
+  if(proof === "cancel") return message.author.send("**Prompt Cancelled**")
+  if(proof === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
   const describe = await awaitReply(message, "Anything else you would like us to know? If not, just say **skip**.\nSay **cancel** to cancel prompt.", 300000);
-  if(describe == "cancel") return message.author.send("**Prompt Cancelled**")
-  if(describe == "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
+  if(describe === "cancel") return message.author.send("**Prompt Cancelled**")
+  if(describe === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
   const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 300000);
-  if(confirm == "cancel") return message.author.send("**Prompt Cancelled**")
-  if(confirm == "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
+  if(confirm === "cancel") return message.author.send("**Prompt Cancelled**")
+  if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
 
 
     let reportEmbed = new Discord.RichEmbed()
