@@ -8,12 +8,12 @@ module.exports.run = async (bot, message, args) => {
       if(!pingeduser) {
       	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
 	      let auser = barray.first();
-	      if(auser) return channel.auser.delete()
+	      if(auser) return auser.delete()
 	      if(!auser) return message.channel.send("This user is not blacklisted!")
       } else {
       	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
 	      let buser = darray.first();
-	if(buser) return channel.buser.delete()
+	if(buser) return buser.delete()
 	if(!buser) return message.channel.send("This user is not blacklisted!")
 }
 	
