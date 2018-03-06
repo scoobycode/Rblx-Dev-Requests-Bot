@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
        let channel = bot.channels.find(`id`, "420677482287464448")
       let marray = await channel.fetchMessages()
-	      let aarray = marray.filter(m => RegExp(message.author.id, "gi").test(m.startsWith()));
+	      let aarray = marray.filter(m => RegExp(message.author.id, "gi").test(m.content));
 			let buser = aarray.first();
       
       if(buser) {
