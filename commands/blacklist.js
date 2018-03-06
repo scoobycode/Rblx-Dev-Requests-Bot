@@ -4,13 +4,13 @@ module.exports.run = async (bot, message, args) => {
       let marray = await channel.fetchMessages()
       let aarray = marray.filter(m => RegExp(message.author.id, "gi").test(m.content));
       let buser = aarray.first();
-      let auser = message.guild.member(message.mentions.users.first().id || message.guild.members.get(args[0]).id);
+	if(buser) return message.channel.send("This user is already blacklisted!")
+      let auser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 		if(!auser) {
-			auser = args[0]
+			let cuser = args[0]
+			return channel.send(cuser)
 		}
-      if(!buser) {
-      channel.send(auser)
-      } else return message.channel.send("This user is already blacklisted!")
+      channel.send(auser.id)
 
 
 }
