@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
-       let channel = client.channels.find(`id`, "420677482287464448")
+       let channel = bot.channels.find(`id`, "420677482287464448")
       marray = channel.fetchMessages().filter(m => RegExp(message.author.id, "gi").test(m.startsWith()));
 			buser = marray.first();
       
