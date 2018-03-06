@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
 	let messages = await channel.fetchMessages()
 
       if(!pingeduser) {
-      	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
+      	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.startsWith(pingeduser.id)));
 	      let auser = barray.first();
 	      if(!auser) {
 		      let userob = await bot.fetchUser(pingeduser.id)
@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
 	      }
 	      if(auser) return message.reply("This user is already blacklisted!")
       } else {
-      	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
+      	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.startsWith(pingeduser.id)));
 	      let buser = darray.first();
 	if(!buser) {
 		let userob = await bot.fetchUser(pingeduser.id)
