@@ -13,6 +13,12 @@ return message.author.send("**Prompt Cancelled -- There Was No Response After Fi
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
+    let channel = bot.channels.find(`id`, "420677482287464448")
+    let messages = await channel.fetchMessages()
+    let barray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
+	      let auser = barray.first();
+	      if(auser) return message.channel.send("You cannot use this command because you are blacklisted!")
+
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
   const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
