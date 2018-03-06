@@ -8,12 +8,18 @@ module.exports.run = async (bot, message, args) => {
       if(!pingeduser) {
       	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
 	      let auser = barray.first();
-	      if(!auser) return channel.send(userid)
+	      if(!auser) {
+		      channel.send(userid)
+		      message.react("\u2705")
+	      }
 	      if(auser) return message.channel.send("This user is already blacklisted!")
       } else {
       	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
 	      let buser = darray.first();
-	if(!buser) return channel.send(pingeduser.id)
+	if(!buser) {
+		 channel.send(pingeduser.id)
+		 message.react("\u2705")
+	}
 	if(buser) return message.channel.send("This user is already blacklisted!")
 }
 	
