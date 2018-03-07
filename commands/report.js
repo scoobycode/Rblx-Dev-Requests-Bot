@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
 
 tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND**`)
 let darray = tmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
-	      let cuser = darray.first();
+	      let duser = darray.first();
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
   const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
