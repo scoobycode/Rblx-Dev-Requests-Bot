@@ -38,7 +38,7 @@ if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message
   let hello = new Discord.RichEmbed()
     .setTitle("Thanks For Adding Me To Your Server!")
     .setColor("#0000ff")
-    .description("Thanks for inviting Scam reports bot to your server!\nScam reports bot is owned by RDR and was made by the Co-Owner, @ethanlaj#8805. For a list of commands, just say \`!help\`\nIf you need any help what so ever, feel free to join our support server!\nInvite link: https://discord.gg/3dECRh8")
+    .description("Thanks for inviting Scam reports bot to your server!\nScam reports bot is owned by RDR and was made by the Co-Owner, @ethanlaj#8805. For a list of commands, just say \`!help\`\nIf you need any help what so ever, feel free to join our support server!\nInvite link: https://discord.gg/3dECRh8");
 
 
   client.on("guildCreate", guild => {
