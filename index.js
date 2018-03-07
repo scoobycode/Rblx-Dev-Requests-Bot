@@ -43,7 +43,7 @@ if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message
 
   client.on("guildCreate", guild => {
     
-  let hichannel = await guild.channels.first()
+  let hichannel = guild.channels.first()
     hichannel.send(hello)
 });
   let prefix = botconfig.prefix;
