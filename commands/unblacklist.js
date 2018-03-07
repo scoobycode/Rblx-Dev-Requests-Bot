@@ -22,7 +22,6 @@ module.exports.run = async (bot, message, args) => {
 		buser.delete()
 		message.react("\u2705")
 	}	
-	      if(!buser) return message.channel.send("This user is not blacklisted!")
 }
 	
 }
