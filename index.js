@@ -2,6 +2,7 @@ const botconfig = require("./botconfig.js");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
+
 bot.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
@@ -23,6 +24,8 @@ fs.readdir("./commands/", (err, files) => {
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
   bot.user.setActivity("for !report", {type: "WATCHING"});
+  let tchannel = bot.channels.find(`id`, "420748985410650123")
+  tchannel.bulkDelete(100)
 });
 
 bot.on("message", async message => {
