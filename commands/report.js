@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     let messages = await channel.fetchMessages()
     let barray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let auser = barray.first();
-	      if(auser) return message.channel.send("You cannot use this command because you are blacklisted!")
+	      if(auser) return message.reply("You cannot use this command because you are blacklisted!")
 
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
