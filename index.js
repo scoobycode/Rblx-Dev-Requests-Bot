@@ -26,10 +26,12 @@ bot.on("ready", async () => {
 });
 
 bot.on("message", async message => {
-  if(message.author.bot) return;
+  //if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
-
+if(message.content.endsWith("!@@#@-MUST WAIT TO USE REPORT COMMAND-@!@!@")) && (message.author.bot) && (message.channel.id === "420748985410650123") {
+  message.delete(600000)
+}
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
