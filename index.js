@@ -33,7 +33,7 @@ bot.on("message", async message => {
   if(message.channel.type === "dm") return;
 
 if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message.author.bot) && (message.channel.id === "420748985410650123")) {
-  message.delete(60,000)
+  message.delete(60000)
 }
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
