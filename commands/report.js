@@ -40,25 +40,25 @@ let darray = tmessages.filter(m => RegExp(message.author.id, "gi").test(m.conten
   const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 300000);
   if(urrblxname === "cancel") { 
 	  	  duser.delete()
-	  return message.author.send("**Prompt Cancelled**")
+	   message.author.send("**Prompt Cancelled**")
   }
   if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
   const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, say **skip**.\nSay **cancel** to cancel prompt.`, 300000);
   if(proof === "cancel") {
 	  duser.delete()
-	  return message.author.send("**Prompt Cancelled**")
+	   message.author.send("**Prompt Cancelled**")
   }
   if(proof === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
   const describe = await awaitReply(message, "Anything else you would like us to know? If not, just say **skip**.\nSay **cancel** to cancel prompt.", 300000);
   if(describe === "cancel") {
 	  duser.delete()
-	  return message.author.send("**Prompt Cancelled**")
+	   message.author.send("**Prompt Cancelled**")
   }
   if(describe === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
   const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 300000);
   if(confirm === "cancel") {
 	  duser.delete()
-	  return message.author.send("**Prompt Cancelled**") 
+	   message.author.send("**Prompt Cancelled**") 
   }
   if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
 
