@@ -33,7 +33,7 @@ let darray = tmessages.filter(m => RegExp(message.author.id, "gi").test(m.conten
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
   const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
   if(rblxname.toLowerCase() === "cancel") {
-	  duser.delete()
+	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
   if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
