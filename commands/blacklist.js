@@ -25,7 +25,6 @@ module.exports.run = async (bot, message, args) => {
 		 channel.send(`${pingeduser.id}, ${userob.username}#${userob.discriminator}`)
 		 message.react("\u2705")
 	}
-	if(buser) return message.reply("This user is already blacklisted!")
 }
 	
 }
