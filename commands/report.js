@@ -14,6 +14,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     let channel = bot.channels.find(`id`, "420677482287464448")
+    let pchannel = bot.channels.find(`id`, "411246419979141121")
     let messages = await channel.fetchMessages()
     let barray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let auser = barray.first();
@@ -37,10 +38,13 @@ module.exports.run = async (bot, message, args) => {
   if(confirm === "cancel") return message.author.send("**Prompt Cancelled**")
   if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
 
-
+let invite = message.channel.createInvite({maxAge:0})
     let reportEmbed = new Discord.RichEmbed()
     .setTitle("New Scam Report")
     .setColor("#FF0000")
+    .addField("Guild Reported From", message.guild.name)
+    .addField("Reported User's ID", message.author.id)
+    .addField("Invite To Guild", invite) 
     .addField("Time Reported", message.createdAt)
     .addField("Reported User", rblxname)
     .addField("Reporter's Discord Username", message.author)
@@ -48,8 +52,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Proof Of Scam", proof)
     .addField("Extra Information", describe);
 
-    let reportchannel = message.guild.channels.find(`name`, "scamming-reports");
-    reportchannel.send(reportEmbed);
+    pchannel.send(reportEmbed);
     message.author.send("\u2705 **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** \u2705");
     return;
 }
