@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
 	      let cuser = carray.first();
 	      if(cuser) return message.reply("You cannot use this command because you just used it! To avoid spam, you must wait ten minutes from the last time you used this command!")
 
-tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND**`)
+tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND (IP)**`)
 let darray = tmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let duser = darray.first();
   message.react("\u2705")
