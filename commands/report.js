@@ -15,11 +15,17 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
     let channel = bot.channels.find(`id`, "420677482287464448")
     let pchannel = bot.channels.find(`id`, "411246419979141121")
+    let tchannel = bot.channels.find(`id`, "420748985410650123")
     let messages = await channel.fetchMessages()
+    let tmessages = await tchannel.fetchMessages()
     let barray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let auser = barray.first();
 	      if(auser) return message.reply("You cannot use this command because you are blacklisted!")
+	let carray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
+	      let cuser = carray.first();
+	      if(cuser) return message.reply("You cannot use this command because you just used it! To avoid spam, you must wait ten minutes from the last time you used this command!")
 
+	
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
   const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
@@ -53,6 +59,7 @@ let invite = await message.channel.createInvite({maxAge:0})
     .addField("Extra Information", describe);
 
     pchannel.send(reportEmbed);
+    tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n!@@#@-MUST WAIT TO USE REPORT COMMAND-@!@!@`)
     message.author.send("\u2705 **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** \u2705");
     return;
 }
