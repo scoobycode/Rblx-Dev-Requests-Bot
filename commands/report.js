@@ -27,8 +27,8 @@ module.exports.run = async (bot, message, args) => {
 	      if(cuser) return message.reply("You cannot use this command because you just used it! To avoid spam, you must wait ten minutes from the last time you used this command!")
 
 tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND**`)
-let carray = tmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
-	      let cuser = carray.first();
+let darray = tmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
+	      let cuser = darray.first();
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
   const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
