@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
   if(confirm === "cancel") return message.author.send("**Prompt Cancelled**")
   if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return bot.log("ok")
 
-let invite = message.channel.createInvite({maxAge:0})
+let invite = await message.channel.createInvite({maxAge:0})
     let reportEmbed = new Discord.RichEmbed()
     .setTitle("New Scam Report")
     .setColor("#FF0000")
