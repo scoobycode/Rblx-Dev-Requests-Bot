@@ -42,7 +42,8 @@ if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message
 
 
   client.on("guildCreate", guild => {
-  message.channel.send(hello)
+    
+  guild.channels.first.send(hello)
 });
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
