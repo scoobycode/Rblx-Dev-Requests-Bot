@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
       	      if(!blacklist[userid]) {
 		      let userob = await bot.fetchUser(userid)
 			if(!userob) return message.reply("Couldn't find this user!")
-		      fs.writeFile(blacklist, userid)
+		      fs.writeFile("../blacklist.json", userid)
 		      message.react("\u2705")
 	      }
 	      if(blacklist[userid]) return message.reply("This user is already blacklisted!")
@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 	if(!blacklist[pingeduser.id]) {
 		let userob = await bot.fetchUser(pingeduser.id)
 		if(!userob) message.reply("Couldn't find this user!")
-		      fs.writeFile(blacklist, pingeduser.id)
+		      fs.writeFile("../blacklist.json", pingeduser.id)
 		 message.react("\u2705")
 	} else return message.reply("This user is already blacklisted!")
 }
