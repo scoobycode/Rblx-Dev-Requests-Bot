@@ -2,6 +2,7 @@ const botconfig = require("./botconfig.js");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
+let blacklist = require("./blacklist.json")
 process.on('unhandledRejection', console.error)
 
 bot.commands = new Discord.Collection();
@@ -36,7 +37,6 @@ bot.on("guildCreate", guild => {
 bot.on("message", async message => {
   //if(message.author.bot) return;
   if(message.channel.type === "dm") return;
-
 if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message.author.bot) && (message.channel.id === "420748985410650123")) {
   message.delete(600000)
 }
