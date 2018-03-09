@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 	      let note = userob.note
 	      	      if(!note) note = ("-")
 
-	      if(note.contains("BLACKLISTED") === false) {
+	      if(note.includes("BLACKLISTED") === false) {
 			if(!userob) return message.reply("Couldn't find this user!")
 		      let add = "BLACKLISTED"
 		      let newnote = note.concat(add);
@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
 	      let note = userob.note
 	      	      if(!note) note = ("-")
 
-	      if(note.contains("BLACKLISTED") === false) {
+	      if(note.includes("BLACKLISTED") === false) {
 		if(!userob) return message.reply("Couldn't find this user!")
 		      let add = "BLACKLISTED"
 		      let newnote = note.concat(add);
