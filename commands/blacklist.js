@@ -13,9 +13,9 @@ module.exports.run = async (bot, message, args) => {
 		      let userob = await bot.fetchUser(userid)
 			if(!userob) return message.reply("Couldn't find this user!")
 			blacklist[userid] = {name: `${userid.username}#${userid.discriminator}`}
-		      fs.writeFile("../blacklist.json", JSON.stringify(blacklist), (err) => {
-						if (err) throw err;
-});
+		      child_process.exec(fs.writeFile("../blacklist.json", JSON.stringify(blacklist), (err) => {
+                        if (err) throw err;
+}));
 		      message.react("\u2705")
 	      }
 	      if(blacklist[userid]) return message.reply("This user is already blacklisted!")
@@ -26,9 +26,9 @@ module.exports.run = async (bot, message, args) => {
 		let userob = await bot.fetchUser(pingeduser.id)
 		if(!userob) message.reply("Couldn't find this user!")
 		blacklist[userob.id] = {name: `${userob.username}#${userob.discriminator}`}
-				fs.writeFile("../blacklist.json", JSON.stringify(blacklist), (err) => {
-			if (err) throw err;
-});
+				child_process.exec(fs.writeFile("../blacklist.json", JSON.stringify(blacklist), (err) => {
+                        if (err) throw err;
+}));
 		 message.react("\u2705")
 	} else return message.reply("This user is already blacklisted!")
 }
