@@ -8,6 +8,7 @@ module.exports.run = async (bot, message, args) => {
 	      let userob = await bot.fetchUser(userid)
 	      if(!userob) return message.reply("Couldn't find this user!")
 	      let note = userob.note
+	      if(!note) note = ("-")
 	      if(note.contains("BLACKLISTED") === true) {
 			if(!userob) return message.reply("Couldn't find this user!")
 		 	bot.setNote(`-`)
@@ -17,6 +18,8 @@ module.exports.run = async (bot, message, args) => {
       	      let userob = await bot.fetchUser(pingeduser.id)
 	      if(!userob) return message.reply("Couldn't find this user!")
 	      let note = userob.note
+	      	      if(!note) note = ("-")
+
 	      if(note.contains("BLACKLISTED") === true) {
 		if(!userob) return message.reply("Couldn't find this user!")
 		 	bot.setNote(`-`)
