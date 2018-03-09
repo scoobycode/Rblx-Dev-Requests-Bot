@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
 	      if(!note) note = ("-")
 	      if(note.includes("BLACKLISTED") === true) {
 			if(!userob) return message.reply("Couldn't find this user!")
-		 	bot.setNote(`-`)
+		 	userob.setNote(`-`)
 		      message.react("\u2705")
 	      } else return message.reply("This user is not blacklisted!")
       } else {
@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 
 	      if(note.includes("BLACKLISTED") === true) {
 		if(!userob) return message.reply("Couldn't find this user!")
-		 	bot.setNote(`-`)
+		 	userob.setNote(`-`)
 		      message.react("\u2705")
 	} else return message.reply("This user is not blacklisted!")
 }
