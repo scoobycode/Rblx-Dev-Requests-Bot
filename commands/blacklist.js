@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 			if(!userob) return message.reply("Couldn't find this user!")
 		      let add = "BLACKLISTED"
 		      let newnote = note.concat(add);
-		 	bot.setNote(`newnote`)
+		 	userob.setNote(`newnote`)
 		      message.react("\u2705")
 	      } else return message.reply("This user is already blacklisted!")
       } else {
@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
 		if(!userob) return message.reply("Couldn't find this user!")
 		      let add = "BLACKLISTED"
 		      let newnote = note.concat(add);
-		 	bot.setNote(`newnote`)
+		 	userob.setNote(`newnote`)
 		      message.react("\u2705")
 	} else return message.reply("This user is already blacklisted!")
 }
