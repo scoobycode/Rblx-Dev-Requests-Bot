@@ -7,13 +7,15 @@ module.exports.run = async (bot, message, args) => {
 	let messages = await channel.fetchMessages()
 
       if(userid) {
+	      let user = await rbx.getIdFromUsername(userid).catch((err) => {
+   		 return message.reply(`${err}. If error persists, contact ethanlaj#8805.`);
+		      });
       	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
 	      let auser = barray.first();
 	      if(auser) {
 		     auser.delete()
 		     message.react("\u2705")
-	      }
-	      if(!auser) return message.reply("This user is not in the scammers database!")
+	      } else return message.reply("This user is not in the scammers database!")
       
 }
 	
