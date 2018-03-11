@@ -10,7 +10,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
     let array = messages.filter(m => RegExp(user, "gi").test(m.content));
 	      let auser = barray.first();
 	
-	     if(auser) return message.reply("This person is in our scammers database!")
+	     if(auser) return message.reply(`This person is in our scammers database!\n**Link to their profile:** https://www.roblox.com/users/${user}/profile`)
 	if(!auser) return message.reply("This person is not in our scammers database!")
 
 }
