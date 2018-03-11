@@ -2,7 +2,7 @@ const rbx = require('roblox-js');
 
 module.exports.run = async (bot, message, args) => {
     let channel = bot.channels.find(`id`, "420745256439513089")
-    
+    let messages = await channel.fetchMessages()
 let messages = await channel.fetchMessages()
 var errortf
 let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
@@ -12,7 +12,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	 if (errortf == true) return;
 
     let array = messages.filter(m => RegExp(user, "gi").test(m.content));
-	      let auser = barray.first();
+	      let auser = array.first();
 	
 	     if(auser) return message.reply(`This person is in our scammers database!\n**Link to their profile:** https://www.roblox.com/users/${user}/profile`)
 	if(!auser) return message.reply("This person is not in our scammers database!")
