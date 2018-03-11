@@ -7,10 +7,11 @@ module.exports.run = async (bot, message, args) => {
 	let userid = args[0]
 	let messages = await channel.fetchMessages()
 
-      if(userid) {
-	      let user = await rbx.getIdFromUsername(userid).catch((err) => {
-   		return message.reply(`${err}. If error persists, contact ethanlaj#8805.`);
+     let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
+	    errortf = true
+   		 message.reply(`${err}. If error persists, contact ethanlaj#8805.`);
 		      });
+	 if (errortf == true) return;
       	      let barray = messages.filter(m => RegExp(user, "gi").test(m.content));
 	      let auser = barray.first();
 	      
