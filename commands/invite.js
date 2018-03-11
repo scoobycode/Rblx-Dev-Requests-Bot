@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
 
-message.reply("https://discordapp.com/oauth2/authorize?client_id=403769002700046340&permissions=347201&scope=bot")
+message.reply("**Invite me here!:** https://discordapp.com/oauth2/authorize?client_id=403769002700046340&permissions=347201&scope=bot")
 
 
 
