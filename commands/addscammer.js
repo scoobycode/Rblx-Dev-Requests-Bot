@@ -9,8 +9,6 @@ module.exports.run = async (bot, message, args) => {
       	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
 	      let auser = barray.first();
 	      if(!auser) {
-		      let userob = await bot.fetchUser(userid)
-			if(!userob) return message.reply("Couldn't find this user!")
 		 	channel.send(`${userid}`)
 		      message.react("\u2705")
 	      }
