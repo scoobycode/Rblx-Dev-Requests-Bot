@@ -2,7 +2,6 @@ const rbx = require('roblox-js');
 
 module.exports.run = async (bot, message, args) => {
     let channel = bot.channels.find(`id`, "420745256439513089")
-    let messages = await channel.fetchMessages()
 let messages = await channel.fetchMessages()
 var errortf
 let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
