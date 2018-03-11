@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
 
       if(userid) {
 	      let user = await rbx.getIdFromUsername(userid).catch((err) => {
-   		 message.reply(`${err}. Could not find this user. If error persists, contact ethanlaj#8805.`);
+   		 message.reply(`${err}. If error persists, contact ethanlaj#8805.`);
 		      });
       	      let barray = messages.filter(m => RegExp(user, "gi").test(m.content));
 	      let auser = barray.first();
@@ -17,8 +17,7 @@ module.exports.run = async (bot, message, args) => {
 	      if(!auser) {
 		 	channel.send(`${user}`)
 		      message.react("\u2705")
-	      }
-	      if(auser) return message.reply("This user is already in the scammer database!")
+	      } else return message.reply("This user is already in the scammer database!")
      
 }
 	
