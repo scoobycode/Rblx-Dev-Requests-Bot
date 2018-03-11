@@ -13,16 +13,14 @@ module.exports.run = async (bot, message, args) => {
 	      if(auser) {
 		     auser.delete()
 		     message.react("\u2705")
-	      }
-	      if(!auser) return message.reply("This user is not blacklisted!")
+	      } else return message.reply("This user is not blacklisted!")
       } else {
       	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
 	      let buser = darray.first();
 	if(buser) { 
 		buser.delete()
 		message.react("\u2705")
-	}	
-	      if(!buser) return message.reply("This user is not blacklisted!")
+	} else return message.reply("This user is not blacklisted!")
 }
 	
 }
