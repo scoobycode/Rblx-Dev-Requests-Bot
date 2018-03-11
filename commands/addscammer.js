@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
 	let userid = args[0]
 	let messages = await channel.fetchMessages()
 
-      if(!pingeduser) {
+      if(userid) {
       	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
 	      let auser = barray.first();
 	      if(!auser) {
