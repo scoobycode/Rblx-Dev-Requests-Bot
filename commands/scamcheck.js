@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, args) => {
 let messages = await channel.fetchMessages()
 let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	    errortf = true
-   		 message.reply(`${err}. If error persists, contact ethanlaj#8805.`);
+   		return message.reply(`${err}. If error persists, contact support by doing !server.`);
 		      });
 	 if (errortf == true) return;
 
