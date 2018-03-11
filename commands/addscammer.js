@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
 
       if(userid) {
 	      let user = await rbx.getIdFromUsername(userid).catch((err) => {
-   		 message.reply(`${err}. If error persists, contact ethanlaj#8805.`);
+   		return message.reply(`${err}. If error persists, contact ethanlaj#8805.`);
 		      });
       	      let barray = messages.filter(m => RegExp(user, "gi").test(m.content));
 	      let auser = barray.first();
