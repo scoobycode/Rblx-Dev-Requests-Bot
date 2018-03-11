@@ -8,11 +8,11 @@ module.exports.run = async (bot, message, args) => {
 	let messages = await channel.fetchMessages()
 
       if(userid) {
-      	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
-	      let auser = barray.first();
-	      var user = await rbx.getIdFromUsername(userid).catch((err) => {
+	      let user = await rbx.getIdFromUsername(userid).catch((err) => {
    		 message.reply(`${err}. Could not find this user. If error persists, contact ethanlaj#8805.`);
-  });
+      	      let barray = messages.filter(m => RegExp(user, "gi").test(m.content));
+	      let auser = barray.first();
+	      
 	      if(!auser) {
 		 	channel.send(`${user}`)
 		      message.react("\u2705")
