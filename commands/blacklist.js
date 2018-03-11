@@ -14,8 +14,7 @@ module.exports.run = async (bot, message, args) => {
 			if(!userob) return message.reply("Couldn't find this user!")
 		 	channel.send(`${userid}, ${userob.username}#${userob.discriminator}`)
 		      message.react("\u2705")
-	      }
-	      if(auser) return message.reply("This user is already blacklisted!")
+	      }	else return message.reply("This user is already blacklisted!")
       } else {
       	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
 	      let buser = darray.first();
@@ -24,8 +23,7 @@ module.exports.run = async (bot, message, args) => {
 		if(!userob) message.reply("Couldn't find this user!")
 		 channel.send(`${pingeduser.id}, ${userob.username}#${userob.discriminator}`)
 		 message.react("\u2705")
-	}
-	if(buser) return message.reply("This user is already blacklisted!")
+	} else return message.reply("This user is already blacklisted!")
 }
 	
 }
