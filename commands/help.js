@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
 	.addField("Report", "Starts a prompt to report a scammer and send that prompt to the RDR server")
 	.addField("Invite", "Sends you my invite")
 	.addField("Server", "Sends you the invite to the RDR server")
-	.addField("Scamcheck", "Tells you whether the username you provided is in our scam database or not");
+	.addField("ScamCheck", "Tells you whether the username you provided is in our scam database or not");
 
 
 	message.react("\u2705")
