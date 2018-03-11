@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const rbx = require('roblox-js');
+
 module.exports.run = async (bot, message, args) => {
 	if(message.author.id === "291367352476631040" || message.author.id === "245877990938902529" || message.author.id === "294990053849956354" || message.author.id === "303683211790254080" || message.author.id === "335096822194241537") {
 
