@@ -28,9 +28,7 @@ bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
   let tchannel = bot.channels.find(`id`, "420748985410650123")
   tchannel.bulkDelete(100)
-  bot.user.setActivity("for !help", {type: "WATCHING", setInterval: 10000});
-  bot.user.setActivity("for !help", {type: "PLAYING", setInterval: 10000});
-  bot.user.setActivity("uni", {type: "PLAYING", setInterval: 10000});
+  bot.user.setActivity("for !help", {type: "WATCHING"});
 
 });
 bot.on("guildCreate", guild => {
