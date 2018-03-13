@@ -2,6 +2,7 @@ const botconfig = require("./botconfig.js");
 const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
+let bot.counter = false
 let blacklist = require("./blacklist.json")
 process.on('unhandledRejection', console.error)
 
@@ -37,7 +38,11 @@ bot.on("guildCreate", guild => {
 
   let hichannel = guild.channels.first()
    hichannel.send(hello)
-    if(botcount) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
+    if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
+});
+
+bot.on("guildDelete", guild => {
+    if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
 });
 bot.on("message", async message => {
   //if(message.author.bot) return;
