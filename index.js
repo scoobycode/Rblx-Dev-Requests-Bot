@@ -25,7 +25,7 @@ fs.readdir("./commands/", (err, files) => {
 });
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
-  bot.user.setActivity("for !report", {type: "WATCHING"});
+  bot.user.setActivity("for !help", {type: "WATCHING"});
   let tchannel = bot.channels.find(`id`, "420748985410650123")
   tchannel.bulkDelete(100)
 });
