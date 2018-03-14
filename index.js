@@ -56,7 +56,7 @@ if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message
 
 }
   if(message.channel.id === "423291778888761344") {
-    let scoob === bot.fetchUser("291367352476631040")
+    let scoob === bot.fetchUser('id', "291367352476631040")
     scoob.send(message.content)
   }
   let prefix = botconfig.prefix;
