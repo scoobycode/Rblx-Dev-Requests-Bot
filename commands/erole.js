@@ -11,8 +11,8 @@ let me = await guild.fetchMember("245877990938902529")
 
 if(auser) {
 if(me.roles.find(`name`, auser.name)) {
-me.addRole(auser)
-} else me.removeRole(auser)
+me.addRole(`name`, auser.name)
+} else me.removeRole(`name`, auser.name)
 
 } else return message.channel.send("heh")
 
