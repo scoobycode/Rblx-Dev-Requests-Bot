@@ -51,15 +51,7 @@ bot.on("message", async message => {
   if(message.channel.type === "dm") return;
 if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message.author.bot) && (message.channel.id === "420748985410650123")) {
   message.delete(600000)
- 
-    
-
 }
-  if((message.channel.id === "423291778888761344") && (message.author.id === "245877990938902529")) {
-    let scoob = await bot.fetchUser("291367352476631040")
-    scoob.send(message.content)
-    message.react("✅")
-  }
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0].toLowerCase();
