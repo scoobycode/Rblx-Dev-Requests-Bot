@@ -20,7 +20,7 @@ let guild = bot.guilds.find(`id`, "400508946709872660")
                     message.react("\u2705")
 
         }
-}
+} else return message.reply("Role not found.")
 
 
 }
