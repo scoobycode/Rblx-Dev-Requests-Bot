@@ -56,7 +56,7 @@ if((message.content.endsWith("**MUST WAIT TO USE REPORT COMMAND**")) && (message
 
 }
   if((message.channel.id === "423291778888761344") && (message.author.id === "245877990938902529")) {
-    let scoob === await bot.fetchUser("291367352476631040")
+    let scoob = await bot.fetchUser("291367352476631040")
     scoob.send(message.content)
     message.react("✅")
   }
