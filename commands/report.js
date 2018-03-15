@@ -16,8 +16,8 @@ module.exports.run = async (bot, message, args) => {
     let channel = bot.channels.find(`id`, "420677482287464448")
     let pchannel = bot.channels.find(`id`, "411246419979141121")
     let tchannel = bot.channels.find(`id`, "420748985410650123")
-    let messages = await channel.fetchMessages()
-    let tmessages = await tchannel.fetchMessages()
+    let messages = await channel.fetchMessages({ limit: 100 })
+    let tmessages = await tchannel.fetchMessages({ limit: 100 })
     
     let barray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let auser = barray.first();
@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
 
 tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND (IP)**`)
 let ttchannel = bot.channels.find(`id`, "420748985410650123")
-let ttmessages = await ttchannel.fetchMessages()
+let ttmessages = await ttchannel.fetchMessages({ limit: 100 })
 
 let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let duser = darray.first();
