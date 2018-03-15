@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
       let channel = bot.channels.find(`id`, "420677482287464448")
       let pingeduser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	let userid = args[0]
-	let messages = await channel.fetchMessages()
+	let messages = await channel.fetchMessages({ limit: 100 })
 
       if(!pingeduser) {
       	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
