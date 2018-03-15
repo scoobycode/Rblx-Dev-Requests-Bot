@@ -6,8 +6,7 @@ module.exports.run = async (bot, message, args) => {
 
       let channel = bot.channels.find(`id`, "420745256439513089")
 	let userid = args[0]
-	let messages = await channel.fetchMessages()
-
+	let messages = await channel.fetchMessages({ limit: 100 })
       if(userid) {
 	    var errortf
 let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
