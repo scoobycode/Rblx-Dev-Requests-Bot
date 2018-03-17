@@ -14,18 +14,39 @@ if (member.roles.get("400523390441619457") //mod
 	let messages = await channel.fetchMessages({ limit: 100 })
 
       if(!pingeduser) {
+	      let userob = bot.fetchUser(userid)
       	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
 	      let auser = barray.first();
 	      if(auser) {
 		     auser.delete()
 		     message.react("\u2705")
+		      let mod = bot.channels.find(`id`, "418531258344275978")
+
+ let thing = new Discord.RichEmbed()
+	.setTitle("Unblacklisted User")
+ .setColor("#FF0000")
+ .addField("Time Unblacklisted", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Unblacklisted", userid)
+ await mod.send(thing)
 	      } else return message.reply("This user is not blacklisted!")
       } else {
+	      	      let userob = bot.fetchUser(userid)
+
       	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
 	      let buser = darray.first();
 	if(buser) { 
 		buser.delete()
 		message.react("\u2705")
+		let mod = bot.channels.find(`id`, "418531258344275978")
+
+ let thing = new Discord.RichEmbed()
+	.setTitle("Unblacklisted User")
+ .setColor("#FF0000")
+ .addField("Time Unblacklisted", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Unblacklisted", userid)
+ await mod.send(thing)
 	} else return message.reply("This user is not blacklisted!")
 }
 	
