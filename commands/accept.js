@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 let guild = bot.guilds.find(`id`, "400508946709872660")
-let member = guild.fetchMember(message.author.id)
+let member = await guild.fetchMember(message.author.id)
 if(!member) return;
 if (member.roles.get(`id`, "400523390441619457") //mod
  || member.roles.get(`id`, "400512010590355458") //admin
