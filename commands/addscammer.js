@@ -30,7 +30,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
      
 }
 }
-}
+
 
 }
 
