@@ -26,6 +26,14 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	      if(!auser) {
 		 	channel.send(`${user}`)
 		      message.react("\u2705")
+		       let mod = bot.channels.find(`id`, "418531258344275978")
+ let thing = new Discord.RichEmbed()
+	.setTitle("Scammer Added")
+ .setColor("#FF0000")
+ .addField("Time Added", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Added", userid)
+ await mod.send(thing)
 	      } else return message.reply("This user is already in the scammer database!")
      
 }
