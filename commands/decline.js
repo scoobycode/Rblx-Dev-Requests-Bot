@@ -20,7 +20,7 @@ await user.send(":x: **Scam Report Declined -- After reviewing your report, our 
  let thing = new Discord.RichEmbed()
 	.setTitle("Declined Report")
  .setColor("#FF0000")
- .addField("Time Accepted", message.createdAt)
+ .addField("Time Declined", message.createdAt)
 	.addField("Moderator", message.author)
 	.addField("User Declined", member)
  await mod.send(thing)
