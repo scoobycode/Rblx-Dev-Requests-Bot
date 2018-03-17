@@ -16,6 +16,14 @@ if(!user) return message.reply("Couldn't find user!")
 try {
 await user.send(":white_check_mark: **Scam Report Accepted -- After reviewing your report, our moderators and admins have decided this is a valid scam report. This user will be added to our data base shortly.** :white_check_mark:")
   message.react("✅")
+ let mod = bot.channels.find(`id`, "418531258344275978")
+ let thing = new Discord.RichEmbed()
+	.setTitle("Accepted Report")
+ .setColor("#FF0000")
+ .addField("Time Accepted", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Accepted", member)
+ await mod.send(thing)
 }
 catch (e) {
 return message.reply("Couldn't DM this user!")
