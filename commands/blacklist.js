@@ -32,7 +32,7 @@ if (member.roles.get("400523390441619457") //mod
 		 message.react("\u2705")
 	} else return message.reply("This user is already blacklisted!")
 }
-	
+}	
 }
 
 
