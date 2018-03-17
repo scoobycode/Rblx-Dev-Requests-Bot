@@ -16,6 +16,14 @@ if(!user) return message.reply("Couldn't find user!")
 try {
 await user.send(":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This user will not be added to our data base.** :x:")
   message.react("✅")
+  let mod = bot.channels.find(`id`, "418531258344275978")
+ let thing = new Discord.RichEmbed()
+	.setTitle("Declined Report")
+ .setColor("#FF0000")
+ .addField("Time Accepted", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Declined", member)
+ await mod.send(thing)
 }
 catch (e) {
 return message.reply("Couldn't DM this user!")
