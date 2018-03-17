@@ -25,6 +25,14 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	      if(auser) {
 		     auser.delete()
 		     message.react("\u2705")
+		       let mod = bot.channels.find(`id`, "418531258344275978")
+ let thing = new Discord.RichEmbed()
+	.setTitle("Removed Scammer")
+ .setColor("#FF0000")
+ .addField("Time Removed", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Removed", userid)
+ await mod.send(thing)
 	      } else return message.reply("This user is not in the scammers database!")
       
 }
