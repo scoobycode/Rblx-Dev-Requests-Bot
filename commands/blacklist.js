@@ -21,6 +21,14 @@ if (member.roles.get("400523390441619457") //mod
 			if(!userob) return message.reply("Couldn't find this user!")
 		 	channel.send(`${userid}, ${userob.username}#${userob.discriminator}`)
 		      message.react("\u2705")
+		      let mod = bot.channels.find(`id`, "418531258344275978")
+ let thing = new Discord.RichEmbed()
+	.setTitle("Blacklisted User")
+ .setColor("#FF0000")
+ .addField("Time Blacklisted", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Blacklisted", userob)
+ await mod.send(thing)
 	      }	else return message.reply("This user is already blacklisted!")
       } else {
       	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
@@ -30,6 +38,15 @@ if (member.roles.get("400523390441619457") //mod
 		if(!userob) message.reply("Couldn't find this user!")
 		 channel.send(`${pingeduser.id}, ${userob.username}#${userob.discriminator}`)
 		 message.react("\u2705")
+				      let mod = bot.channels.find(`id`, "418531258344275978")
+
+ let thing = new Discord.RichEmbed()
+	.setTitle("Blacklisted User")
+ .setColor("#FF0000")
+ .addField("Time Blacklisted", message.createdAt)
+	.addField("Moderator", message.author)
+	.addField("User Blacklisted", userob)
+ await mod.send(thing)
 	} else return message.reply("This user is already blacklisted!")
 }
 }	
