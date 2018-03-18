@@ -25,7 +25,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	 if (errortf == true) return;
       	      let barray = messages.filter(m => RegExp(user, "gi").test(m.content));
 	      let auser = barray.first();
-	      let carray = messages.filter(m => RegExp(`https://www.roblox.com/users/${user}/profile`, "gi").test(m.content));
+	      let carray = msgs.filter(m => RegExp(user, "gi").test(m.content));
 	      let cuser = carray.first();
 	      
 	      if(auser) {
