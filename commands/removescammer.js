@@ -13,6 +13,9 @@ if (member.roles.get("400523390441619457") //mod
       let channel = bot.channels.find(`id`, "420745256439513089")
 	let userid = args[0]
 	let messages = await channel.fetchMessages({ limit: 100 })
+	      let post = bot.channels.find(`id`, "424812962872819723")
+	let msgs = await post.fetchMessages({ limit: 100 })
+
       if(userid) {
 	    var errortf
 let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
@@ -22,8 +25,12 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	 if (errortf == true) return;
       	      let barray = messages.filter(m => RegExp(user, "gi").test(m.content));
 	      let auser = barray.first();
+	      let carray = messages.filter(m => RegExp(user, "gi").test(m.content));
+	      let cuser = carray.first();
+	      
 	      if(auser) {
 		     auser.delete()
+		      if(cuser) cuser.delete()
 		     message.react("\u2705")
 		       let mod = bot.channels.find(`id`, "418531258344275978")
  let thing = new Discord.RichEmbed()
