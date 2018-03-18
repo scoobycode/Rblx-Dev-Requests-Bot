@@ -13,6 +13,8 @@ if (member.roles.get("400523390441619457") //mod
       let channel = bot.channels.find(`id`, "420745256439513089")
 	let userid = args[0]
 	let messages = await channel.fetchMessages({ limit: 100 })
+	let post = bot.channels.find(`id`, "424812962872819723")
+
       if(userid) {
 	      var errortf
 let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
@@ -25,6 +27,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	      
 	      if(!auser) {
 		 	channel.send(`${user}`)
+		      post.send(`**${userid}**, https://www.roblox.com/users/${user}/profile`)
 		      message.react("\u2705")
 		       let mod = bot.channels.find(`id`, "418531258344275978")
  let thing = new Discord.RichEmbed()
