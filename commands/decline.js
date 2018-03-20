@@ -14,7 +14,7 @@ if(!userid) return message.reply("Please provide a user ID!")
 let user = await bot.fetchUser(userid)
 if(!user) return message.reply("Couldn't find user!")
 try {
-await user.send(":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This user will not be added to our data base.** :x:")
+await user.send(":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report.This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our data base.** :x:")
   message.react("✅")
   let mod = bot.channels.find(`id`, "418531258344275978")
  let thing = new Discord.RichEmbed()
