@@ -46,6 +46,7 @@ bot.on("guildCreate", guild => {
      } catch(e) {
        console.log(e)
      }
+   }
     if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
 });
 
