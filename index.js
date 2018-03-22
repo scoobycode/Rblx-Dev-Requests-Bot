@@ -29,6 +29,7 @@ bot.on("ready", async () => {
   let tchannel = bot.channels.find(`id`, "420748985410650123")
   tchannel.bulkDelete(100)
   bot.user.setActivity("for !help", {type: "WATCHING"});
+  bot.user.setNickname("Scam Reports")
 
 });
 bot.on("guildCreate", guild => {
