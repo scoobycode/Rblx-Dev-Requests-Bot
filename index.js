@@ -38,16 +38,16 @@ bot.on("guildCreate", async guild => {
     .setColor("#0000ff")
     .setDescription("Thanks for inviting Scam reports bot to your server!\nScam reports bot is owned by RDR and was made by the Co-Owner, @ethanlaj#8805. For a list of commands, just say \`!help\`\nIf you need any help what so ever, feel free to join our support server!\nInvite link: https://discord.gg/3dECRh8");
 
-  let hichannel = guild.channels.find(`type`, "text")
-  //let hichannel = ahichannel.first()
-  console.log(hichannel.name)
-   if(hichannel) {
-     try {
-     await hichannel.send(hello)
-     } catch(e) {
-       console.log(e)
-     }
-   }
+  let hichannels = guild.channels.filter(`type`, "text")
+  forEach(channel in hichannels) {
+    try {
+    await channel.send(hello)
+      break;
+    } catch(e) {
+      console.log(e)
+    }
+  }
+ 
     if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
 });
 
