@@ -40,8 +40,8 @@ bot.on("guildCreate", guild => {
 
   let hichannel = guild.channels.find(`type`, "text")
   //let hichannel = ahichannel.first()
-   if(hichannel) hichannel.send(hello)
-    if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
+   if(hichannel) await hichannel.send(hello)
+    if(bot.counter) await bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
 });
 
 bot.on("guildDelete", guild => {
