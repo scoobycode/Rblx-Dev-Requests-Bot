@@ -40,7 +40,12 @@ bot.on("guildCreate", guild => {
 
   let hichannel = guild.channels.find(`type`, "text")
   //let hichannel = ahichannel.first()
-   if(hichannel) await hichannel.send(hello)
+   if(hichannel) {
+     try {
+     hichannel.send(hello)
+     } catch(e) {
+       console.log(e)
+     }
     if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
 });
 
