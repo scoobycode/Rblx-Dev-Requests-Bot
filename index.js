@@ -32,7 +32,7 @@ bot.on("ready", async () => {
   //await bot.user.setUsername("Scam Reports")
 
 });
-bot.on("guildCreate", guild => {
+bot.on("guildCreate", async guild => {
     let hello = new Discord.RichEmbed()
     .setTitle("Thanks For Adding Me To Your Server!")
     .setColor("#0000ff")
