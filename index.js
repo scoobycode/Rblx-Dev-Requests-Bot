@@ -40,6 +40,7 @@ bot.on("guildCreate", async guild => {
 
   let hichannel = guild.channels.find(`type`, "text")
   //let hichannel = ahichannel.first()
+  console.log(hichannel.name)
    if(hichannel) {
      try {
      await hichannel.send(hello)
