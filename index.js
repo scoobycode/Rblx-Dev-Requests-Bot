@@ -42,7 +42,7 @@ bot.on("guildCreate", guild => {
   //let hichannel = ahichannel.first()
    if(hichannel) {
      try {
-     hichannel.send(hello)
+     await hichannel.send(hello)
      } catch(e) {
        console.log(e)
      }
