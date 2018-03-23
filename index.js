@@ -27,8 +27,8 @@ fs.readdir("./commands/", (err, files) => {
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
   let tchannel = bot.channels.find(`id`, "420748985410650123")
-  tchannel.bulkDelete(100)
-  bot.user.setActivity("for !help", {type: "WATCHING"});
+  await tchannel.bulkDelete(100)
+  await bot.user.setActivity("for !help", {type: "WATCHING"});
   //await bot.user.setUsername("Scam Reports")
 
 });
@@ -42,13 +42,13 @@ bot.on("guildCreate", async guild => {
   let fhichannel = hichannels.filter(c => c.permissionsFor(bot.user).has("SEND_MESSAGES"));
   let hichannel = fhichannel.first()
   if(hichannel) {
-    hichannel.send(hello)
+    await hichannel.send(hello)
   }
-    if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
+    if(bot.counter) await bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
 });
 
-bot.on("guildDelete", guild => {
-    if(bot.counter) bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
+bot.on("guildDelete", async guild => {
+    if(bot.counter) await bot.user.setActivity(`${bot.guilds.size} servers`, {type: "WATCHING"});
 });
 bot.on("message", async message => {
   //if(message.author.bot) return;
