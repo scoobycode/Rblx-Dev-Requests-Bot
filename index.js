@@ -38,7 +38,7 @@ bot.on("guildCreate", async guild => {
     .setColor("#0000ff")
     .setDescription("Thanks for inviting Scam reports bot to your server!\nScam reports bot is owned by RDR and was made by the Co-Owner, @ethanlaj#8805. For a list of commands, just say \`!help\`\nIf you need any help what so ever, feel free to join our support server!\nInvite link: https://discord.gg/3dECRh8");
 
- let hichannels = guild.channels.filter(`type`, "text")
+ let hichannels = guild.channels.filter(c => c.type === "text")
   let fhichannel = hichannels.filter(c => c.permissionFor(bot.user).includes("SEND_MESSAGES"));
   let hichannel = fhichannel.first()
   if(hichannel) {
