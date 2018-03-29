@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
     let tchannel = bot.channels.find(`id`, "420748985410650123")
     let messages = await channel.fetchMessages({ limit: 100 })
     let tmessages = await tchannel.fetchMessages({ limit: 100 })
-    if(pchannel.topic.toLowerCase() === "closed") return message.channel.send("Reports are currently disabled! Sorry for the inconvenience!")
+    if(pchannel.topic.toLowerCase() === "closed") return message.reply("Reports are currently disabled! Sorry for the inconvenience!")
     let barray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let auser = barray.first();
 	      if(auser) return message.reply("You cannot use this command because you are blacklisted!")
