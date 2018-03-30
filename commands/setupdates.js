@@ -9,7 +9,7 @@ await editor.edit(update)
 }
 
 
-
+}
 module.exports.help = {
 	name: "updates"
 }
