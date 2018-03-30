@@ -40,6 +40,8 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	      let duser = darray.first();
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
+	try
+	{
   const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
   if(rblxname.toLowerCase() === "cancel") {
 	  await duser.delete()
@@ -70,7 +72,10 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  return message.author.send("**Prompt Cancelled**") 
   }
   if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
-
+	}
+	catch {
+		return message.reply("I could not DM you the prompt! Check your privacy settings and try again!")
+}
 let invite = await message.channel.createInvite({maxAge:0})
     let reportEmbed = new Discord.RichEmbed()
     .setTitle("New Scam Report")
