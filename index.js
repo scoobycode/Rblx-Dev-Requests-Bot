@@ -27,6 +27,8 @@ fs.readdir("./commands/", (err, files) => {
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
   let tchannel = bot.channels.find(`id`, "420748985410650123")
+  let achannel = bot.channels.find(`id`, "429099957232992256")
+await achannel.send(".")
   await tchannel.bulkDelete(100)
   await bot.user.setActivity("for !help", {type: "WATCHING"});
   //await bot.user.setUsername("Scam Reports")
