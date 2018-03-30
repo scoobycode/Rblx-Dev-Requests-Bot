@@ -73,7 +73,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
   }
   if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
 	}
-	catch 
+	catch (e)
 	{
 		return message.reply("I could not DM you the prompt! Check your privacy settings and try again!")
 }
