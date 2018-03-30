@@ -30,7 +30,7 @@ if (member.roles.get("400523390441619457") //mod
 	.addField("Guild Unlacklisted", guild.name)
   .addField("Guild ID", guild.id)
  await mod.send(thing)
-	      } else return message.reply("This user is not blacklisted!")
+	      } else return message.reply("This guild is not blacklisted!")
       
       }
 }
