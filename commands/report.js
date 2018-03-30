@@ -16,8 +16,11 @@ module.exports.run = async (bot, message, args) => {
     let channel = bot.channels.find(`id`, "420677482287464448")
     let pchannel = bot.channels.find(`id`, "411246419979141121")
     let tchannel = bot.channels.find(`id`, "420748985410650123")
+    let achannel = bot.channels.find(`id`, "425802196790280203")
     let messages = await channel.fetchMessages({ limit: 100 })
     let tmessages = await tchannel.fetchMessages({ limit: 100 })
+    let amessages = await achannel.fetchMessages({ limit: 100 })
+
     if(pchannel.topic.toLowerCase() === "closed") return message.reply("Reports are currently disabled! Sorry for the inconvenience!")
     let barray = messages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let auser = barray.first();
@@ -25,6 +28,9 @@ module.exports.run = async (bot, message, args) => {
 	let carray = tmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let cuser = carray.first();
 	      if(cuser) return message.reply("You cannot use this command because you just used it! To avoid spam, you must wait five minutes from the last time you used this command! If you are already in the process of using this command, you must cancel this prompt!")
+let aaarray = amessages.filter(m => RegExp(message.guild.id, "gi").test(m.content));
+	      let aauser = aaarray.first();
+	      if(aauser) return message.reply("You cannot use this command because this guild is blacklisted from using this command!")
 
 tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND (IP)**`)
 let ttchannel = bot.channels.find(`id`, "420748985410650123")
@@ -70,6 +76,7 @@ let invite = await message.channel.createInvite({maxAge:0})
     .setTitle("New Scam Report")
     .setColor("#FF0000")
     .addField("Guild Reported From", message.guild.name)
+    .addField("Guild ID", message.guild.id)
     .addField("Reporter's User ID", message.author.id)
     .addField("Invite To Guild", invite) 
     .addField("Time Reported", message.createdAt)
