@@ -32,8 +32,7 @@ if (member.roles.get("400523390441619457") //mod
 	.addField("!updates", "Gives you our latest updates to the bot")
 	.addField("!count", "Gives you our bot's server count")
 	.addField("!scamcheck", "Tells you whether the username you provided is in our scam database or not");
-	try
-	{
+	try {
 	message.author.send(helper)
 	}
 	catch (e) {
