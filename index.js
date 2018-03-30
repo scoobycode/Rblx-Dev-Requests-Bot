@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 bot.counter = false
-let blacklist = require("./blacklist.json")
+//let blacklist = require("./blacklist.json")
 process.on('unhandledRejection', console.error)
 
 bot.commands = new Discord.Collection();
