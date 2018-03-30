@@ -1,7 +1,6 @@
 async function awaitReply(message,question, limit = 300000){
     const filter = m => m.author.id === message.author.id;
     await message.author.send(question);
-}
 
     try {
       const collected = await message.author.dmChannel.awaitMessages(filter, { max: 1, time: limit, errors: ['time'] });
