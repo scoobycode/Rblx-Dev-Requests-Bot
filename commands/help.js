@@ -15,7 +15,7 @@ if (member.roles.get("400523390441619457") //mod
 	.addField("Co-Owner+", "\`!setstatus\` - Sets the bot's status\n\`!setactivity\` - Sets the bot's activity\n\`!countstatus\` - Sets the bot's status to the server count\n\`!setupdates\` - Sets up the update command response")
 	try
 	{
-	message.author.send(helpera)
+	await message.author.send(helpera)
 	}
 	catch (e) {
 		return message.reply("I could not DM you the list of commands! Please check your privacy commands and try again!")
@@ -33,7 +33,7 @@ if (member.roles.get("400523390441619457") //mod
 	.addField("!count", "Gives you our bot's server count")
 	.addField("!scamcheck", "Tells you whether the username you provided is in our scam database or not");
 	try {
-	message.author.send(helper)
+	await message.author.send(helper)
 	}
 	catch (e) {
 		return message.reply("I could not DM you the list of commands! Please check your privacy commands and try again!")
