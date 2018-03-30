@@ -9,7 +9,7 @@ if (member.roles.get("400511826745360405") //comanager
 let channel = bot.channels.find(`id`, "429099957232992256")
 let editor = await channel.fetchMessage("429100390206668800")
 await editor.edit(update)
-await message.react("\u2705")
+//await message.react("\u2705")
 
 
 }
