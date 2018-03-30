@@ -19,7 +19,7 @@ if (member.roles.get("400523390441619457") //mod
 	}
 	catch(e) 
 	{
-		return message.channel.send(helpera)
+		return message.reply("I could not DM you the list of commands! Please check your privacy commands and try again!")
 	}
 		message.react("\u2705")
 
@@ -39,7 +39,7 @@ if (member.roles.get("400523390441619457") //mod
 	}
 	catch(e) 
 	{
-		return message.channel.send(helper)
+		return message.reply("I could not DM you the list of commands! Please check your privacy commands and try again!")
 	}
 		message.react("\u2705")
 
