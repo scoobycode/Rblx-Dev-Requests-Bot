@@ -9,7 +9,13 @@ if (member.roles.get("400523390441619457") //mod
  || member.roles.get("400511217061330955")) { //owner 
 let pchannel = bot.channels.find(`id`, "411246419979141121")
 await pchannel.setTopic("open")
-
+let mod = bot.channels.find(`id`, "418531258344275978")
+let thing = new Discord.RichEmbed()
+.setTitle("Reports Opened")
+.setColor("#FF0000")
+.addField("Time Set", message.createdAt)
+.addField("Moderator", message.author)
+await mod.send(thing)
 
 }
 }
