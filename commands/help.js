@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, prefix) => {
 	let guild = bot.guilds.find(`id`, "400508946709872660")
 let member = await guild.fetchMember(message.author.id)
 //if(!member) return;
