@@ -1,10 +1,6 @@
 async function awaitReply(message,question, limit = 300000){
     const filter = m => m.author.id === message.author.id;
-	try {
     await message.author.send(question);
-	}
-catch (e) {
-return message.reply("I could not DM you the prompt! Check your privacy settings and try again!")
 }
 
     try {
@@ -44,6 +40,13 @@ let ttmessages = await ttchannel.fetchMessages({ limit: 100 })
 
 let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let duser = darray.first();
+	try {
+	await message.author.send("Hello! This is the report prompt! Please answer all questions to the best of your ability and remember, false reports will cause you to get blacklisted from the system!")
+	}
+	catch (e) {
+		await duser.delete()
+		return message.channel.send("I could not DM you the prompt! Check your privacy settings and try again!")
+	}
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
 	
