@@ -13,8 +13,17 @@ if (member.roles.get("400523390441619457") //mod
 	.addField("Public", "\`!report\` - Starts a prompt to report a scammer and send that prompt to the RDR server\n\`!invite\` - Sends you my invite\n\`!server\` - Sends you the invite to the RDR server\n\`!updates\` - Gives you our latest updates to the bot\nGives you our bot's server count\n\`!scamcheck\` - Tells you whether the username you provided is in our scam database or not")
 	.addField("Moderator+", "\`!accept\` - Accepts a user's scam report\n\`!decline\` - Declines a user's scam report\n\`!addscammer\` - Adds a scammer to the scammers database\n\`!removescammer\` - Removes a scammer from the scammers database\n\`!blacklist\` - Blacklists a user from using the report command\n\`!unblacklist\` - Unblacklists a user from using the report command\n\`!guildblacklist\` - Blacklists a server from using the report command\n\`!guildunblacklist\` - Unblacklists a server from using the report command\n\`!open\` - Opens up the report command\n\`!close\` - Closes the report command")
 	.addField("Co-Owner+", "\`!setstatus\` - Sets the bot's status\n\`!setactivity\` - Sets the bot's activity\n\`!countstatus\` - Sets the bot's status to the server count\n\`!setupdates\` - Sets up the update command response")
-	message.react("\u2705")
+	try
+	{
 	message.author.send(helpera)
+	}
+	catch(e) 
+	{
+		return message.channel.send(helpera)
+	}
+		message.react("\u2705")
+
+
 } else {
 	let helper = new Discord.RichEmbed()
 	.setTitle("Commands")
@@ -23,10 +32,17 @@ if (member.roles.get("400523390441619457") //mod
 	.addField("!server", "Sends you the invite to the RDR server")
 	.addField("!updates", "Gives you our latest updates to the bot")
 	.addField("!count", "Gives you our bot's server count")
-
 	.addField("!scamcheck", "Tells you whether the username you provided is in our scam database or not");
-	message.react("\u2705")
+	try
+	{
 	message.author.send(helper)
+	}
+	catch(e) 
+	{
+		return message.channel.send(helper)
+	}
+		message.react("\u2705")
+
 }
 }
 module.exports.help = {
