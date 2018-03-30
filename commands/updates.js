@@ -7,6 +7,7 @@ let thing = new Discord.RichEmbed()
 	.setTitle("Updates")
  .setColor("#FF0000")
  .setDescription(editor.content)
+.setFooter(`Requested by ${message.author.tag}`)
  await message.channel.send(thing)
 
 }
