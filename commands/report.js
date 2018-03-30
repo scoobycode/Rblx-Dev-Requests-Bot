@@ -40,7 +40,7 @@ let ttmessages = await ttchannel.fetchMessages({ limit: 100 })
 let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
 	      let duser = darray.first();
 	try {
-	await message.author.send("Hello! This is the report prompt! Please answer all questions to the best of your ability and remember, false reports will cause you to get blacklisted from the system!")
+	await message.author.send("Hello! This is the report prompt! Please answer all questions to the best of your ability and remember, false reports will cause you to get blacklisted from the system!\n---------------------------------------------------")
 	}
 	catch (e) {
 		await duser.delete()
