@@ -18,7 +18,7 @@ if (member.roles.get("400523390441619457") //mod
 	await message.author.send(helpera)
 	}
 	catch (e) {
-		return message.reply("I could not DM you the list of commands! Please check your privacy commands and try again!")
+		return message.reply("I could not DM you the list of commands! Please check your privacy settings and try again!")
 	}
 		message.react("\u2705")
 
