@@ -38,5 +38,5 @@ if (member.roles.get("400523390441619457") //mod
 
 
 module.exports.help = {
-	name: "blacklist"
+	name: "guildblacklist"
 }
