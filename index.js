@@ -78,7 +78,7 @@ bot.on("message", async message => {
  //console.log(`${prefix} second`)
   if(!aprefix) var prefix = botconfig.prefix
                  // console.log(`${prefix} third`)
-  if((message.isMemberMentioned(bot.user)) && (message.endsWith("prefix"))) {
+  if((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix"))) {
     return message.channel.send(`My prefix is \`${prefix}\``)
   }
     if (!message.content.startsWith(prefix)) return;
