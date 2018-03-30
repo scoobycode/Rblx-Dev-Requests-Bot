@@ -44,7 +44,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	}
 	catch (e) {
 		await duser.delete()
-		return message.channel.send("I could not DM you the prompt! Check your privacy settings and try again!")
+		return message.reply("I could not DM you the prompt! Check your privacy settings and try again!")
 	}
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
