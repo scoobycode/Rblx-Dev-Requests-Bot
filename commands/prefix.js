@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You don't have permission to use this command!")
+if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You don't have permission to use this command!")
 if(!args[0]) return message.reply("Please provide the new prefix!")
 let prefix = args[0]
 let dbguild = bot.guilds.find(`id`, "417149156193337344");
