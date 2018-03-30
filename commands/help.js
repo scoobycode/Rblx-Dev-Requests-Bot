@@ -31,7 +31,9 @@ if (member.roles.get("400523390441619457") //mod
 	.addField("!server", "Sends you the invite to the RDR server")
 	.addField("!updates", "Gives you our latest updates to the bot")
 	.addField("!count", "Gives you our bot's server count")
+	.addField("!prefix", "Changes my prefix in your server")
 	.addField("!scamcheck", "Tells you whether the username you provided is in our scam database or not");
+	
 	try {
 	await message.author.send(helper)
 	}
