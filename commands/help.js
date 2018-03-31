@@ -1,3 +1,23 @@
+async function sendIfNot (bot, message, args, prefix) {
+let helper = new Discord.RichEmbed()
+	.setTitle("Commands")
+	.addField(`${prefix}report`, `Starts a prompt to report a scammer and send that prompt to the RDR server`)
+	.addField(`${prefix}invite`, `Sends you my invite`)
+	.addField(`${prefix}server`, `Sends you the invite to the RDR server`)
+	.addField(`${prefix}updates`, `Gives you our latest updates to the bot`)
+	.addField(`${prefix}count`, `Gives you our bot\`s server count`)
+	.addField(`${prefix}prefix`, `Changes my prefix in your server`)
+	.addField(`${prefix}scamcheck`, `Tells you whether the username you provided is in our scam database or not`);
+	
+	try {
+	await message.author.send(helper)
+	}
+	catch (e) {
+		return message.reply("I could not DM you the list of commands! Please check your privacy commands and try again!")
+	}
+		message.react("\u2705")
+}
+
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args, prefix) => {
 	let guild = bot.guilds.find(`id`, "400508946709872660")
@@ -24,24 +44,7 @@ if (member && member.roles.get("400523390441619457") //mod
 
 
 } else {
-	let helper = new Discord.RichEmbed()
-	.setTitle("Commands")
-	.addField(`${prefix}report`, `Starts a prompt to report a scammer and send that prompt to the RDR server`)
-	.addField(`${prefix}invite`, `Sends you my invite`)
-	.addField(`${prefix}server`, `Sends you the invite to the RDR server`)
-	.addField(`${prefix}updates`, `Gives you our latest updates to the bot`)
-	.addField(`${prefix}count`, `Gives you our bot\`s server count`)
-	.addField(`${prefix}prefix`, `Changes my prefix in your server`)
-	.addField(`${prefix}scamcheck`, `Tells you whether the username you provided is in our scam database or not`);
-	
-	try {
-	await message.author.send(helper)
-	}
-	catch (e) {
-		return message.reply("I could not DM you the list of commands! Please check your privacy commands and try again!")
-	}
-		message.react("\u2705")
-
+aendIfNot (bot, message, args, prefix) {
 }
 }
 module.exports.help = {
