@@ -22,12 +22,13 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args, prefix) => {
 	let guild = bot.guilds.find(`id`, "400508946709872660")
 	try {
-let member = await guild.fetchMember(message.author.id)
+await guild.fetchMember(message.author.id)
 }
 	catch(e) {
 		await sendIfNot(bot, message, args, prefix)
 	}
 //if(!member) return;
+	let member = await guild.fetchMember(message.author.id)
 if (member && member.roles.get("400523390441619457") //mod
  || member.roles.get("400512010590355458") //admin
  || member.roles.get("415914501909774336") //head admin
