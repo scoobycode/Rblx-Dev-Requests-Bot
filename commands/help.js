@@ -21,7 +21,12 @@ let helper = new Discord.RichEmbed()
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args, prefix) => {
 	let guild = bot.guilds.find(`id`, "400508946709872660")
+	try {
 let member = await guild.fetchMember(message.author.id)
+}
+	catch(e) {
+		await sendIfNot(bot, message, args, prefix)
+	}
 //if(!member) return;
 if (member && member.roles.get("400523390441619457") //mod
  || member.roles.get("400512010590355458") //admin
@@ -44,7 +49,7 @@ if (member && member.roles.get("400523390441619457") //mod
 
 
 } else {
-aendIfNot (bot, message, args, prefix) {
+await sendIfNot(bot, message, args, prefix)
 }
 }
 module.exports.help = {
