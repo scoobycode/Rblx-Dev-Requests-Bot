@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args, prefix) => {
 await guild.fetchMember(message.author.id)
 }
 	catch(e) {
-		await sendIfNot(bot, message, args, prefix)
+		return await sendIfNot(bot, message, args, prefix)
 	}
 //if(!member) return;
 	let member = await guild.fetchMember(message.author.id)
