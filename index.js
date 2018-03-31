@@ -81,7 +81,7 @@ bot.on("message", async message => {
   if((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix"))) {
     return message.reply(`My prefix is \`${prefix}\``)
   }
-  if((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix reset"))) {
+  if((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix reset")) && (message.member.hasPermission("MANAGE_GUILD"))) {
 
 	let aaa = dbguild.channels.filter(m => RegExp("wbotprefixes-database", "gi").test(m.name));
 aaa.forEach(chl => {
