@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, args, prefix) => {
 	let guild = bot.guilds.find(`id`, "400508946709872660")
 let member = await guild.fetchMember(message.author.id)
 //if(!member) return;
-if (member.roles.get("400523390441619457") //mod
+if (member && member.roles.get("400523390441619457") //mod
  || member.roles.get("400512010590355458") //admin
  || member.roles.get("415914501909774336") //head admin
  || member.roles.get("400511826745360405") //comanager
