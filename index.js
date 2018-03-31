@@ -81,6 +81,21 @@ bot.on("message", async message => {
   if((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix"))) {
     return message.reply(`My prefix is \`${prefix}\``)
   }
+  if((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix reset"))) {
+
+	let aaa = dbguild.channels.filter(m => RegExp("wbotprefixes-database", "gi").test(m.name));
+aaa.forEach(chl => {
+  chl.fetchMessages({ limit: 100 }).then(msgs => {
+      msgs.forEach(msg => {
+        if(msg.content.startsWith(`${message.guild.id}`)) {
+          msg.delete()
+        }
+      })
+    })
+  })
+				 message.react("\u2705")
+  
+	  }
     if (!message.content.startsWith(prefix)) return;
                     let commandfile = bot.commands.get(cmd.slice(prefix.length));
                     if (!commandfile) return;
