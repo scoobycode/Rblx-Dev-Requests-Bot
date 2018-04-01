@@ -22,7 +22,9 @@ await user.send(":white_check_mark: **Scam Report Accepted -- After reviewing yo
  .setColor("#FF0000")
  .addField("Time Accepted", message.createdAt)
 	.addField("Moderator", message.author)
-	.addField("User Accepted", user.tag)
+	.addField("Accepted", user.tag)
+ 	.addField("Accepted ID", user.id)
+
  await mod.send(thing)
 }
 catch (e) {
