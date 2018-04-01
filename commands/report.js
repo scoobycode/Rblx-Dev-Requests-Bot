@@ -101,7 +101,6 @@ let invite = await message.channel.createInvite({maxAge:0})
 
     pchannel.send(reportEmbed);
 	duser.delete()
-tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND**`)
 
     message.author.send("\u2705 **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** \u2705");
 let mod = bot.channels.find(`id`, "418531258344275978")
