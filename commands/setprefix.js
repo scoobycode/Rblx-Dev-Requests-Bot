@@ -38,5 +38,5 @@ await dbguild.createChannel('prefix-database')
  }
 
 module.exports.help = {
-    name: "prefix"
+    name: "setprefix"
 }
