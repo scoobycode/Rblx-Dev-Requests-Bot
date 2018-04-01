@@ -34,7 +34,7 @@ let aaarray = amessages.filter(m => RegExp(message.guild.id, "gi").test(m.conten
 	      if(aauser) return message.reply("You cannot use this command because this guild is blacklisted from using this command!")
 let aaachannel = bot.channels.find(`id`, "411246419979141121")
 	let msgs = await aaachannel.fetchMessages( {limit: 100} )
-	let bmsgs = amessages.filter(m => m.embeds && m.embeds[0].fields && m.embeds[0].fields[2].value === message.author.id)
+	let bmsgs = msgs.filter(m => m.embeds && m.embeds[0].fields && m.embeds[0].fields[2].value === message.author.id)
 	let delmessage = bmsgs.first()
 	if(delmessage) return message.channel.send("You cannot use this command because you already have a pending report. To prevent spam, you must wait until your report is accepted or denied.")
 tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND (IP)**`)
