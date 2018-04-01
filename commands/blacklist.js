@@ -27,7 +27,7 @@ if (member.roles.get("400523390441619457") //mod
  .setColor("#FF0000")
  .addField("Time Blacklisted", message.createdAt)
 	.addField("Moderator", message.author)
-	.addField("User Blacklisted", userob)
+	.addField("User Blacklisted", userob.tag)
  await mod.send(thing)
 	      }	else return message.reply("This user is already blacklisted!")
       } else {
@@ -45,7 +45,7 @@ if (member.roles.get("400523390441619457") //mod
  .setColor("#FF0000")
  .addField("Time Blacklisted", message.createdAt)
 	.addField("Moderator", message.author)
-	.addField("User Blacklisted", userob)
+	.addField("User Blacklisted", userob.tag)
  await mod.send(thing)
 	} else return message.reply("This user is already blacklisted!")
 }
