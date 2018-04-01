@@ -101,13 +101,8 @@ tchannel.send(`${message.author.id}, ${message.author.username}#${message.author
 
     message.author.send("\u2705 **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** \u2705");
 let mod = bot.channels.find(`id`, "418531258344275978")
-let thing = new Discord.RichEmbed()
-.setTitle("New Report")
-.setColor("#FF0000")
-.addField("Time Sent", message.createdAt)
-.addField("Author", message.author)
-.addField("Author ID", message.author.id);
-	await mod.send(thing)
+
+	await mod.send(reportEmbed)
     return;
 }
 
