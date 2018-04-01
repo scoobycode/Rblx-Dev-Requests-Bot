@@ -9,6 +9,15 @@ module.exports.run = async (bot, message, args) => {
   if(delmessage) {
 	await delmessage.delete()
     message.react("\u2705")
+	  let mod = bot.channels.find(`id`, "418531258344275978")
+ let thing = new Discord.RichEmbed()
+	.setTitle("Cancelled Report")
+ .setColor("#FF0000")
+ .addField("Time Cancelled", message.createdAt)
+	.addField("Canceller", message.author)
+ 	.addField("Canceller Username", message.author.tag)
+	.addField("Canceller ID", message.author.id)
+ await mod.send(thing)
   }
   if(!delmessage) {
   return message.reply("You do not have any unread reports!")
