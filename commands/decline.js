@@ -26,8 +26,13 @@ await user.send(":x: **Scam Report Declined -- After reviewing your report, our 
  await mod.send(thing)
 }
 catch (e) {
-return message.reply("Couldn't DM this user!")
+message.reply("Couldn't DM this user!")
 }
+	let channel = bot.channels.find(`id`, "411246419979141121")
+	let amessages = await channel.fetchMessages( {limit: 100} )
+	let bmessages = amessages.filter(m => m.embeds && m.embeds[0].fields && m.embeds[0].fields[2].value === userid)
+	let delmessage = bmessages.first()
+	await delmessage.delete()
 }
 
  }
