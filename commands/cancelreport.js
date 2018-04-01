@@ -14,8 +14,7 @@ module.exports.run = async (bot, message, args) => {
 	.setTitle("Cancelled Report")
  .setColor("#FF0000")
  .addField("Time Cancelled", message.createdAt)
-	.addField("Canceller", message.author)
- 	.addField("Canceller Username", message.author.tag)
+	.addField("Canceller", message.author.tag)
 	.addField("Canceller ID", message.author.id)
  await mod.send(thing)
   }
