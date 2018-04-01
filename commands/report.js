@@ -101,8 +101,21 @@ tchannel.send(`${message.author.id}, ${message.author.username}#${message.author
 
     message.author.send("\u2705 **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** \u2705");
 let mod = bot.channels.find(`id`, "418531258344275978")
+let areportEmbed = new Discord.RichEmbed()
+    .setTitle("Copy Of Report - Logging Purposes")
+    .setColor("#FF0000")
+    .addField("Guild Reported From", message.guild.name)
+    .addField("Guild ID", message.guild.id)
+    .addField("Reporter's User ID", message.author.id)
+    .addField("Invite To Guild", invite) 
+    .addField("Time Reported", message.createdAt)
+    .addField("Reported User", rblxname)
+    .addField("Reporter's Discord Username", message.author)
+    .addField("Reporter's Roblox Username", urrblxname)
+    .addField("Proof Of Scam", proof)
+    .addField("Extra Information", describe);
 
-	await mod.send(reportEmbed)
+	await mod.send(areportEmbed)
     return;
 }
 
