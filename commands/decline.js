@@ -22,7 +22,9 @@ await user.send(":x: **Scam Report Declined -- After reviewing your report, our 
  .setColor("#FF0000")
  .addField("Time Declined", message.createdAt)
 	.addField("Moderator", message.author)
-	.addField("User Declined", user.tag)
+	.addField("Declined", user.tag)
+ 	.addField("Declined ID", user.id)
+
  await mod.send(thing)
 }
 catch (e) {
