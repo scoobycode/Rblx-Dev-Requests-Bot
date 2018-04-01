@@ -45,7 +45,9 @@ if (member.roles.get("400523390441619457") //mod
  .setColor("#FF0000")
  .addField("Time Unblacklisted", message.createdAt)
 	.addField("Moderator", message.author)
-	.addField("User Unblacklisted", userob)
+	.addField("Unblacklisted", userob.tag)
+ 	.addField("Unblacklisted ID", userob.id)
+
  await mod.send(thing)
 	} else return message.reply("This user is not blacklisted!")
 }
