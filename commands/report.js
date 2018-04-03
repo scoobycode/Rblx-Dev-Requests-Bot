@@ -65,13 +65,13 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  return message.author.send("**Prompt Cancelled**")
   }
   if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
-  const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, say **skip**.\nSay **cancel** to cancel prompt.`, 300000);
+  const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
   if(proof === "cancel") {
 	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
   if(proof === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
-  const describe = await awaitReply(message, "Anything else you would like us to know? If not, just say **skip**.\nSay **cancel** to cancel prompt.", 300000);
+  const describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 300000);
   if(describe === "cancel") {
 	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
