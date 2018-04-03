@@ -59,13 +59,19 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
-  if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
+  if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+	  await duser.delete()
+	  return;
+  }
   const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 300000);
   if(urrblxname === "cancel") { 
 	  	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
-  if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
+  if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+	  await duser.delete()
+	  return;
+  }
   
 	
 	
@@ -80,11 +86,12 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 			collector.stop()
 		}
 		if(m.content.toLowerCase() === "cancel") {
-			duser.delete()
+			await duser.delete()
 			return message.author.send("**Prompt Cancelled**") 
 		}
 		if(m.content.toLowerCase() === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
-			duser.delete()
+		await duser.delete()
+			return;
 		}
 		});
 	collector.on('end', collected => {
@@ -112,14 +119,19 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  
 	  
   }
-  if(describe === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
+  if(describe === "**Prompt Cancelled -- There Was No Response After Five Minutes**"){
+	  await duser.delete()
+	  return;
+  }
   const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 300000);
   if(confirm === "cancel") {
 	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**") 
   }
-  if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
-	
+  if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+	  await duser.delete()
+	  return;
+  }
 let invite = await message.channel.createInvite({maxAge:0})
     let reportEmbed = new Discord.RichEmbed()
     .setTitle("New Scam Report")
@@ -134,7 +146,7 @@ let invite = await message.channel.createInvite({maxAge:0})
     .addField("Reported User", rblxname)
     .addField("Reporter's Roblox Username", urrblxname)
     .addField("Proof Of Scam", proof)
-    .addField("Extra Information", describe);
+    .addField("Description", describe);
 
     pchannel.send(reportEmbed);
 	duser.delete()
@@ -154,7 +166,7 @@ let areportEmbed = new Discord.RichEmbed()
     .addField("Reported User", rblxname)
     .addField("Reporter's Roblox Username", urrblxname)
     .addField("Proof Of Scam", proof)
-    .addField("Extra Information", describe);
+    .addField("Description", describe);
 
 	await mod.send(areportEmbed)
     return;
