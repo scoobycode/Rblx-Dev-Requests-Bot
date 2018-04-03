@@ -95,7 +95,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 		}
 		});
 	collector.on('end', collected => {
-		let aproof = collected.filter(m => m.content.startsWith("https://"))
+		let aproof = collected.filter(m => m.content.startsWith("https://") || m.content.startsWith("http://"))
 		let abproof = aproof.array()
 		let aaproof = collected.filter(m => m.attachments.first())
 		let bproof = aaproof.array()
