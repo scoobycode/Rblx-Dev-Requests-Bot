@@ -14,7 +14,7 @@ return message.author.send("**Prompt Cancelled -- There Was No Response After Fi
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-	if(message.author.id !== "245877990938902529") return message.channel.send("soon:tm:")
+	//if(message.author.id !== "245877990938902529") return message.channel.send("soon:tm:")
     let channel = bot.channels.find(`id`, "420677482287464448")
     let pchannel = bot.channels.find(`id`, "411246419979141121")
     let tchannel = bot.channels.find(`id`, "420748985410650123")
