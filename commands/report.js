@@ -80,17 +80,17 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 		if(m.content.toLowerCase() === "cancel") {
 			duser.delete()
 			return message.author.send("**Prompt Cancelled**") 
-		});
+		}
 		if(m.content.toLowerCase() === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
 			duser.delete()
-		});
+		}
 	collector.on('end', collected => {
 		let aproof = collected.filter(m => m.attachments.first())
 		let bproof = aproof.array()
 		resolve(bproof.map(attatchment => attatchment.myURL).join(", "))
 		}
 	});
-	
+	});
 	
 	
 	
