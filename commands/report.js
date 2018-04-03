@@ -72,12 +72,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	//const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
 	message.author.send("Do you have any proof that they scammed you? Provide images here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
 	const filter = m => m.author.id === message.author.id
-	var pattern = new RegExp('^(https?:\/\/)?'+ // protocol
-    '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
-    '((\d{1,3}\.){3}\d{1,3}))'+ // OR ip (v4) address
-    '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+ // port and path
-    '(\?[;&a-z\d%_.~+=-]*)?'+ // query string
-    '(\#[-a-z\d_]*)?$','i'); // fragment locater
+	
 	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 300000 });
 	var proof = await new Promise(function(resolve, reject) {
 	collector.on('collect', m => {
@@ -93,7 +88,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 		}
 		});
 	collector.on('end', collected => {
-		let aproof = collected.filter(m => pattern.test(m.content))
+		let aproof = collected.filter(m => m.content.startsWith("https://"))
 		let abproof = aproof.array()
 		let aaproof = collected.filter(m => m.attachments.first())
 		let bproof = aaproof.array()
