@@ -14,7 +14,7 @@ if(!userid) return message.reply("Please provide a user ID!")
 let user = await bot.fetchUser(userid)
 if(!user) return message.reply("Couldn't find user!")
 			let reason = message.content.substr(8+prefix.length+args[0].length);
-		var prompt = (":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. \`${reason}\` As a result, this user will not be added to our database.** :x:")
+		var prompt = (":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. \`${reason}\` As a result, this user will not be added to our database.** :x:`)
 
 	if(!reason) prompt = (`:x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our database.** :x:`)
 try {
@@ -38,7 +38,7 @@ message.reply("Couldn't DM this user!")
 	let amessages = await channel.fetchMessages( {limit: 100} )
 	let bmessages = amessages.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[4].value === userid)
 	let delmessage = bmessages.first()
-	await delmessage.delete()
+	if(delmessage) await delmessage.delete()
 }
 
  }
