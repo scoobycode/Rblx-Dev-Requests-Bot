@@ -16,7 +16,7 @@ if(!user) return message.reply("Couldn't find user!")
 			let reason = message.content.substr(8+prefix.length+args[0].length);
 		var prompt = (":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. \`${reason}\` As a result, this user will not be added to our database.** :x:")
 
-	if(!reason) prompt = (":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our database.** :x:")
+	if(!reason) prompt = (`:x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our database.** :x:`)
 try {
 await user.send(prompt)
   message.react("✅")
