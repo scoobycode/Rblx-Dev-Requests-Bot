@@ -81,7 +81,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	
 	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 300000 });
 	var proof = await new Promise(function(resolve, reject) {
-	collector.on('collect', m => {
+	collector.on('collect', m => async {
 		if(m.content.toLowerCase() === "done") {
 			collector.stop()
 		}
