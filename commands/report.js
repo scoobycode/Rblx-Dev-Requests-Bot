@@ -92,7 +92,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 		let bproof = aaproof.array()
 		let cproof = bproof.map(m => m.attachments.first().url).join("\n")
 		let mproof = aproof.map(m => m.content).join("\n")
-		resolve(`${cproof}\n${mproof}`)
+		resolve(`${cproof} ${mproof}`)
 		})
 	
 	});
