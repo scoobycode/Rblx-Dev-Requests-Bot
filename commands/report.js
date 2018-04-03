@@ -14,6 +14,7 @@ return message.author.send("**Prompt Cancelled -- There Was No Response After Fi
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
+	if(message.author.id !== "245877990938902529") return message.channel.send("soon:tm:")
     let channel = bot.channels.find(`id`, "420677482287464448")
     let pchannel = bot.channels.find(`id`, "411246419979141121")
     let tchannel = bot.channels.find(`id`, "420748985410650123")
@@ -65,16 +66,44 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  return message.author.send("**Prompt Cancelled**")
   }
   if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
-  const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
-  if(proof === "cancel") {
-	  duser.delete()
-	  return message.author.send("**Prompt Cancelled**")
-  }
-  if(proof === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
+  
+	
+	
+	//const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
+	const filter = m => m.author.id === message.author.id
+	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 300000 });
+	var proof = new Promise(function(resolve, reject) {
+	collector.on('collect', m => {
+		if(m.content.toLowerCase() === "done") {
+			collector.stop()
+		}
+		if(m.content.toLowerCase() === "cancel") {
+			duser.delete()
+			return message.author.send("**Prompt Cancelled**") 
+		});
+		if(m.content.toLowerCase() === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+			duser.delete()
+		});
+	collector.on('end', collected => {
+		let aproof = collected.filter(m => m.attachments.first())
+		let bproof = aproof.array()
+		resolve(bproof.map(attatchment => attatchment.myURL).join(", "))
+		}
+	});
+	
+	
+	
+	
+	
+	
   const describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 300000);
   if(describe === "cancel") {
 	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
+	  
+	  
+	  
+	  
   }
   if(describe === "**Prompt Cancelled -- There Was No Response After Five Minutes**") return duser.delete()
   const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 300000);
