@@ -73,7 +73,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	message.author.send("Do you have any proof that they scammed you? Provide images here.")
 	const filter = m => m.author.id === message.author.id
 	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 300000 });
-	var proof = new Promise(function(resolve, reject) {
+	var proof = await new Promise(function(resolve, reject) {
 	collector.on('collect', m => {
 		if(m.content.toLowerCase() === "done") {
 			collector.stop()
