@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, prefix) => {
 let guild = bot.guilds.find(`id`, "400508946709872660")
 let member = await guild.fetchMember(message.author.id)
 if(!member) return;
@@ -13,8 +13,12 @@ let userid = args[0]
 if(!userid) return message.reply("Please provide a user ID!")
 let user = await bot.fetchUser(userid)
 if(!user) return message.reply("Couldn't find user!")
+			let reason = message.content.substr(8+prefix.length+args[0].length);
+		var prompt = (":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. \`${reason}\` As a result, this user will not be added to our database.** :x:")
+
+	if(!reason) prompt = (":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our database.** :x:")
 try {
-await user.send(":x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report.This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our data base.** :x:")
+await user.send(prompt)
   message.react("✅")
   let mod = bot.channels.find(`id`, "418531258344275978")
  let thing = new Discord.RichEmbed()
