@@ -70,7 +70,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	
 	
 	//const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
-	message.author.send("Do you have any proof that they scammed you? Provide images here.")
+	message.author.send("Do you have any proof that they scammed you? Provide images here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
 	const filter = m => m.author.id === message.author.id
 	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 300000 });
 	var proof = await new Promise(function(resolve, reject) {
@@ -89,7 +89,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	collector.on('end', collected => {
 		let aproof = collected.filter(m => m.attachments.first())
 		let bproof = aproof.array()
-		resolve(bproof.map(m => m.attachments.first().url).join(", "))
+		resolve(bproof.map(m => m.attachments.first().url).join("\n"))
 		})
 	
 	});
