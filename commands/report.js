@@ -1,4 +1,4 @@
-async function awaitReply(message, question, limit = 10000) {
+async function awaitReply(message, question, limit = 300000) {
         //300000
         const filter = m => m.author.id === message.author.id;
         await message.author.send(question);
@@ -15,7 +15,7 @@ async function awaitReply(message, question, limit = 10000) {
 }
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
-        if ((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
+        //if ((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
                 let channel = bot.channels.find(`id`, "420677482287464448")
                 let pchannel = bot.channels.find(`id`, "411246419979141121")
                 let tchannel = bot.channels.find(`id`, "420748985410650123")
@@ -67,7 +67,7 @@ module.exports.run = async (bot, message, args) => {
                 message.channel.send(`${message.author}, Prompt will continue in DMs! 📬`)
                 
 		
-		let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 10000);
+		let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
                 var rblxn;
 		if (rblxname.content) {
 			rblxn = rblxname.content
@@ -85,7 +85,7 @@ module.exports.run = async (bot, message, args) => {
                 }
                 
 		
-		let urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
+		let urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 300000);
                 var urrblxn;
 		if(urrblxname.content) {
 			urrblxn = urrblxname.content
@@ -105,7 +105,7 @@ module.exports.run = async (bot, message, args) => {
                 message.author.send("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
                 const filter = m => m.author.id === message.author.id
                 const collector = message.author.dmChannel.createMessageCollector(filter, {
-                        time: 10000
+                        time: 300000
                 });
                 var proof = await new Promise(function (resolve, reject) {
                         collector.on('collect', async function (m) {
@@ -137,7 +137,7 @@ module.exports.run = async (bot, message, args) => {
                                 resolve(`${cproof}\n${mproof}`)
                         })
                 });
-                let describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 10000);
+                let describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 300000);
                 var des;
 		if(describe.content) {
 			des = describe.content
@@ -151,7 +151,7 @@ module.exports.run = async (bot, message, args) => {
                 if (des === "**Prompt cancelled, no response after five minutes.**") {
                         return await duser.delete()
                 }
-                const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 10000);
+                const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 300000);
                 var con;
 		if(confirm.content) {
 			con = confirm.content
