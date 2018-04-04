@@ -201,7 +201,7 @@ module.exports.run = async (bot, message, args) => {
                         .addField("Proof Of Scam", proof)
                         .addField("Description", describe);
                 await mod.send(areportEmbed)
-        } else return message.channel.send("soon:tm:")
+   //     } else return message.channel.send("soon:tm:")
 }
 module.exports.help = {
         name: "report"
