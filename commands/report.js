@@ -82,6 +82,7 @@ module.exports.run = async (bot, message, args) => {
 		
 		let urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
                 if (!urrblxname) urrblxname = "."
+		console.log(urrblxname)
                 if (urrblxname.toLowerCase() === "cancel") {
                         await duser.delete()
                         return await message.author.send("**Prompt Cancelled**")
