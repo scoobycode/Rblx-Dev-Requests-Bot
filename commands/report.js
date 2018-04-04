@@ -114,14 +114,17 @@ module.exports.run = async (bot, message, args) => {
                                 }
                                 if (m.content.toLowerCase() === "cancel") {
                                         await duser.delete()
-                                        return message.author.send("**Prompt Cancelled**")
+                                        return await message.author.send("**Prompt Cancelled**")
                                 }
                                 if (m.content === "**Prompt cancelled, no response after five minutes.**") {
-                                        return duser.delete()
+                                        return await duser.delete()
                                 }
                         });
                         collector.on('end', collected => {
-				if(!collected.first()) return message.author.send("**Prompt cancelled, no response after five minutes.**")
+				if(!collected.first()) {
+					await duser.delete()
+					return message.author.send("**Prompt cancelled, no response after five minutes.**")
+				}
                                 let aproof = collected.filter(m => m.content.startsWith("https://") || m.content.startsWith("http://"))
                                 let abproof = aproof.array()
                                 let aaproof = collected.filter(m => m.attachments.first())
