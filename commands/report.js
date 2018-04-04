@@ -120,7 +120,7 @@ module.exports.run = async (bot, message, args) => {
                                         return await duser.delete()
                                 }
                         });
-                        collector.on('end', collected => {
+                        collector.on('end', async function (collected) {
 				if(!collected.first()) {
 					await duser.delete()
 					return message.author.send("**Prompt cancelled, no response after five minutes.**")
