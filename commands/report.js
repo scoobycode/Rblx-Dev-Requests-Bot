@@ -83,7 +83,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	const filter = m => m.author.id === message.author.id
 	
 	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 10000 });
-	var proof = await new Promise(function(resolve, reject) {
+	var proof = await new Promise(async function(resolve, reject) {
 	collector.on('collect', async m => {
 		if(m.content.toLowerCase() === "done") {
 			collector.stop()
@@ -92,7 +92,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 			await duser.delete()
 			return message.author.send("**Prompt Cancelled**") 
 		}
-		if(m.content.toLowerCase() === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+		if(m.content === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
 	return await duser.delete()
   }
 		});
