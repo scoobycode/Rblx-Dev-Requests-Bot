@@ -58,14 +58,15 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	
   let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 10000);
   if(!rblxname) rblxname = "."
+	if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+	  console.log("hi")
+	return duser.delete()
+  }
 	if(rblxname.toLowerCase === "cancel") {
 	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
-  if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
-	  console.log("hi")
-	return duser.delete()
-  }
+  
   let urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
     if(!urrblxname) urrblxname = "."
 
