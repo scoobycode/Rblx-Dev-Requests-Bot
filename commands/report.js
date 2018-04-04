@@ -134,20 +134,31 @@ module.exports.run = async (bot, message, args) => {
                         })
                 });
                 let describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 10000);
-                if (!describe) describe = "."
-                if (describe.toLowerCase() === "cancel") {
+                var des;
+		if(describe.content) {
+			des = describe.content
+		} else {
+			des = describe
+		}
+                if (des.toLowerCase() === "cancel") {
                         await duser.delete()
                         return await message.author.send("**Prompt Cancelled**")
                 }
-                if (describe === "**Prompt cancelled, no response after five minutes.**") {
+                if (des === "**Prompt cancelled, no response after five minutes.**") {
                         return await duser.delete()
                 }
                 const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 10000);
-                if (confirm === "cancel") {
+                var con;
+		if(confirm.content) {
+			con = confirm.content
+		} else {
+			con = confirm
+		}
+		if (con.toLowerCase() === "cancel") {
                        await duser.delete()
                         return message.author.send("**Prompt Cancelled**")
                 }
-                if (confirm === "**Prompt cancelled, no response after five minutes.**") {
+                if (con === "**Prompt cancelled, no response after five minutes.**") {
                         return await duser.delete()
                 }
                 let invite = await message.channel.createInvite({
