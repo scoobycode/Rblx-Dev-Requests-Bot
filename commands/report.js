@@ -11,7 +11,7 @@ async function awaitReply(message, question, limit = 10000) {
                 return collected.first()
                         .content;
         } catch (error) {
-                return message.author.send("**Prompt Cancelled, no response after five minutes.**");
+                return message.author.send("**Prompt cancelled, no response after five minutes.**");
         }
 }
 const Discord = require("discord.js");
@@ -70,7 +70,7 @@ module.exports.run = async (bot, message, args) => {
 		
 		let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 10000);
                 if (!rblxname) rblxname = "."
-                if (rblxname === "**Prompt Cancelled, no response after five minutes.**") {
+                if (rblxname === "**Prompt cancelled, no response after five minutes.**") {
                         console.log("hi")
                         return duser.delete()
                 }
@@ -86,7 +86,7 @@ module.exports.run = async (bot, message, args) => {
                         await duser.delete()
                         return message.author.send("**Prompt Cancelled**")
                 }
-                if (urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+                if (urrblxname === "**Prompt cancelled, no response after five minutes.**") {
                         return duser.delete()
                 }
                 
@@ -106,7 +106,7 @@ module.exports.run = async (bot, message, args) => {
                                         await duser.delete()
                                         return message.author.send("**Prompt Cancelled**")
                                 }
-                                if (m.content === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+                                if (m.content === "**Prompt cancelled, no response after five minutes.**") {
                                         return duser.delete()
                                 }
                         });
@@ -129,7 +129,7 @@ module.exports.run = async (bot, message, args) => {
                         await duser.delete()
                         return message.author.send("**Prompt Cancelled**")
                 }
-                if (describe === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+                if (describe === "**Prompt cancelled, no response after five minutes.**") {
                         return await duser.delete()
                 }
                 const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 10000);
@@ -137,7 +137,7 @@ module.exports.run = async (bot, message, args) => {
                         duser.delete()
                         return message.author.send("**Prompt Cancelled**")
                 }
-                if (confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
+                if (confirm === "**Prompt cancelled, no response after five minutes.**") {
                         return duser.delete()
                 }
                 let invite = await message.channel.createInvite({
