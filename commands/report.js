@@ -15,7 +15,7 @@ return message.author.send("**Prompt Cancelled -- There Was No Response After Fi
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-	//if(message.author.id !== "245877990938902529") return message.channel.send("soon:tm:")
+	if(message.author.id !== "245877990938902529") return message.channel.send("soon:tm:")
     let channel = bot.channels.find(`id`, "420677482287464448")
     let pchannel = bot.channels.find(`id`, "411246419979141121")
     let tchannel = bot.channels.find(`id`, "420748985410650123")
@@ -64,7 +64,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
   }
   if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
 	  console.log("hi")
-	return await duser.delete()
+	return duser.delete()
   }
   let urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
     if(!urrblxname) urrblxname = "."
@@ -74,7 +74,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  return message.author.send("**Prompt Cancelled**")
   }
   if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
-	return await duser.delete()
+	return duser.delete()
   }
   
 	
@@ -94,7 +94,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 			return message.author.send("**Prompt Cancelled**") 
 		}
 		if(m.content === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
-	return await duser.delete()
+	return duser.delete()
   }
 		});
 	collector.on('end', collected => {
@@ -133,7 +133,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  return message.author.send("**Prompt Cancelled**") 
   }
   if(confirm === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
-	return await duser.delete()
+	return duser.delete()
   }
 let invite = await message.channel.createInvite({maxAge:0})
     let reportEmbed = new Discord.RichEmbed()
