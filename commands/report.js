@@ -15,7 +15,7 @@ return message.author.send("**Prompt Cancelled -- There Was No Response After Fi
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-	if((message.author.id !== "245877990938902529") || (message.author.id !== "289380085025472523")) return message.channel.send("soon:tm:")
+	if((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
     let channel = bot.channels.find(`id`, "420677482287464448")
     let pchannel = bot.channels.find(`id`, "411246419979141121")
     let tchannel = bot.channels.find(`id`, "420748985410650123")
@@ -172,9 +172,8 @@ let areportEmbed = new Discord.RichEmbed()
     .addField("Description", describe);
 
 	await mod.send(areportEmbed)
-    return;
-}
-
+} else return message.channel.send("soon:tm:")
+} 
 module.exports.help = {
     name: "report"
 }
