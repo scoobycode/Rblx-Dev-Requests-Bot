@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
     let channel = bot.channels.find(`id`, "420745256439513089")
 let messages = await channel.fetchMessages({ limit: 100 })
 var errortf
-if(!args[0]) message.reply("Please provide a roblox username to check with!")
+if(!args[0]) return message.reply("Please provide a roblox username to check with!")
 let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	     errortf = true
    		return message.reply(`${err}. If error persists, contact support by doing !server.`);
