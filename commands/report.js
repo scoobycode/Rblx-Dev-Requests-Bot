@@ -68,12 +68,18 @@ module.exports.run = async (bot, message, args) => {
                 
 		
 		let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 10000);
-                if (!rblxname) rblxname = "."
-                if (rblxname === "**Prompt cancelled, no response after five minutes.**") {
+                var rblxn;
+		if (rblxname.content) {
+			rblxn = rblxname.content
+		} else {
+			rblxn = rblxname
+		}
+		
+                if (rblxn === "**Prompt cancelled, no response after five minutes.**") {
                         console.log("hi")
                         return await duser.delete()
                 }
-                if (rblxname.toLowerCase() === "cancel") {
+                if (rblxn.toLowerCase() === "cancel") {
                         await duser.delete()
                         return await message.author.send("**Prompt Cancelled**")
                 }
@@ -81,7 +87,7 @@ module.exports.run = async (bot, message, args) => {
 		
 		let urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
                 if (!urrblxname) urrblxname = "."
-		console.log(urrblxname)
+		
                 if (urrblxname.toLowerCase() === "cancel") {
                         await duser.delete()
                         return await message.author.send("**Prompt Cancelled**")
