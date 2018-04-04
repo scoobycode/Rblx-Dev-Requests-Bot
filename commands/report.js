@@ -121,6 +121,7 @@ module.exports.run = async (bot, message, args) => {
                                 }
                         });
                         collector.on('end', collected => {
+				if(!collected) return message.author.send("**Prompt cancelled, no response after five minutes.**")
                                 let aproof = collected.filter(m => m.content.startsWith("https://") || m.content.startsWith("http://"))
                                 let abproof = aproof.array()
                                 let aaproof = collected.filter(m => m.attachments.first())
