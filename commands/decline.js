@@ -14,10 +14,10 @@ if(!userid) return message.reply("Please provide a user ID!")
 let user = await bot.fetchUser(userid)
 if(!user) return message.reply("Couldn't find user!")
 			let reason = message.content.substr(8+prefix.length+args[0].length);
-		var prompt = (`:x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. \`${reason}\` As a result, this user will not be added to our database.** :x:`)
-
-	if(!reason) prompt = (`:x: **Scam Report Declined -- After reviewing your report, our staff members have decided this is not a valid scam report. Here is the reason your bot was declined: ${reason}** :x:`)
-try {
+		var prompt = (`:x: **Scam Report Declined -- After reviewing your report, our staff members have decided this is not a valid scam report. Here is the reason your bot was declined: ${reason}** :x:`)
+if(!reason) prompt = (`:x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our database.** :x:`)
+if(!reason) reason = "No reason provided."
+	try {
 await user.send(prompt)
   message.react("✅")
   let mod = bot.channels.find(`id`, "418531258344275978")
@@ -28,6 +28,8 @@ await user.send(prompt)
 	.addField("Moderator", message.author)
 	.addField("Declined", user.tag)
  	.addField("Declined ID", user.id)
+  	.addField("Reason", reason)
+
 
  await mod.send(thing)
 }
