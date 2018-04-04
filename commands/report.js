@@ -55,7 +55,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
 	
-  const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
+  const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 10000);
   if(rblxname.toLowerCase() === "cancel") {
 	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
@@ -64,7 +64,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  await duser.delete()
 	  return;
   }
-  const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 300000);
+  const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
   if(urrblxname === "cancel") { 
 	  	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
@@ -80,7 +80,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	message.author.send("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
 	const filter = m => m.author.id === message.author.id
 	
-	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 300000 });
+	const collector = message.author.dmChannel.createMessageCollector(filter, { time: 10000 });
 	var proof = await new Promise(function(resolve, reject) {
 	collector.on('collect', async m => {
 		if(m.content.toLowerCase() === "done") {
@@ -111,7 +111,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	
 	
 	
-  const describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 300000);
+  const describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 10000);
   if(describe === "cancel") {
 	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
@@ -124,7 +124,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	  await duser.delete()
 	  return;
   }
-  const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 300000);
+  const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 10000);
   if(confirm === "cancel") {
 	  duser.delete()
 	  return message.author.send("**Prompt Cancelled**") 
