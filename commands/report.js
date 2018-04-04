@@ -44,6 +44,7 @@ let ttchannel = bot.channels.find(`id`, "420748985410650123")
 let ttmessages = await ttchannel.fetchMessages({ limit: 100 })
 
 let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.content));
+	
 	      let duser = darray.first();
 	try {
 	await message.author.send("Hello! This is the report prompt! Please answer all questions to the best of your ability and remember, false reports will cause you to get blacklisted from the system!\n---------------------------------------------------")
@@ -55,16 +56,19 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
   message.react("\u2705")
   message.channel.send(`${message.author}, Prompt will continue in DMs! \uD83D\uDCEC`)
 	
-  const rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 10000);
-  if(rblxname === "cancel") {
+  let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 10000);
+  if(!rblxname) rblxname = "."
+	if(rblxname.toLowerCase === "cancel") {
 	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
   if(rblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
 	return await duser.delete()
   }
-  const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
-  if(urrblxname === "cancel") { 
+  let urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
+    if(!urrblxname) urrblxname = "."
+
+	if(urrblxname.toLowerCase === "cancel") { 
 	  	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
@@ -108,9 +112,11 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
 	
 	
 	
-  const describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 10000);
-  if(describe === "cancel") {
-	  duser.delete()
+  let describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 10000);
+      if(!describe) describe = "."
+
+	if(describe.toLowerCase() === "cancel") {
+	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
 	  
 	  
