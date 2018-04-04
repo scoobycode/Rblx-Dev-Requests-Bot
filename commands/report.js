@@ -8,8 +8,7 @@ async function awaitReply(message, question, limit = 10000) {
                         , time: limit
                         , errors: ['time']
                 });
-                return collected.first()
-                        .content;
+                return collected.first().content;
         } catch (error) {
                 return message.author.send("**Prompt cancelled, no response after five minutes.**");
         }
