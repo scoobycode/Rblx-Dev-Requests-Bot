@@ -66,7 +66,7 @@ let darray = ttmessages.filter(m => RegExp(message.author.id, "gi").test(m.conte
   }
   const urrblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 10000);
   if(urrblxname === "cancel") { 
-	  	  duser.delete()
+	  	  await duser.delete()
 	  return message.author.send("**Prompt Cancelled**")
   }
   if(urrblxname === "**Prompt Cancelled -- There Was No Response After Five Minutes**") {
