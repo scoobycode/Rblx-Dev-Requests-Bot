@@ -46,7 +46,7 @@ module.exports.run = async (bot, message, args) => {
                 let msgs = await aaachannel.fetchMessages({
                         limit: 100
                 })
-                let bmsgs = msgs.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[4].value === message.author.id)
+                let bmsgs = msgs.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[5].value === message.author.id)
                 let delmessage = bmsgs.first()
                 if (delmessage) return message.reply("You cannot use this command because you already have a pending report. To prevent spam, you must wait until your report is accepted or denied. If you don't want to wait, you can cancel your report by using `!cancelreport`.")
                 tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND (IP)**`)
@@ -168,9 +168,14 @@ module.exports.run = async (bot, message, args) => {
                 let invite = await message.channel.createInvite({
                         maxAge: 0
                 })
+		let casechannel = bot.channels.find(`id`, "431610293060239380")
+		let casenu = casechannel.fetchMessage("431610688364871681")
+		let casenumber = casenu.parseInt()
+		await casenu.edit(`${casenumber + 1}`)
                 let reportEmbed = new Discord.RichEmbed()
                         .setTitle("New Scam Report")
                         .setColor("#FF0000")
+			.addField("Case Number", casenumber)
                         .addField("Guild Reported From", message.guild.name)
                         .addField("Guild ID", message.guild.id)
                         .addField("Reporter", message.author)
@@ -186,10 +191,7 @@ module.exports.run = async (bot, message, args) => {
                 duser.delete()
                 message.author.send("✅ **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** ✅");
                 let mod = bot.channels.find(`id`, "418531258344275978")
-                let casechannel = bot.channels.find(`id`, "431610293060239380")
-		let casenu = casechannel.fetchMessage("431610688364871681")
-		let casenumber = casenu.parseInt()
-		await casenu.edit(`${casenumber + 1}`)
+                
 		let areportEmbed = new Discord.RichEmbed()
                         .setTitle("Copy Of Report - Logging Purposes")
                         .setColor("#FF0000")
