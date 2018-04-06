@@ -36,7 +36,7 @@ catch (e) {
 message.reply("Couldn't DM this user!")
 }
 	
-	await delmessage.delete()
+	if(delmessage) await delmessage.delete()
 }
 
  }
