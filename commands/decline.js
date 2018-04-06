@@ -38,7 +38,7 @@ message.reply("Couldn't DM this user!")
 }
 	let channel = bot.channels.find(`id`, "411246419979141121")
 	let amessages = await channel.fetchMessages( {limit: 100} )
-	let bmessages = amessages.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[4].value === userid)
+	let bmessages = amessages.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[5].value === userid)
 	let delmessage = bmessages.first()
 	if(delmessage) await delmessage.delete()
 }
