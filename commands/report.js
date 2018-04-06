@@ -140,8 +140,10 @@ module.exports.run = async (bot, message, args) => {
                                 resolve(`${cproof}\n${mproof}`)
                         })
                 });
-	if(proof === "\n") return message.author.send("You did not provide valid proof! Proof must be in only links and images. Prompt cancelled.")
-
+	if(proof === "\n") {
+		await duser.delete()
+		return message.author.send("You did not provide valid proof! Proof must be in only links and images. Prompt cancelled.")
+	}
                 let describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 300000);
                 var des;
 		if(describe.content) {
