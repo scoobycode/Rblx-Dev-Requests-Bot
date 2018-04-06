@@ -42,6 +42,9 @@ bot.on("ready", async () => {
         "420748985410650123")
     //let channel = bot.channels.find(`id`, "431610293060239380")
     //await channel.send(".")
+    let casechannel = bot.channels.find(`id`, "431610293060239380")
+		let casenu = casechannel.fetchMessage("431610688364871681")
+        await casenu.edit("1")
     await tchannel.bulkDelete(100)
     await bot.user.setActivity("for !help", {
         type: "WATCHING"
