@@ -125,6 +125,9 @@ module.exports.run = async (bot, message, args) => {
 					await duser.delete()
 					return message.author.send("**Prompt cancelled, no response after five minutes.**")
 				}
+				if(collected.size === 1) {
+					return message.author.send("You must provide at least some kind of proof! Prompt cancelled.")
+				}
                                 let aproof = collected.filter(m => m.content.startsWith("https://") || m.content.startsWith("http://"))
                                 let abproof = aproof.array()
                                 let aaproof = collected.filter(m => m.attachments.first())
@@ -170,7 +173,7 @@ module.exports.run = async (bot, message, args) => {
                 })
 		let casechannel = bot.channels.find(`id`, "431610293060239380")
 		let casenu = await casechannel.fetchMessage("431610688364871681")
-		let casenumber = casenu.parseInt()
+		let casenumber = casenu.content.parseInt()
 		await casenu.edit(`${casenumber + 1}`)
                 let reportEmbed = new Discord.RichEmbed()
                         .setTitle("New Scam Report")
