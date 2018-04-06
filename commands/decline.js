@@ -9,8 +9,13 @@ if (member.roles.get("400523390441619457") //mod
  || member.roles.get("415914501909774336") //head admin
  || member.roles.get("400511826745360405") //comanager
  || member.roles.get("400511217061330955")) { //owner 
-let userid = args[0]
-if(!userid) return message.reply("Please provide a user ID!")
+let casenumber = args[0]
+if(!casenumber) return message.reply("Please provide a case number!")
+	let channel = bot.channels.find(`id`, "411246419979141121")
+	let amessages = await channel.fetchMessages( {limit: 100} )
+	let bmessages = amessages.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[0].value === casenumber)
+	let delmessage = bmessages.first()
+let userid = delmessage.embeds[0].fields[5].value
 let user = await bot.fetchUser(userid)
 if(!user) return message.reply("Couldn't find user!")
 			let reason = message.content.substr(8+prefix.length+args[0].length);
@@ -36,9 +41,7 @@ await user.send(prompt)
 catch (e) {
 message.reply("Couldn't DM this user!")
 }
-	let channel = bot.channels.find(`id`, "411246419979141121")
-	let amessages = await channel.fetchMessages( {limit: 100} )
-	let bmessages = amessages.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[0].value === userid)
+	
 	let delmessage = bmessages.first()
 	if(delmessage) await delmessage.delete()
 }
