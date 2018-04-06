@@ -176,7 +176,7 @@ module.exports.run = async (bot, message, args) => {
 		let casenumber = Number(`${casenu.content}`)
 		await casenu.edit(`${casenumber + 1}`)
 			let casenua = await casechannel.fetchMessage("431610688364871681")
-console.log(casenua)
+console.log(casenua.content)
                 let reportEmbed = new Discord.RichEmbed()
                         .setTitle("New Scam Report")
                         .setColor("#FF0000")
