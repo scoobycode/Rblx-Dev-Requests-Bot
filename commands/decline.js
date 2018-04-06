@@ -42,7 +42,6 @@ catch (e) {
 message.reply("Couldn't DM this user!")
 }
 	
-	let delmessage = bmessages.first()
 	if(delmessage) await delmessage.delete()
 }
 
