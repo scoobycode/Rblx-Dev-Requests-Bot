@@ -43,7 +43,7 @@ bot.on("ready", async () => {
     //let channel = bot.channels.find(`id`, "431610293060239380")
     //await channel.send(".")
     let casechannel = bot.channels.find(`id`, "431610293060239380")
-		let casenu = casechannel.fetchMessage("431610688364871681")
+		let casenu = await casechannel.fetchMessage("431610688364871681")
         await casenu.edit("1")
     await tchannel.bulkDelete(100)
     await bot.user.setActivity("for !help", {
