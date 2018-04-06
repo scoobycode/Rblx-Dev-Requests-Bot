@@ -169,7 +169,7 @@ module.exports.run = async (bot, message, args) => {
                         maxAge: 0
                 })
 		let casechannel = bot.channels.find(`id`, "431610293060239380")
-		let casenu = casechannel.fetchMessage("431610688364871681")
+		let casenu = await casechannel.fetchMessage("431610688364871681")
 		let casenumber = casenu.parseInt()
 		await casenu.edit(`${casenumber + 1}`)
                 let reportEmbed = new Discord.RichEmbed()
