@@ -11,7 +11,7 @@ let rejectionembed = new Discord.RichEmbed()
   .setDescription("nah bro")
 
 module.exports.run = async (bot, message, args) => {
-  if(message.author.id != "245877990938902529") && (message.author.id != "291367352476631040") return message.channel.send(rejectionembed);
+  if((message.author.id != "245877990938902529") && (message.author.id != "291367352476631040")) return message.channel.send(rejectionembed);
   try {
     const code = args.join(" ");
     let evaled = eval(code);
