@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.3.0",
+    "random-string": "^0.2.0",
     "roblox-js": "^4.0.2"
   }
 }
