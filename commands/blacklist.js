@@ -31,7 +31,7 @@ if (member.roles.get("400523390441619457") //mod
  await mod.send(thing)
 	      }	else return message.reply("This user is already blacklisted!")
       } else {
-      	      let buser = messages.filter(m => m.content === pingeduser.id);
+      	      let buser = messages.find(m => m.content === pingeduser.id);
 	if(!buser) {
 		let userob = await bot.fetchUser(pingeduser.id)
 		if(!userob) message.reply("Couldn't find this user!")
