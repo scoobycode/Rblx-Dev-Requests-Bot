@@ -15,8 +15,7 @@ if (member.roles.get("400523390441619457") //mod
 
       if(!pingeduser) {
 	      let userob = bot.fetchUser(userid)
-      	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
-	      let auser = barray.first();
+      	      let auser = messages.find(m => m.content === userid);
 	      if(auser) {
 		     auser.delete()
 		     message.react("\u2705")
@@ -33,8 +32,7 @@ if (member.roles.get("400523390441619457") //mod
       } else {
 	      	      let userob = bot.fetchUser(userid)
 
-      	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
-	      let buser = darray.first();
+      	      let buser = messages.find(m => m.content === pingeduser.id);
 	if(buser) { 
 		buser.delete()
 		message.react("\u2705")
