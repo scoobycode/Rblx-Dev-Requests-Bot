@@ -22,8 +22,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
    		return message.reply(`${err}. If error persists, contact support by doing !server.`);
 		      });
 	 if (errortf == true) return;
-      	      let barray = messages.filter(m => RegExp(user, "gi").test(m.content));
-	      let auser = barray.first();
+      	      let auser = messages.find(m => m.content === user);
 	      
 	      if(!auser) {
 		 	channel.send(`${user}`)
