@@ -15,8 +15,7 @@ if (member.roles.get("400523390441619457") //mod
 	let messages = await channel.fetchMessages({ limit: 100 })
 
       if(userid) {
-      	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
-	      let auser = barray.first();
+      	      let auser = messages.find(m => m.content === userid);
 	      if(!auser) {
 		 	channel.send(`${userid}`)
 		      message.react("\u2705")
