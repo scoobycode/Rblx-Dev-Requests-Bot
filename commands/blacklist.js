@@ -14,8 +14,8 @@ if (member.roles.get("400523390441619457") //mod
 	let messages = await channel.fetchMessages({ limit: 100 })
 
       if(!pingeduser) {
-      	      let barray = messages.filter(m => RegExp(userid, "gi").test(m.content));
-	      let auser = barray.first();
+      	      let auser = messages.find(m => m.content === userid);
+	      
 	      if(!auser) {
 		      let userob = await bot.fetchUser(userid)
 			if(!userob) return message.reply("Couldn't find this user!")
@@ -31,8 +31,7 @@ if (member.roles.get("400523390441619457") //mod
  await mod.send(thing)
 	      }	else return message.reply("This user is already blacklisted!")
       } else {
-      	      let darray = messages.filter(m => RegExp(pingeduser.id, "gi").test(m.content));
-	      let buser = darray.first();
+      	      let buser = messages.filter(m => m.content === pingeduser.id);
 	if(!buser) {
 		let userob = await bot.fetchUser(pingeduser.id)
 		if(!userob) message.reply("Couldn't find this user!")
