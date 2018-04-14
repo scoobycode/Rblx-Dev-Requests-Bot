@@ -40,12 +40,19 @@ bot.on("ready", async () => {
     console.log(`${bot.user.username} is online!`);
     let tchannel = bot.channels.find(`id`,
         "420748985410650123")
+        let ochannel = bot.channels.find(`id`,
+            "434147498190307347")
+            let achannel = bot.channels.find(`id`,
+                "434152264135868418")
+        //434147498190307347
     //let channel = bot.channels.find(`id`, "431610293060239380")
     //await channel.send(".")
     //let casechannel = bot.channels.find(`id`, "431610293060239380")
 		//let casenu = await casechannel.fetchMessage("431610688364871681")
         //await casenu.edit("1")
     await tchannel.bulkDelete(100)
+    await ochannel.bulkDelete(100)
+    //await achannel.bulkDelete(100)
     await bot.user.setActivity("for !help", {
         type: "WATCHING"
     });
@@ -131,6 +138,9 @@ bot.on("message", async message => {
         return message.reply(
             `My prefix is \`${prefix}\``
         )
+    }
+    if((message.author === bot.user) && (message.channel.id === "434152264135868418") && (message.content.endsWith("request timeout"))) {
+      message.delete(180000)
     }
     if((message.isMemberMentioned(bot.user)) &&
         (message.content.endsWith(
