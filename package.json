@@ -10,6 +10,7 @@
   "author": "ethanlaj#8805",
   "license": "ISC",
   "dependencies": {
+    "dblapi.js": "^2.0.0",
     "discord.js": "^11.3.0",
     "random-string": "^0.2.0",
     "roblox-js": "^4.0.2"
