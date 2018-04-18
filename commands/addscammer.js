@@ -22,6 +22,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 	     errortf = true
    		return message.reply(`${err}. If error persists, contact support by doing !server.`);
 		      });
+	      message.channel.send(user)
 	 if (errortf == true) return;
       	      let auser = messages.find(m => m.content === user);
 	      
