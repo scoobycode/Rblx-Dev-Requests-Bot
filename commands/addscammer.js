@@ -24,7 +24,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 		      });
 	      message.channel.send(user)
 	 if (errortf == true) return;
-      	      let auser = messages.find(m => m.content === user);
+      	      let auser = messages.find(m => m.content === ${user});
 	      
 	      if(!auser) {
 		 	channel.send(`${user}`)
