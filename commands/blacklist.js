@@ -19,7 +19,7 @@ if (member.roles.get("400523390441619457") //mod
 	      if(!auser) {
 		      let userob = await bot.fetchUser(userid)
 			if(!userob) return message.reply("Couldn't find this user!")
-		 	channel.send(`${userid}, ${userob.username}#${userob.discriminator}`)
+		 	channel.send(`${userid}`)
 		      message.react("\u2705")
 		      let mod = bot.channels.find(`id`, "418531258344275978")
  let thing = new Discord.RichEmbed()
@@ -35,7 +35,7 @@ if (member.roles.get("400523390441619457") //mod
 	if(!buser) {
 		let userob = await bot.fetchUser(pingeduser.id)
 		if(!userob) message.reply("Couldn't find this user!")
-		 channel.send(`${pingeduser.id}, ${userob.username}#${userob.discriminator}`)
+		 channel.send(`${pingeduser.id}`)
 		 message.react("\u2705")
 				      let mod = bot.channels.find(`id`, "418531258344275978")
 
