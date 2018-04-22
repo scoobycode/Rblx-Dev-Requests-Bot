@@ -14,7 +14,7 @@ if (member.roles.get("400523390441619457") //mod
 	let messages = await channel.fetchMessages({ limit: 100 })
 
       if(!pingeduser) {
-	      let userob = bot.fetchUser(userid)
+	      let userob = await bot.fetchUser(userid)
       	      let auser = messages.find(m => m.content === userid);
 	      if(auser) {
 		     auser.delete()
@@ -30,7 +30,7 @@ if (member.roles.get("400523390441619457") //mod
  await mod.send(thing)
 	      } else return message.reply("This user is not blacklisted!")
       } else {
-	      	      let userob = bot.fetchUser(userid)
+	      	      let userob = await bot.fetchUser(userid)
 
       	      let buser = messages.find(m => m.content === pingeduser.id);
 	if(buser) { 
