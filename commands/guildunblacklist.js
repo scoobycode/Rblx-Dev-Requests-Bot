@@ -26,7 +26,7 @@ if (member.roles.get("400523390441619457") //mod
  .setColor("#FF0000")
  .addField("Time Unblacklisted", message.createdAt)
 	.addField("Moderator", message.author)
-	.addField("Guild Unlacklisted", guild.name)
+	.addField("Guild Unblacklisted", guild.name)
   .addField("Guild ID", guild.id)
  await mod.send(thing)
 	      } else return message.reply("This guild is not blacklisted!")
