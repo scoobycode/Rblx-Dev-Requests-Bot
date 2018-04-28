@@ -1,59 +1,50 @@
 const Discord = require("discord.js");
+
 module.exports.run = async (bot, message, args) => {
-let guild = bot.guilds.find(`id`, "400508946709872660")
-let member = await guild.fetchMember(message.author.id)
-if(!member) return;
-if (member.roles.get("400523390441619457") //mod
- || member.roles.get("400512010590355458") //admin
- || member.roles.get("415914501909774336") //head admin
- || member.roles.get("400511826745360405") //comanager
- || member.roles.get("400511217061330955")) { //owner 
-	let channel = bot.channels.find(`id`, "420677482287464448")
-      let pingeduser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-	let userid = args[0]
-	let messages = await channel.fetchMessages({ limit: 100 })
+	var guild = bot.guilds.find("id", "400508946709872660");
+	var member = await guild.fetchMember(message.author.id);
+	var allowedRoles = ["400523390441619457", "400512010590355458", "415914501909774336", "400511826745360405", "400511217061330955"];
+	// head, admin, comanager, owner
+	if (!member) return;
+	if (message.member.roles.some(r => allowedRoles.includes(r.id))) {
+		var channel = bot.channels.find(`id`, "420677482287464448");
+		var pingeduser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+		var userid = args[0];
+		var messages = await channel.fetchMessages({ limit: 100 });
+		var blacklistEmbed = new Discord.RichEmbed().setTitle("Blacklisted User").setColor("#FF0000");
+		if (!pingeduser) {
+			var auser = messages.find(m => m.content === userid);
 
-      if(!pingeduser) {
-      	      let auser = messages.find(m => m.content === userid);
-	      
-	      if(!auser) {
-		      let userob = await bot.fetchUser(userid)
-			if(!userob) return message.reply("Couldn't find this user!")
-		 	channel.send(`${userid}`)
-		      message.react("\u2705")
-		      let mod = bot.channels.find(`id`, "418531258344275978")
- let thing = new Discord.RichEmbed()
-	.setTitle("Blacklisted User")
- .setColor("#FF0000")
- .addField("Time Blacklisted", message.createdAt)
-	.addField("Moderator", message.author)
-	.addField("User Blacklisted", userob.tag)
- await mod.send(thing)
-	      }	else return message.reply("This user is already blacklisted!")
-      } else {
-      	      let buser = messages.find(m => m.content === pingeduser.id);
-	if(!buser) {
-		let userob = await bot.fetchUser(pingeduser.id)
-		if(!userob) message.reply("Couldn't find this user!")
-		 channel.send(`${pingeduser.id}`)
-		 message.react("\u2705")
-				      let mod = bot.channels.find(`id`, "418531258344275978")
-
- let thing = new Discord.RichEmbed()
-	.setTitle("Blacklisted User")
- .setColor("#FF0000")
- .addField("Time Blacklisted", message.createdAt)
-	.addField("Moderator", message.author)
-	.addField("Blacklisted", userob.tag)
- 	.addField("Blacklisted ID", userob.id)
-
- await mod.send(thing)
-	} else return message.reply("This user is already blacklisted!")
+			if (!auser) {
+				var userob = await bot.fetchUser(userid);
+				if (!userob) return message.reply("Couldn't find this user!").catch(function() {});
+				channel.send(`${userid}`).catch(function() {});
+				message.react("\u2705").catch(function() {});
+				var mod = bot.channels.find(`id`, "418531258344275978")
+				blacklistEmbed = blacklistEmbed
+					.addField("Time Blacklisted", message.createdAt)
+					.addField("Moderator", message.author)
+					.addField("User Blacklisted", userob.tag);
+				await mod.send({ embed: blacklistEmbed }).catch(function() {});
+			} else return message.reply("This user is already blacklisted!").catch(function() {});
+		} else {
+			var buser = messages.find(m => m.content === pingeduser.id);
+			if (!buser) {
+				var userob = await bot.fetchUser(pingeduser.id);
+				if (!userob) message.reply("Couldn't find this user!").catch(function() {});
+				channel.send(`${pingeduser.id}`).catch(function() {});
+				message.react("\u2705").catch(function() {});
+				var mod = bot.channels.find(`id`, "418531258344275978");
+				blacklistEmbed = blacklistEmbed
+					.addField("Time Blacklisted", message.createdAt)
+					.addField("Moderator", message.author)
+					.addField("Blacklisted", userob.tag)
+					.addField("Blacklisted ID", userob.id);
+				await mod.send({ embed: blacklistEmbed }).catch(function() {});
+			} else return message.reply("This user is already blacklisted!").catch(function() {});
+		}
+	}
 }
-}	
-}
-
-
 
 module.exports.help = {
 	name: "blacklist"
