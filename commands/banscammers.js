@@ -12,8 +12,8 @@ module.exports.run = async (bot, message, args) => {
           messages.forEach(message => {
             if (scammers.includes(message.content.split(" ")[1])) {
               if (message.guild.member(bot.users.get(message.content.split(" ")[0]))) {
-                message.guild.member(bot.users.get(message.content.split(" ")[0])).ban().catch(function() {});
-              }
+                message.guild.member(bot.users.get(message.content.split(" ")[0])).ban();
+              } else console.log("bruh");
             }
           });
         });
