@@ -16,12 +16,13 @@ module.exports.run = async (bot, message, args) => {
 				limit: 100
 			}).then(messages => {
 				messages.forEach(async function(msg) {
-					var user = await bot.fetchUser(msg.content.split(" ")[1]);
-					if (scammers.includes(user.id)) {
-						msg.guild.fetchMember(user.id).then(member => {
-							member.ban();
-						});
-					}
+					bot.fetchUser(msg.content.split(" ")[1]).then(user => {
+						if (scammers.includes(user.id)) {
+							msg.guild.fetchMember(user.id).then(member => {
+								member.ban();
+							});
+						}
+					}).catch(function() {});
 				});
 			});
 		} else {
