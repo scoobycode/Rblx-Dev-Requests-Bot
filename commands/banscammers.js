@@ -2,28 +2,18 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 	if (message.member.hasPermission("BAN_MEMBERS")) {
-		var premiumUsers = await bot.channels.get("433791777468841996").fetchMessages({
-			limit: 100
-		});
+		var premiumUsers = await bot.channels.get("433791777468841996").fetchMessages({ limit: 100 });
 		premiumUsers = premiumUsers.map(user => user.content);
 		if (premiumUsers.includes(message.author.id)) {
+			if (!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) return message.reply("I do not have permissions to ban members in this server.").catch(function() {});
 			message.reply("Attempting to ban all scammers from this server (if any).")
-			var scammers = await bot.channels.get("420745256439513089").fetchMessages({
-				limit: 100
-			});
+			var scammers = await bot.channels.get("420745256439513089").fetchMessages({ limit: 100 });
 			scammers = scammers.map(user => user.content);
-			bot.channels.get("423189481349185547").fetchMessages({
-				limit: 100
-			}).then(messages => {
-				messages.forEach(async function(msg) {
-					bot.fetchUser(msg.content.split(" ")[1]).then(user => {
-						if (scammers.includes(user.id)) {
-							msg.guild.fetchMember(user.id).then(member => {
-								member.ban();
-							});
-						}
-					}).catch(function() {});
-				});
+			var verifiedPeople = await bot.channels.get("423189481349185547").fetchMessages({ limit: 100 });
+			verifiedPeople = verifiedPeople.map(user => user.content.split(" "));
+			var membersToBan = verifiedPeople.filter(user => scammers.includes(user[1]));
+			membersToBan.forEach(member => {
+				message.guild.ban(member[0]).catch(function() {});
 			});
 		} else {
 			message.reply("This is a premium only command. You are not premium.").catch(() => {
