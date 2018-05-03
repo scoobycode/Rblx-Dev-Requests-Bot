@@ -26,6 +26,9 @@ async function awaitReply(message, question, limit = 300000) {
 }
 
 module.exports.run = async (bot, message, args) => {
+	var timelimitembed = new Discord.RichEmbed()
+                        .setColor("#C21807")
+			.setDescription("Prompt cancelled, no response after five minutes")
         //if ((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
                 let channel = bot.channels.find(`id`, "420677482287464448")
                 let pchannel = bot.channels.find(`id`, "411246419979141121")
@@ -121,9 +124,10 @@ module.exports.run = async (bot, message, args) => {
 		
 		//const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
                 //message.author.send("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
-                var proofembed = new Discord.RichEmbed()
+                const proofembed = new Discord.RichEmbed()
                         .setColor("#C21807")
-			.setDescription("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
+			.setFooter("This prompt will automatically cancel if you do not reply in 5 minutes.")
+		.setDescription("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
 	await message.author.send(proofembed)
 		const filter = m => m.author.id === message.author.id
                 const collector = message.author.dmChannel.createMessageCollector(filter, {
@@ -138,17 +142,20 @@ module.exports.run = async (bot, message, args) => {
                                         await duser.delete()
                                         return await message.author.send(cancelembed)
                                 }
-                                if (m.content === "**Prompt cancelled, no response after five minutes.**") {
+                		if (m.embeds[0] && m.embeds[0].description === "Prompt cancelled, no response after five minutes") {
                                         return await duser.delete()
                                 }
                         });
                         collector.on('end', async function (collected) {
 				if(!collected.first()) {
 					await duser.delete()
-					return message.author.send("**Prompt cancelled, no response after five minutes.**")
+					return message.author.send(timelimitembed)
 				}
 				if(collected.size === 1) {
-					return message.author.send("You must provide at least some kind of proof! Prompt cancelled.")
+					 const byeembed = new Discord.RichEmbed()
+                        .setColor("#C21807")
+			.setDescription("You must provide at least some kind of proof! Prompt cancelled.")
+		await message.author.send(byeembed)
 				}
                                 let aproof = collected.filter(m => m.content.startsWith("https://") || m.content.startsWith("http://"))
                                 let abproof = aproof.array()
@@ -162,9 +169,12 @@ module.exports.run = async (bot, message, args) => {
                                 resolve(`${cproof}\n${mproof}`)
                         })
                 });
+	 const byeembedo = new Discord.RichEmbed()
+                        .setColor("#C21807")
+			.setDescription("You must provide at least some kind of proof! Prompt cancelled.")
 	if(proof === "\n") {
 		await duser.delete()
-		return message.author.send("You did not provide valid proof! Proof must be in only links and images. Prompt cancelled.")
+		return message.author.send(byeembedo)
 	}
                 let describe = await awaitReply(message, "How were you scammed? Explain anything we need to know here.\nSay **cancel** to cancel prompt.", 300000);
                 var des;
@@ -177,7 +187,7 @@ module.exports.run = async (bot, message, args) => {
                         await duser.delete()
                         return await message.author.send(cancelembed)
                 }
-                if (des === "**Prompt cancelled, no response after five minutes.**") {
+                		if (describe.embeds[0] && describe.embeds[0].description === "Prompt cancelled, no response after five minutes") {
                         return await duser.delete()
                 }
                 const confirm = await awaitReply(message, `**The following information will be sent:**\nScammer's Roblox Username: ${rblxname}\nYour Roblox Username: ${urrblxname}\nProof Of Scam: ${proof}\nOther Information: ${describe}\n---------------------------------------\nSay **confirm** to send the report.\nSay **cancel** to cancel the prompt.`, 300000);
@@ -191,7 +201,7 @@ module.exports.run = async (bot, message, args) => {
                        await duser.delete()
                         return message.author.send(cancelembed)
                 }
-                if (con === "**Prompt cancelled, no response after five minutes.**") {
+                		if (confirm.embeds[0] && confirm.embeds[0].description === "Prompt cancelled, no response after five minutes") {
                         return await duser.delete()
                 }
                 let invite = await message.channel.createInvite({
