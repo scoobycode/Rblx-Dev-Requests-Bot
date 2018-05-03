@@ -145,7 +145,7 @@ module.exports.run = async (bot, message, args) => {
                                 const byeembed = new Discord.RichEmbed()
                                         .setColor("#C21807")
                                         .setDescription("You must provide at least some kind of proof! Prompt cancelled.")
-                                await message.author.send(byeembed)
+                                return await message.author.send(byeembed)
                         }
                         let aproof = collected.filter(m => m.content.startsWith("https://") || m.content.startsWith("http://"))
                         let abproof = aproof.array()
