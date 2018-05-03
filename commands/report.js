@@ -1,13 +1,11 @@
 const Discord = require("discord.js");
 var timelimitembed = new Discord.RichEmbed()
-                        .setTitle("Cancelled")
                         .setColor("#C21807")
 			.setDescription("Prompt cancelled, no response after five minutes")
 async function awaitReply(message, question, limit = 300000) {
         //300000
         const filter = m => m.author.id === message.author.id;
 	var questionembed = new Discord.RichEmbed()
-                        .setTitle("Report Prompt")
                         .setColor("#FF0000")
 			.setDescription(question)
 			.setFooter("This prompt will automatically cancel if you do not reply in 5 minutes.")
@@ -21,7 +19,6 @@ async function awaitReply(message, question, limit = 300000) {
                 return collected.first();
         } catch (error) {
 		var atimelimitembed = new Discord.RichEmbed()
-                        .setTitle("Cancelled")
                         .setColor("#C21807")
 			.setDescription("Prompt cancelled, no response after five minutes")
                 return message.author.send(atimelimitembed);
@@ -61,7 +58,6 @@ module.exports.run = async (bot, message, args) => {
                         limit: 100
                 })
 		var cancelembed = new Discord.RichEmbed()
-                        .setTitle("Cancelled")
                         .setColor("#C21807")
 			.setDescription("Prompt Cancelled")
 		
@@ -77,7 +73,10 @@ module.exports.run = async (bot, message, args) => {
                         .test(m.content));
                 let duser = darray.first();
                 try {
-                        await message.author.send("Hello! This is the report prompt! Please answer all questions to the best of your ability and remember, false reports will cause you to get blacklisted from the system!\n---------------------------------------------------")
+			var helloembed = new Discord.RichEmbed()
+                        .setColor("#C21807")
+			.setDescription("Hello! This is the report prompt! Please answer all questions to the best of your ability and remember, false reports will cause you to get blacklisted from the system!")
+                        await message.author.send(helloembed)
                 } catch (e) {
                         await duser.delete()
                         return message.reply("I could not DM you the prompt! Check your privacy settings and try again!")
@@ -121,8 +120,12 @@ module.exports.run = async (bot, message, args) => {
                 
 		
 		//const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
-                message.author.send("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
-                const filter = m => m.author.id === message.author.id
+                //message.author.send("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
+                var proofembed = new Discord.RichEmbed()
+                        .setColor("#C21807")
+			.setDescription("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
+	await message.author.send(proofembed)
+		const filter = m => m.author.id === message.author.id
                 const collector = message.author.dmChannel.createMessageCollector(filter, {
                         time: 300000
                 });
