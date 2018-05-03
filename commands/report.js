@@ -1,19 +1,33 @@
+const Discord = require("discord.js");
+var timelimitembed = new Discord.RichEmbed()
+                        .setTitle("Cancelled")
+                        .setColor("#C21807")
+			.setDescription("Prompt cancelled, no response after five minutes")
 async function awaitReply(message, question, limit = 300000) {
         //300000
         const filter = m => m.author.id === message.author.id;
-        await message.author.send(question);
+	var questionembed = new Discord.RichEmbed()
+                        .setTitle("Report Prompt")
+                        .setColor("#FF0000")
+			.setDescription(question)
+			.setFooter("This prompt will automatically cancel if you do not reply in 5 minutes.")
+        await message.author.send(questionembed);
         try {
                 const collected = await message.author.dmChannel.awaitMessages(filter, {
                         max: 1
                         , time: limit
                         , errors: ['time']
                 });
-                return collected.first().content;
+                return collected.first();
         } catch (error) {
-                return message.author.send("**Prompt cancelled, no response after five minutes.**");
+		var atimelimitembed = new Discord.RichEmbed()
+                        .setTitle("Cancelled")
+                        .setColor("#C21807")
+			.setDescription("Prompt cancelled, no response after five minutes")
+                return message.author.send(atimelimitembed);
         }
 }
-const Discord = require("discord.js");
+
 module.exports.run = async (bot, message, args) => {
         //if ((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
                 let channel = bot.channels.find(`id`, "420677482287464448")
@@ -46,6 +60,11 @@ module.exports.run = async (bot, message, args) => {
                 let msgs = await aaachannel.fetchMessages({
                         limit: 100
                 })
+		var cancelembed = new Discord.RichEmbed()
+                        .setTitle("Cancelled")
+                        .setColor("#C21807")
+			.setDescription("Prompt Cancelled")
+		
                 let bmsgs = msgs.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[5].value === message.author.id)
                 let delmessage = bmsgs.first()
                 if (delmessage) return message.reply("You cannot use this command because you already have a pending report. To prevent spam, you must wait until your report is accepted or denied. If you don't want to wait, you can cancel your report by using `!cancelreport`.")
@@ -75,13 +94,13 @@ module.exports.run = async (bot, message, args) => {
 			rblxn = rblxname
 		}
 		
-                if (rblxn === "**Prompt cancelled, no response after five minutes.**") {
+                if (rblxname.embeds[0] && rblxname.embeds[0].description === "Prompt cancelled, no response after five minutes") {
                         
                         return await duser.delete()
                 }
                 if (rblxn.toLowerCase() === "cancel") {
                         await duser.delete()
-                        return await message.author.send("**Prompt Cancelled**")
+                        return await message.author.send(cancelembed)
                 }
                 
 		
@@ -94,9 +113,9 @@ module.exports.run = async (bot, message, args) => {
 		}
                 if (urrblxn.toLowerCase() === "cancel") {
                         await duser.delete()
-                        return await message.author.send("**Prompt Cancelled**")
+                        return await message.author.send(cancelembed)
                 }
-                if (urrblxn === "**Prompt cancelled, no response after five minutes.**") {
+                if (urrblxname.embeds[0] && urrblxname.embeds[0].description === "Prompt cancelled, no response after five minutes") {
                         return await duser.delete()
                 }
                 
@@ -114,7 +133,7 @@ module.exports.run = async (bot, message, args) => {
                                 }
                                 if (m.content.toLowerCase() === "cancel") {
                                         await duser.delete()
-                                        return await message.author.send("**Prompt Cancelled**")
+                                        return await message.author.send(cancelembed)
                                 }
                                 if (m.content === "**Prompt cancelled, no response after five minutes.**") {
                                         return await duser.delete()
@@ -153,7 +172,7 @@ module.exports.run = async (bot, message, args) => {
 		}
                 if (des.toLowerCase() === "cancel") {
                         await duser.delete()
-                        return await message.author.send("**Prompt Cancelled**")
+                        return await message.author.send(cancelembed)
                 }
                 if (des === "**Prompt cancelled, no response after five minutes.**") {
                         return await duser.delete()
@@ -167,7 +186,7 @@ module.exports.run = async (bot, message, args) => {
 		}
 		if (con.toLowerCase() === "cancel") {
                        await duser.delete()
-                        return message.author.send("**Prompt Cancelled**")
+                        return message.author.send(cancelembed)
                 }
                 if (con === "**Prompt cancelled, no response after five minutes.**") {
                         return await duser.delete()
