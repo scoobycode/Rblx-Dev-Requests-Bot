@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 var timelimitembed = new Discord.RichEmbed()
         .setColor("#0000FF")
         .setDescription("Prompt cancelled, no response after five minutes")
-async function awaitReply(message, question, limit = 2) {
+async function awaitReply(message, question, limit = 300000) {
         //300000
         const filter = m => m.author.id === message.author.id;
         var questionembed = new Discord.RichEmbed()
@@ -84,7 +84,7 @@ module.exports.run = async (bot, message, args) => {
         }
         message.react("✅")
         message.channel.send(`${message.author}, Prompt will continue in DMs! 📬`)
-        let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 2);
+        let rblxname = await awaitReply(message, "What is the scammer's roblox username?\nSay **cancel** to cancel prompt.", 300000);
         var rblxn;
         if (rblxname.content) {
                 rblxn = rblxname.content
