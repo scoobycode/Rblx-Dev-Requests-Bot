@@ -218,8 +218,11 @@ module.exports.run = async (bot, message, args) => {
                 .addField("Proof Of Scam", proof)
                 .addField("Description", describe);
         pchannel.send(reportEmbed);
-        duser.delete()
-        message.author.send("✅ **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** ✅");
+        await duser.delete()
+        var hmmtho = new Discord.RichEmbed()
+        .setColor("#0000FF")
+        .setDescription("✅ **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** ✅")
+        message.author.send(hmmtho);
         let mod = bot.channels.find(`id`, "418531258344275978")
         let areportEmbed = new Discord.RichEmbed()
                 .setTitle("Copy Of Report - Logging Purposes")
