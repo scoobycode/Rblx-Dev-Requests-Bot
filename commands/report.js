@@ -1,12 +1,12 @@
 const Discord = require("discord.js");
 var timelimitembed = new Discord.RichEmbed()
-        .setColor("#C21807")
+        .setColor("#0000FF")
         .setDescription("Prompt cancelled, no response after five minutes")
 async function awaitReply(message, question, limit = 300000) {
         //300000
         const filter = m => m.author.id === message.author.id;
         var questionembed = new Discord.RichEmbed()
-                .setColor("#FF0000")
+                .setColor("#0000FF")
                 .setDescription(question)
                 .setFooter("This prompt will automatically cancel if you do not reply in 5 minutes.")
         await message.author.send(questionembed);
@@ -19,14 +19,14 @@ async function awaitReply(message, question, limit = 300000) {
                 return collected.first();
         } catch (error) {
                 var atimelimitembed = new Discord.RichEmbed()
-                        .setColor("#C21807")
+                        .setColor("#0000FF")
                         .setDescription("Prompt cancelled, no response after five minutes")
                 return message.author.send(atimelimitembed);
         }
 }
 module.exports.run = async (bot, message, args) => {
         var timelimitembed = new Discord.RichEmbed()
-                .setColor("#C21807")
+                .setColor("#0000FF")
                 .setDescription("Prompt cancelled, no response after five minutes")
         //if ((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
         let channel = bot.channels.find(`id`, "420677482287464448")
@@ -60,7 +60,7 @@ module.exports.run = async (bot, message, args) => {
                 limit: 100
         })
         var cancelembed = new Discord.RichEmbed()
-                .setColor("#C21807")
+                .setColor("#0000FF")
                 .setDescription("Prompt Cancelled")
         let bmsgs = msgs.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[5].value === message.author.id)
         let delmessage = bmsgs.first()
@@ -75,7 +75,7 @@ module.exports.run = async (bot, message, args) => {
         let duser = darray.first();
         try {
                 var helloembed = new Discord.RichEmbed()
-                        .setColor("#C21807")
+                        .setColor("#0000FF")
                         .setDescription("Hello! This is the report prompt! Please answer all questions to the best of your ability and remember, false reports will cause you to get blacklisted from the system!")
                 await message.author.send(helloembed)
         } catch (e) {
@@ -115,7 +115,7 @@ module.exports.run = async (bot, message, args) => {
         //const proof = await awaitReply(message, `Do you have any proof that **${rblxname}** scammed you? Send **only links** to prove you were scammed. If you have no proof, your report will be auto-declined.\nSay **cancel** to cancel prompt.`, 300000);
         //message.author.send("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
         const proofembed = new Discord.RichEmbed()
-                .setColor("#C21807")
+                .setColor("#0000FF")
                 .setFooter("This prompt will automatically cancel if you do not reply in 5 minutes.")
                 .setDescription("Do you have any proof that they scammed you? Provide only images and links here.\nSay **done** to go to the next question.\nSay **cancel** to cancel prompt.")
         await message.author.send(proofembed)
@@ -143,7 +143,7 @@ module.exports.run = async (bot, message, args) => {
                         }
                         if (collected.size === 1) {
                                 const byeembed = new Discord.RichEmbed()
-                                        .setColor("#C21807")
+                                        .setColor("#0000FF")
                                         .setDescription("You must provide at least some kind of proof! Prompt cancelled.")
                                 return await message.author.send(byeembed)
                         }
@@ -160,7 +160,7 @@ module.exports.run = async (bot, message, args) => {
                 })
         });
         const byeembedo = new Discord.RichEmbed()
-                .setColor("#C21807")
+                .setColor("#0000FF")
                 .setDescription("You must provide at least some kind of proof! Prompt cancelled.")
         if (proof === "\n") {
                 await duser.delete()
