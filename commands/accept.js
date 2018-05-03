@@ -16,7 +16,10 @@ module.exports.run = async (bot, message, args) => {
 		let user = await bot.fetchUser(userid);
 		if (!user) return message.reply("Couldn't find user!");
 		try {
-			await user.send(":white_check_mark: **Scam Report Accepted -- After reviewing your report, our moderators and admins have decided this is a valid scam report. This user will be added to our database shortly.** :white_check_mark:");
+			 var hmmtho = new Discord.RichEmbed()
+        .setColor("#0000FF")
+        .setDescription(":white_check_mark: **Scam Report Accepted -- After reviewing your report, our moderators and admins have decided this is a valid scam report. This user will be added to our database shortly.** :white_check_mark:")
+        message.author.send(hmmtho);
 			message.react("✅");
 			let mod = bot.channels.find(`id`, "418531258344275978")
 			const acceptedReport = new Discord.RichEmbed()
