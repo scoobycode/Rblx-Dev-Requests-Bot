@@ -24,7 +24,7 @@ if(!reason) prompt = (`:x: **Scam Report Declined -- After reviewing your report
 if(!reason) reason = "No reason provided."
 	try {
 let thing = new Discord.RichEmbed()
- .setColor("#FF0000")
+ .setColor("#0000FF")
 .setDescription(prompt)
 await user.send(thing)
 message.react("✅")
