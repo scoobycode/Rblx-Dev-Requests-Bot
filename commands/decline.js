@@ -23,8 +23,11 @@ if(!user) return message.reply("Couldn't find user!")
 if(!reason) prompt = (`:x: **Scam Report Declined -- After reviewing your report, our moderators and admins have decided this is not a valid scam report. This might have been declined due to lack of evidence or lack of information in general. As a result, this user will not be added to our database.** :x:`)
 if(!reason) reason = "No reason provided."
 	try {
-await user.send(prompt)
-  message.react("✅")
+let thing = new Discord.RichEmbed()
+ .setColor("#FF0000")
+.setDescription(prompt)
+await user.send(thing)
+message.react("✅")
   let mod = bot.channels.find(`id`, "418531258344275978")
  let thing = new Discord.RichEmbed()
 	.setTitle("Declined Report")
