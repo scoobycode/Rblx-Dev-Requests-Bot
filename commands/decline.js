@@ -15,7 +15,7 @@ if(!casenumber) return message.reply("Please provide a case number!")
 	let amessages = await channel.fetchMessages( {limit: 100} )
 	let bmessages = amessages.find(m => m.embeds && m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[0].value === casenumber)
 	if(!bmessages) return message.reply("Please provide a correct case number!")
-	let delmessage = bmessages.first()
+	let delmessage = bmessages
 let userid = delmessage.embeds[0].fields[5].value
 let user = await bot.fetchUser(userid)
 if(!user) return message.reply("Couldn't find user!")
