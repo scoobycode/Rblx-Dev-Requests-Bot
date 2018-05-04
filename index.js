@@ -30,9 +30,9 @@ bot.on("ready", async () => {
 	bot.fetchUser("291367352476631040").then(user => {
 		if (!user.presence.game) return bot.user.setActivity("for !help", { type: "WATCHING" });
 		if (!user.presence.game.streaming) return bot.user.setActivity("for !help", { type: "WATCHING" });
-		bot.user.setActivity(newMember.presence.game.name, {
+		bot.user.setActivity(user.presence.game.name, {
 			type: "STREAMING",
-			url: newMember.presence.game.url
+			url: user.presence.game.url
 		});
 	});
 	await ochannel.bulkDelete(100)
