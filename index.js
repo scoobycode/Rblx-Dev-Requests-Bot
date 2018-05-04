@@ -23,21 +23,35 @@ fs.readdir("./commands/", (err, files) => {
 });
 bot.on("ready", async () => {
 	console.log(`${bot.user.username} is online!`);
-	let tchannel = bot.channels.get("420748985410650123")
-	let ochannel = bot.channels.get("434147498190307347")
-	let achannel = bot.channels.get("434152264135868418")
-	//434147498190307347
-	//let channel = bot.channels.find(`id`, "431610293060239380")
-	//await channel.send(".")
-	//let casechannel = bot.channels.find(`id`, "431610293060239380")
-	//let casenu = await casechannel.fetchMessage("431610688364871681")
-	//await casenu.edit("1")
+	let tchannel = bot.channels.get("420748985410650123");
+	let ochannel = bot.channels.get("434147498190307347");
+	let achannel = bot.channels.get("434152264135868418");
 	await tchannel.bulkDelete(100)
+	bot.fetchUser("291367352476631040").then(user => {
+		if (!user.presence.game) return bot.user.setActivity("for !help", { type: "WATCHING" });
+		if (!user.presence.game.streaming) return bot.user.setActivity("for !help", { type: "WATCHING" });
+		bot.user.setActivity(newMember.presence.game.name, {
+			type: "STREAMING",
+			url: newMember.presence.game.url
+		});
+	});
 	await ochannel.bulkDelete(100)
 	//await achannel.bulkDelete(100)
 	await bot.user.setActivity("for !help", { type: "WATCHING" });
-	//await bot.user.setUsername("Scam Reports")
 
+});
+
+bot.on("presenceUpdate", function(oldMember, newMember) {
+	if (oldMember.user.id === "291367352476631040") {
+		if (newMember.presence.game !== null) {
+			if (newMember.presence.game.streaming) {
+				bot.user.setActivity(newMember.presence.game.name, {
+					type: "STREAMING",
+					url: newMember.presence.game.url
+				});
+			} else bot.user.setActivity("for !help", { type: "WATCHING" });
+		} else bot.user.setActivity("for !help", { type: "WATCHING" });
+	}
 });
 bot.on("guildCreate", async guild => {
 	let hello = new Discord.RichEmbed()
