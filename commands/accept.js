@@ -12,6 +12,7 @@ module.exports.run = async (bot, message, args) => {
 		let channel = bot.channels.find(`id`, "411246419979141121");
 		let amessages = await channel.fetchMessages({ limit: 100 });
 		let delmessage = amessages.find(m => m && m.embeds && m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[0].value === casenumber);
+		if(!delmessage) return message.reply("Please provide a correct case number!")
 		let userid = delmessage.embeds[0].fields[5].value
 		let user = await bot.fetchUser(userid);
 		if (!user) return message.reply("Couldn't find user!");
