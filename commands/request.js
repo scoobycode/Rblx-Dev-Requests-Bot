@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args, prefix) => {
           limit: 100
   })
   let usercheck = pusers.find(m => m.content === userid)
-  if(!usercheck) return message.reply(`You must be a premium user to use this command! For more information, run \`${prefix}donate\`.`)
+  if(!usercheck) return message.reply(`You must be a premium user to use this command! For more information, run \`${prefix}buypremium\`.`)
 let guild = bot.guilds.find(g => g.id === "400508946709872660")
 let tchannel = bot.channels.find(c => c.id === "434147498190307347")
 let tmessages = await tchannel.fetchMessages({
