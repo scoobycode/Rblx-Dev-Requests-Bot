@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 	// head, admin, comanager, owner
 	if (!member) return;
 	if (message.member.roles.some(r => allowedRoles.includes(r.id))) {
-		var channel = bot.channels.find(`id`, "420745256439513089");
+		var channel = bot.channels.find(`id`, "444588565154889738");
 		var userid = args[0];
 		var messages = await channel.fetchMessages({ limit: 100 });
 		var post = bot.channels.find(`id`, "424812962872819723");
