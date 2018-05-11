@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
                 .setDescription("Prompt cancelled, no response after five minutes")
         //if ((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
         let channel = bot.channels.find(`id`, "444588561858035723")
-        let pchannel = bot.channels.find(`id`, "411246419979141121")
+        let pchannel = bot.channels.find(`id`, "444633860769185832")
         let tchannel = bot.channels.find(`id`, "444588562550358016")
         let achannel = bot.channels.find(`id`, "444588563032440833")
         let messages = await channel.fetchMessages({
@@ -223,7 +223,7 @@ module.exports.run = async (bot, message, args) => {
         .setColor("#0000FF")
         .setDescription("✅ **Successfully Submitted! -- Your Response Was Submitted And Will Be Reviewed By Our Admins And Moderators Shortly!** ✅")
         message.author.send(hmmtho);
-        let mod = bot.channels.find(`id`, "418531258344275978")
+        let mod = bot.channels.find(`id`, "444634075836448768")
         let areportEmbed = new Discord.RichEmbed()
                 .setTitle("Copy Of Report - Logging Purposes")
                 .setColor("#FF0000")
