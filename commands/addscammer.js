@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 				channel.send(`${user}`)
 				post.send(`**${userid}**, https://www.roblox.com/users/${user}/profile`).catch(function() {});
 				message.react("\u2705").catch(function() {});
-				var mod = bot.channels.find(`id`, "418531258344275978");
+				var mod = bot.channels.find(`id`, "444634075836448768");
 				var addScammerEmbed = new Discord.RichEmbed()
 					.setTitle("Scammer Added")
 					.setColor("#FF0000")
