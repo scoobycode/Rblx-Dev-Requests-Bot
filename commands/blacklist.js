@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 				if (!userob) return message.reply("Couldn't find this user!").catch(function() {});
 				channel.send(`${userid}`).catch(function() {});
 				message.react("\u2705").catch(function() {});
-				var mod = bot.channels.find(`id`, "418531258344275978")
+				var mod = bot.channels.find(`id`, "444634075836448768")
 				blacklistEmbed = blacklistEmbed
 					.addField("Time Blacklisted", message.createdAt)
 					.addField("Moderator", message.author)
@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
 				if (!userob) message.reply("Couldn't find this user!").catch(function() {});
 				channel.send(`${pingeduser.id}`).catch(function() {});
 				message.react("\u2705").catch(function() {});
-				var mod = bot.channels.find(`id`, "418531258344275978");
+				var mod = bot.channels.find(`id`, "444634075836448768");
 				blacklistEmbed = blacklistEmbed
 					.addField("Time Blacklisted", message.createdAt)
 					.addField("Moderator", message.author)
