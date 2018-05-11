@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
 	// head, admin, comanager, owner
 	if (!member) return;
 	if (message.member.roles.some(r => allowedRoles.includes(r.id))) {
-		var channel = bot.channels.find(`id`, "420677482287464448");
+		var channel = bot.channels.find(`id`, "444588561858035723");
 		var pingeduser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 		var userid = args[0];
 		var messages = await channel.fetchMessages({ limit: 100 });
