@@ -1,12 +1,12 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-	var guild = bot.guilds.find("id", "400508946709872660");
-	var member = await guild.fetchMember(message.author.id);
-	var allowedRoles = ["400523390441619457", "400512010590355458", "415914501909774336", "400511826745360405", "400511217061330955"];
-	// head, admin, comanager, owner
+	let guild = bot.guilds.find(`id`, "443867131721941005");;
+	let member = await guild.fetchMember(message.author.id)
 	if (!member) return;
-	if (message.member.roles.some(r => allowedRoles.includes(r.id))) {
+	if (member && member.roles.get("443898332029517824") //helper
+ 	|| member.roles.get("443903247502147596") //moderator
+ 	|| member.roles.get("443867603103121410")) { //developer
 		var channel = bot.channels.find(`id`, "444588561858035723");
 		var pingeduser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 		var userid = args[0];
