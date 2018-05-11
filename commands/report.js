@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
                 .test(m.content));
         let aauser = aaarray.first();
         if (aauser) return message.reply("You cannot use this command because this guild is blacklisted from using this command!")
-        let aaachannel = bot.channels.find(`id`, "411246419979141121")
+        let aaachannel = bot.channels.find(`id`, "444633860769185832")
         let msgs = await aaachannel.fetchMessages({
                 limit: 100
         })
