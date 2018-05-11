@@ -19,7 +19,7 @@ if (member.roles.get("400523390441619457") //mod
 	      if(!auser) {
 		 	channel.send(`${userid}`)
 		      message.react("\u2705")
-		      let mod = bot.channels.find(`id`, "418531258344275978")
+		      let mod = bot.channels.find(`id`, "444634075836448768")
  let thing = new Discord.RichEmbed()
 	.setTitle("Guild Blacklisted")
  .setColor("#FF0000")
