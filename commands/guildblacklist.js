@@ -8,7 +8,7 @@ if (member.roles.get("400523390441619457") //mod
  || member.roles.get("415914501909774336") //head admin
  || member.roles.get("400511826745360405") //comanager
  || member.roles.get("400511217061330955")) { //owner 
-	let channel = bot.channels.find(`id`, "425802196790280203")
+	let channel = bot.channels.find(`id`, "444588563032440833")
 	let userid = args[0]
   let guild = bot.guilds.find(`id`, userid)
   if(!guild) return message.reply("Guild not found!")
