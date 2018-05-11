@@ -1,7 +1,7 @@
 const rbx = require('roblox-js');
 
 module.exports.run = async (bot, message, args) => {
-    let channel = bot.channels.find(`id`, "420745256439513089")
+    let channel = bot.channels.find(`id`, "444588565154889738")
 let messages = await channel.fetchMessages({ limit: 100 })
 var errortf
 if(!args[0]) return message.reply("Please provide a roblox username to check with!")
