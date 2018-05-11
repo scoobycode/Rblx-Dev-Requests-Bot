@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-	let channel = bot.channels.find(`id`, "411246419979141121")
+	let channel = bot.channels.find(`id`, "444633860769185832")
 	let amessages = await channel.fetchMessages( {limit: 100} )
 	let bmessages = amessages.filter(m => m.embeds[0] && m.embeds[0].fields && m.embeds[0].fields[5].value === message.author.id)
 	let delmessage = bmessages.first()
