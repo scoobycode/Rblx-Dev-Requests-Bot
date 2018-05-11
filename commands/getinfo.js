@@ -3,9 +3,6 @@ const rbx = require("roblox-js");
 const request = require('request-promise');
 
 async function getMembership(username) {
-	let channels = dbguild.channels.filter(m => RegExp("wbotdisable-database", "gi").test(m.name));
-	let cmddisablecheck = await checkIfDisabled(bot, message, args, "getinfo", channels)
-	if(cmddisablecheck) return message.reply("This command has been disabled by a server manager!")
 	let response = await request({
 		uri: `https://www.roblox.com/Thumbs/BCOverlay.ashx?username=${username}`,
 		simple: false,
