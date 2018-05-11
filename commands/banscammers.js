@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 	if (message.member.hasPermission("BAN_MEMBERS")) {
-		var premiumUsers = await bot.channels.get("433791777468841996").fetchMessages({ limit: 100 });
+		var premiumUsers = await bot.channels.get("444588564056113162").fetchMessages({ limit: 100 });
 		premiumUsers = premiumUsers.map(user => user.content);
 		if (premiumUsers.includes(message.author.id)) {
 			if (!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) return message.reply("I do not have permissions to ban members in this server.").catch(function() {});
