@@ -8,7 +8,7 @@ if (member.roles.get("400523390441619457") //mod
  || member.roles.get("415914501909774336") //head admin
  || member.roles.get("400511826745360405") //comanager
  || member.roles.get("400511217061330955")) { //owner 
-let pchannel = bot.channels.find(`id`, "411246419979141121")
+let pchannel = bot.channels.find(`id`, "444633860769185832")
 await pchannel.setTopic("closed")
  message.react(`✅`)
 let mod = bot.channels.find(`id`, "444634075836448768")
