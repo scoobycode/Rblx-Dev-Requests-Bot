@@ -37,7 +37,7 @@ async function everything(bot, message) {
     if (blurb.includes(randomstring) || status.includes(randomstring)) {
       // db code here putting username and discord id in the db
       message.reply(`Successfully linked your Discord account to ${username}. This may take some time to update into the database`)
-			var dbguild = bot.guilds.get("417149156193337344");
+			var dbguild = bot.guilds.get("443929284411654144");
       var dbchannel = dbguild.channels.find("name", "roblox-database")
       var olo = await dbchannel.fetchMessages({ limit: 100 });
       var msgcount = olo.size;
