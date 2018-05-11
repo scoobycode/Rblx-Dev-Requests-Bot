@@ -10,7 +10,7 @@ if (member.roles.get("400523390441619457") //mod
  || member.roles.get("415914501909774336") //head admin
  || member.roles.get("400511826745360405") //comanager
  || member.roles.get("400511217061330955")) { //owner 
-      let channel = bot.channels.find(`id`, "420745256439513089")
+      let channel = bot.channels.find(`id`, "444588565154889738")
 	let userid = args[0]
 	let messages = await channel.fetchMessages({ limit: 100 })
 	      let post = bot.channels.find(`id`, "424812962872819723")
