@@ -23,8 +23,8 @@ fs.readdir("./commands/", (err, files) => {
 });
 bot.on("ready", async () => {
 	console.log(`${bot.user.username} is online!`);
-	let tchannel = bot.channels.get(`${444588562550358016}`);
-	let ochannel = bot.channels.get(`${444588562961268768}`);
+	let tchannel = bot.channels.find(`id`, `444588562550358016`);
+	let ochannel = bot.channels.find(`id`, `444588562961268768`);
 	await tchannel.bulkDelete(100)
 	bot.fetchUser("291367352476631040").then(user => {
 		if (!user.presence.game) return bot.user.setActivity("for !help", { type: "WATCHING" });
