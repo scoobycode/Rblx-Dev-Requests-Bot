@@ -11,7 +11,7 @@ let guild = bot.guilds.find(`id`, "443867131721941005");;
       let channel = bot.channels.find(`id`, "444588565154889738")
 	let userid = args[0]
 	let messages = await channel.fetchMessages({ limit: 100 })
-	      let post = bot.channels.find(`id`, "424812962872819723")
+	      let post = bot.channels.find(`id`, "443959210817093642")
 	let msgs = await post.fetchMessages({ limit: 100 })
 
       if(userid) {
