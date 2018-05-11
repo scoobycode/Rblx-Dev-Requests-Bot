@@ -29,7 +29,7 @@ async function everything(args, message, bot) {
 		target = message.guild.members.get(message.author.id);
 	}
 	if (!target) return message.channel.send("Please **mention** a valid user.");
-	var dbguild = bot.guilds.get("417149156193337344");
+	var dbguild = bot.guilds.get("443929284411654144");
 	var dbchannels = dbguild.channels.filter(m => RegExp("roblox-database", "gi").test(m.name));
 	var count = 0;
 	var count2 = 0;
