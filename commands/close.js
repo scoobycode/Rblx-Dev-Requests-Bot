@@ -11,7 +11,7 @@ if (member.roles.get("400523390441619457") //mod
 let pchannel = bot.channels.find(`id`, "411246419979141121")
 await pchannel.setTopic("closed")
  message.react(`✅`)
-let mod = bot.channels.find(`id`, "418531258344275978")
+let mod = bot.channels.find(`id`, "444634075836448768")
 let thing = new Discord.RichEmbed()
 .setTitle("Reports Closed")
 .setColor("#FF0000")
