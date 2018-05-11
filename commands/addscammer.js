@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
 		var channel = bot.channels.find(`id`, "444588565154889738");
 		var userid = args[0];
 		var messages = await channel.fetchMessages({ limit: 100 });
-		var post = bot.channels.find(`id`, "424812962872819723");
+		var post = bot.channels.find(`id`, "443959210817093642");
 		if (userid) {
 			var errortf = false;
 			var user = await rbx.getIdFromUsername(args[0]).catch((err) => {
