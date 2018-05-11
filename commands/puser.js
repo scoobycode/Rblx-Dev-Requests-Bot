@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
 let mentioneduser = message.mentions.users.first()
 if(!mentioneduser) return message.reply("Please mention a user!")
-let userschannel = bot.channels.find(`id`, "433791777468841996")
+let userschannel = bot.channels.find(`id`, "444588564056113162")
 let pusers = await userschannel.fetchMessages({
         limit: 100
 })
