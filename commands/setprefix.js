@@ -6,7 +6,7 @@ if(!message.member.hasPermission("MANAGE_GUILD")) return message.reply("You don'
 if(!args[0]) return message.reply("Please provide the new prefix!")
 let prefix = args[0]
 if(prefix.length > 5) return message.reply("The prefix cannot be more than 5 characters!")
-let dbguild = bot.guilds.find(`id`, "417149156193337344");
+let dbguild = bot.guilds.find(`id`, "443929284411654144");
 let channel = dbguild.channels.find(`name`, "prefix-database")
 let messages = await channel.fetchMessages({ limit: 100 })
 let channels = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
@@ -26,7 +26,7 @@ await dbguild.createChannel('prefix-database')
   await newc.overwritePermissions(channel.guild.id, {
   READ_MESSAGES: false
 })
-          await newc.setParent("420669357048463402");
+          await newc.setParent("444587981874135051");
           await newc.send(`${message.guild.id} ${prefix}`);
   		      message.react("\u2705")
 
