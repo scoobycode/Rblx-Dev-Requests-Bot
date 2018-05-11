@@ -80,7 +80,7 @@ bot.on("message", async message => {
 	let args = messageArray.slice(1);
 	let guildid = message.guild.id;
 	var val = false;
-	let dbguild = bot.guilds.get("417149156193337344");
+	let dbguild = bot.guilds.get("443929284411654144");
 	let channels = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
 	async function getPrefix(bot, message, args) {
 		const nestedMessages = await Promise.all(channels.map(ch => ch.fetchMessages({ limit: 100 })));
