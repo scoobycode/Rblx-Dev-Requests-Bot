@@ -29,10 +29,10 @@ module.exports.run = async (bot, message, args) => {
                 .setColor("#0000FF")
                 .setDescription("Prompt cancelled, no response after five minutes")
         //if ((message.author.id == "245877990938902529") || (message.author.id == "289380085025472523")) {
-        let channel = bot.channels.find(`id`, "420677482287464448")
+        let channel = bot.channels.find(`id`, "444588561858035723")
         let pchannel = bot.channels.find(`id`, "411246419979141121")
-        let tchannel = bot.channels.find(`id`, "420748985410650123")
-        let achannel = bot.channels.find(`id`, "425802196790280203")
+        let tchannel = bot.channels.find(`id`, "444588562550358016")
+        let achannel = bot.channels.find(`id`, "444588563032440833")
         let messages = await channel.fetchMessages({
                 limit: 100
         })
@@ -66,7 +66,7 @@ module.exports.run = async (bot, message, args) => {
         let delmessage = bmsgs.first()
         if (delmessage) return message.reply("You cannot use this command because you already have a pending report. To prevent spam, you must wait until your report is accepted or denied. If you don't want to wait, you can cancel your report by using `!cancelreport`.")
         tchannel.send(`${message.author.id}, ${message.author.username}#${message.author.discriminator}\n**MUST WAIT TO USE REPORT COMMAND (IP)**`)
-        let ttchannel = bot.channels.find(`id`, "420748985410650123")
+        let ttchannel = bot.channels.find(`id`, "444588562550358016")
         let ttmessages = await ttchannel.fetchMessages({
                 limit: 100
         })
