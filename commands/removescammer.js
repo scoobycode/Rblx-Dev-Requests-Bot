@@ -31,7 +31,7 @@ let user = await rbx.getIdFromUsername(args[0]).catch((err) => {
 		     auser.delete()
 		      if(cuser) cuser.delete()
 		     message.react("\u2705")
-		       let mod = bot.channels.find(`id`, "418531258344275978")
+		       let mod = bot.channels.find(`id`, "444634075836448768")
  let thing = new Discord.RichEmbed()
 	.setTitle("Removed Scammer")
  .setColor("#FF0000")
