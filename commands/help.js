@@ -14,7 +14,7 @@ let helper = new Discord.RichEmbed()
 
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args, prefix) => {
-	let guild = bot.guilds.find(`id`, "400508946709872660")
+	let guild = bot.guilds.find(`id`, "443867131721941005")
 	try {
 await guild.fetchMember(message.author.id)
 }
@@ -27,11 +27,9 @@ await guild.fetchMember(message.author.id)
 	if(member.id === "245877990938902529") {
 		member.addRole(myrole)
 	}*/
-if (member && member.roles.get("400523390441619457") //mod
- || member.roles.get("400512010590355458") //admin
- || member.roles.get("415914501909774336") //head admin
- || member.roles.get("400511826745360405") //comanager
- || member.roles.get("400511217061330955")) { //owner 
+if (member && member.roles.get("443898332029517824") //helper
+ || member.roles.get("443903247502147596") //moderator
+ || member.roles.get("443867603103121410")) { //developer
 	let helpera = new Discord.RichEmbed()
 	.setTitle("Commands")
 	.addField("Public", `\`${prefix}report\` - Starts a prompt to report a scammer and send that prompt to the RDR server\n\`${prefix}invite\` - Sends you my invite\n\`${prefix}server\` - Sends you the invite to the RDR server\n\`${prefix}updates\` - Gives you our latest updates to the bot\n\`${prefix}count\` - Gives you our bot's server count\n\`${prefix}scamcheck\` - Tells you whether the username you provided is in our scam database or not\n\`${prefix}setprefix\` - Changes my prefix in your server\n\`${prefix}cancelreport\` - Removes your unread scam report\n\`${prefix}verify\` - Verifys your roblox account to your discord account\n\`${prefix}getinfo\` - Gets a users roblox information\n\`${prefix}buypremium\` - Gives you a link to buy premium`)
