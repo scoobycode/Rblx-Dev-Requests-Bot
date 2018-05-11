@@ -16,14 +16,14 @@ async function awaitReply(message, question, limit = 300000) {
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args, prefix) => {
   let userid = message.author.id
-  let userschannel = bot.channels.find(`id`, "433791777468841996")
+  let userschannel = bot.channels.find(`id`, "444588564056113162")
   let pusers = await userschannel.fetchMessages({
           limit: 100
   })
   let usercheck = pusers.find(m => m.content === userid)
   if(!usercheck) return message.reply(`You must be a premium user to use this command! For more information, run \`${prefix}buypremium\`.`)
 let guild = bot.guilds.find(g => g.id === "400508946709872660")
-let tchannel = bot.channels.find(c => c.id === "434147498190307347")
+let tchannel = bot.channels.find(c => c.id === "444588562961268768")
 let tmessages = await tchannel.fetchMessages({
         limit: 100
 })
