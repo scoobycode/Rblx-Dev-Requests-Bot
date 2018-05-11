@@ -6,7 +6,7 @@ let num = args[0]
 let number = Number(num)
 if(!number) return message.reply("Please include the number of codes to generate!")
 if(number > 50) return message.reply("Number must be smaller than 51!")
-let codeschannel = bot.channels.find(`id`, "433791740387000341")
+let codeschannel = bot.channels.find(`id`, "444588560859791381")
 let i = 0
 while (i < num) {
     var a = random(10)
