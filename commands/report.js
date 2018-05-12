@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
         let amessages = await achannel.fetchMessages({
                 limit: 100
         })
-        if (pchannel.topic.toLowerCase() === "closed") return message.reply("Reports are currently disabled! Sorry for the inconvenience!")
+        if (pchannel.topic.toLowerCase() === "closed") return message.reply("🔨We are currently undergoing maintenance! We will be back soon!🔨")
         let barray = messages.filter(m => RegExp(message.author.id, "gi")
                 .test(m.content));
         let auser = barray.first();
