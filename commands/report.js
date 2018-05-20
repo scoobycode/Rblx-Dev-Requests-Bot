@@ -145,6 +145,7 @@ module.exports.run = async (bot, message, args) => {
                                 const byeembed = new Discord.RichEmbed()
                                         .setColor("#0000FF")
                                         .setDescription("You must provide at least some kind of proof! Prompt cancelled.")
+                                await duser.delete()
                                 return await message.author.send(byeembed)
                         }
                         let aproof = collected.filter(m => m.content.startsWith("https://") || m.content.startsWith("http://"))
@@ -194,9 +195,6 @@ module.exports.run = async (bot, message, args) => {
         if (confirm.embeds[0] && confirm.embeds[0].description === "Prompt cancelled, no response after five minutes") {
                 return await duser.delete()
         }
-        let invite = await message.channel.createInvite({
-                maxAge: 0
-        })
         let casechannel = bot.channels.find(`id`, "444588562793627668")
         let casenu = await casechannel.fetchMessage("444593973764292618")
         let casenumber = Number(`${casenu.content}`)
