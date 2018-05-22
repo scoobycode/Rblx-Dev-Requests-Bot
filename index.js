@@ -35,13 +35,6 @@ function postServerCount() {
         },
     });
 }
-const dbl = new DBL(process.env.dbl, {webhookPort: 5, webhookAuth: 'odarn'});
-dbl.webhook.on('ready', hook => {
-  console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
-});
-dbl.webhook.on('vote', vote => {
-  console.log(`User with ID ${vote.user} just voted!`);
-});
 bot.on("ready", async () => {
 	postServerCount()
 	console.log(`${bot.user.username} is online!`);
