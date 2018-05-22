@@ -35,7 +35,7 @@ function postServerCount() {
         },
     });
 }
-const dbl = new DBL(process.env.dbl, {webhookAuth: 'odarn'});
+const dbl = new DBL(process.env.dbl, {webhookPort: 5, webhookAuth: 'odarn'});
 dbl.webhook.on('ready', hook => {
   console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
 });
