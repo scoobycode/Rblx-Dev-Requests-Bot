@@ -5,6 +5,7 @@ const bot = new Discord.Client({ disableEveryone: true });
 bot.counter = false;
 //let blacklist = require("./blacklist.json")
 process.on('unhandledRejection', console.error)
+const request = require('request-promise-native');
 
 bot.commands = new Discord.Collection();
 
@@ -37,7 +38,6 @@ bot.on("ready", async () => {
 	await ochannel.bulkDelete(100)
 	//await achannel.bulkDelete(100)
 	await bot.user.setActivity("for !help", { type: "WATCHING" });
-
 });
 
 bot.on("presenceUpdate", function(oldMember, newMember) {
@@ -52,6 +52,18 @@ bot.on("presenceUpdate", function(oldMember, newMember) {
 		} else bot.user.setActivity("for !help", { type: "WATCHING" });
 	}
 });
+function postServerCount() {
+    return request.post({
+        uri: `https://discordbots.org/api/bots/${bot.user.id}/stats`,
+        headers: {
+            Authorization: process.env.dbl,
+        },
+        json: true,
+        body: {
+            server_count: bot.guilds.size,
+        },
+    });
+}
 bot.on("guildCreate", async guild => {
 	let hello = new Discord.RichEmbed()
 		.setTitle("Thanks For Adding Me To Your Server!")
@@ -64,10 +76,12 @@ bot.on("guildCreate", async guild => {
 	if (hichannel) {
 		await hichannel.send(hello);
 	}
+	postServerCount()
 	if (bot.counter) await bot.user.setActivity(`${bot.guilds.size} servers`, { type: "WATCHING" });
 });
 
 bot.on("guildDelete", async guild => {
+	postServerCount()
 	if (bot.counter) await bot.user.setActivity(`${bot.guilds.size} servers`, { type: "WATCHING" });
 });
 
