@@ -22,7 +22,20 @@ fs.readdir("./commands/", (err, files) => {
 		bot.commands.set(props.help.name, props);
 	});
 });
+function postServerCount() {
+    return request.post({
+        uri: `https://discordbots.org/api/bots/${bot.user.id}/stats`,
+        headers: {
+            Authorization: process.env.dbl,
+        },
+        json: true,
+        body: {
+            server_count: bot.guilds.size,
+        },
+    });
+}
 bot.on("ready", async () => {
+	postServerCount()
 	console.log(`${bot.user.username} is online!`);
 	let tchannel = bot.channels.find(`id`, `444588562550358016`);
 	let ochannel = bot.channels.find(`id`, `444588562961268768`);
@@ -52,18 +65,6 @@ bot.on("presenceUpdate", function(oldMember, newMember) {
 		} else bot.user.setActivity("for !help", { type: "WATCHING" });
 	}
 });
-function postServerCount() {
-    return request.post({
-        uri: `https://discordbots.org/api/bots/${bot.user.id}/stats`,
-        headers: {
-            Authorization: process.env.dbl,
-        },
-        json: true,
-        body: {
-            server_count: bot.guilds.size,
-        },
-    });
-}
 bot.on("guildCreate", async guild => {
 	let hello = new Discord.RichEmbed()
 		.setTitle("Thanks For Adding Me To Your Server!")
