@@ -2,7 +2,6 @@ const botconfig = require("./botconfig.js");
 const Discord = require("discord.js");
 const fs = require("fs");
 const DBL = require('dblapi.js');
-const dbl = new DBL(yourDBLTokenHere, { webhookPort: 5000, webhookAuth: 'password' });
 const bot = new Discord.Client({ disableEveryone: true });
 bot.counter = false;
 //let blacklist = require("./blacklist.json")
