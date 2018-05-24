@@ -46,7 +46,7 @@ bot.on("ready", async () => {
 	var upvoter;
 	upvotesholdingchannel.fetchMessages({ limit: 100 }).then((msgs) => {
 		msgs.forEach((msg) => {
-			upvoter = bot.fetchUser(msg.content.toString())
+			upvoter = bot.fetchUser(msg.content)
 			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
 				msg.delete();
 			})
@@ -108,8 +108,9 @@ bot.on("message", async message => {
 	let upvotesholdingchannel = bot.channels.find("id", "448615839533498388");
 	let upvotessend = bot.channels.find("id", "448951130081460245");
 	var val = false;
+	var upvoter;
 	if (message.channel === upvotesholdingchannel) { 
-	   upvoter = bot.fetchUser(message.content.toString())
+			upvoter = bot.fetchUser(message.content)
 			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
 				message.delete();
 			})
