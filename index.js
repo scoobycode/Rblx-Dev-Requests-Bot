@@ -41,6 +41,16 @@ bot.on("ready", async () => {
 	let tchannel = bot.channels.find(`id`, `444588562550358016`);
 	let ochannel = bot.channels.find(`id`, `444588562961268768`);
 	await tchannel.bulkDelete(100)
+	let upvotesholdingchannel = bot.channels.find("id", "448615839533498388");
+	let upvotessend = bot.channels.find("id", "448951130081460245");
+	var upvoter;
+	upvotesholdingchannel.fetchMessages({ limit: 100 }).then((msgs) => {
+		msgs.forEach((msg) => {
+			upvoter = bot.fetchUser(msg.content.toString())
+			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
+				msg.delete();
+			})
+	})
 	bot.fetchUser("291367352476631040").then(user => {
 		if (!user.presence.game) return bot.user.setActivity("for !help", { type: "WATCHING" });
 		if (!user.presence.game.streaming) return bot.user.setActivity("for !help", { type: "WATCHING" });
@@ -94,7 +104,15 @@ bot.on("message", async message => {
 	let cmd = messageArray[0].toLowerCase();
 	let args = messageArray.slice(1);
 	let guildid = message.guild.id;
+	let upvotesholdingchannel = bot.channels.find("id", "448615839533498388");
+	let upvotessend = bot.channels.find("id", "448951130081460245");
 	var val = false;
+	if (message.channel === upvotesholdingchannel) { 
+	   upvoter = bot.fetchUser(message.content.toString())
+			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
+				message.delete();
+			})
+}
 	let dbguild = bot.guilds.get("443929284411654144");
 	let channels = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
 	async function getPrefix(bot, message, args) {
