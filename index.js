@@ -46,7 +46,7 @@ bot.on("ready", async () => {
 	var upvoter;
 	upvotesholdingchannel.fetchMessages({ limit: 100 }).then((msgs) => {
 		msgs.forEach((msg) => {
-			upvoter = bot.fetchUser(msg.content)
+			await upvoter = bot.fetchUser(msg.content)
 			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
 				msg.delete();
 			})
@@ -110,7 +110,7 @@ bot.on("message", async message => {
 	var val = false;
 	var upvoter;
 	if (message.channel === upvotesholdingchannel) { 
-			upvoter = bot.fetchUser(message.content)
+			upvoter = await bot.fetchUser(message.content)
 			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
 				message.delete();
 			})
