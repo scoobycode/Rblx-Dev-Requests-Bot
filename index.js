@@ -99,6 +99,15 @@ bot.on("guildDelete", async guild => {
 });
 
 bot.on("message", async message => {
+	let upvotesholdingchannel = bot.channels.find("id", "448615839533498388");
+	let upvotessend = bot.channels.find("id", "448951130081460245");
+	var upvoter;
+	if (message.channel === upvotesholdingchannel) { 
+		upvoter = await bot.fetchUser(message.content)
+		upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
+			message.delete();
+			})
+}
 	if (message.author.bot) return;
 	if (message.channel.type === "dm") return;
 	let messageArray = message.content.split(" ");
@@ -109,12 +118,6 @@ bot.on("message", async message => {
 	let upvotessend = bot.channels.find("id", "448951130081460245");
 	var val = false;
 	var upvoter;
-	if (message.channel === upvotesholdingchannel) { 
-			upvoter = await bot.fetchUser(message.content)
-			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
-				message.delete();
-			})
-}
 	let dbguild = bot.guilds.get("443929284411654144");
 	let channels = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
 	async function getPrefix(bot, message, args) {
