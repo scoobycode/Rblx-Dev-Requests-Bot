@@ -114,10 +114,7 @@ bot.on("message", async message => {
 	let cmd = messageArray[0].toLowerCase();
 	let args = messageArray.slice(1);
 	let guildid = message.guild.id;
-	let upvotesholdingchannel = bot.channels.find("id", "448615839533498388");
-	let upvotessend = bot.channels.find("id", "448951130081460245");
 	var val = false;
-	var upvoter;
 	let dbguild = bot.guilds.get("443929284411654144");
 	let channels = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
 	async function getPrefix(bot, message, args) {
