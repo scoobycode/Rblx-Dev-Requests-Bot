@@ -61,7 +61,7 @@ bot.on("ready", async () => {
 	});
 	ochannel.bulkDelete(100)
 	//await achannel.bulkDelete(100)
-	await bot.user.setActivity("for !help", { type: "WATCHING" });
+	bot.user.setActivity("for !help", { type: "WATCHING" });
 });
 
 bot.on("presenceUpdate", function(oldMember, newMember) {
