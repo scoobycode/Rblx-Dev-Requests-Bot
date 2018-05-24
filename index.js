@@ -40,7 +40,7 @@ bot.on("ready", async () => {
 	console.log(`${bot.user.username} is online!`);
 	let tchannel = bot.channels.find(`id`, `444588562550358016`);
 	let ochannel = bot.channels.find(`id`, `444588562961268768`);
-	tchannel.bulkDelete(100)
+	await tchannel.bulkDelete(100)
 	let upvotesholdingchannel = bot.channels.find("id", "448615839533498388");
 	let upvotessend = bot.channels.find("id", "448951130081460245");
 	var upvoter;
@@ -50,6 +50,7 @@ bot.on("ready", async () => {
 			upvotessend.send(`Many thanks to ${upvoter.tag} for upvoting our bot!`).then(() => {
 				msg.delete();
 			})
+		})
 	})
 	bot.fetchUser("291367352476631040").then(user => {
 		if (!user.presence.game) return bot.user.setActivity("for !help", { type: "WATCHING" });
@@ -59,9 +60,9 @@ bot.on("ready", async () => {
 			url: user.presence.game.url
 		});
 	});
-	ochannel.bulkDelete(100)
+	await ochannel.bulkDelete(100)
 	//await achannel.bulkDelete(100)
-	bot.user.setActivity("for !help", { type: "WATCHING" });
+	await bot.user.setActivity("for !help", { type: "WATCHING" });
 });
 
 bot.on("presenceUpdate", function(oldMember, newMember) {
