@@ -59,7 +59,7 @@ bot.on("ready", async () => {
 			url: user.presence.game.url
 		});
 	});
-	await ochannel.bulkDelete(100)
+	ochannel.bulkDelete(100)
 	//await achannel.bulkDelete(100)
 	await bot.user.setActivity("for !help", { type: "WATCHING" });
 });
