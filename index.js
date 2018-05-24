@@ -40,7 +40,7 @@ bot.on("ready", async () => {
 	console.log(`${bot.user.username} is online!`);
 	let tchannel = bot.channels.find(`id`, `444588562550358016`);
 	let ochannel = bot.channels.find(`id`, `444588562961268768`);
-	await tchannel.bulkDelete(100)
+	tchannel.bulkDelete(100)
 	let upvotesholdingchannel = bot.channels.find("id", "448615839533498388");
 	let upvotessend = bot.channels.find("id", "448951130081460245");
 	var upvoter;
