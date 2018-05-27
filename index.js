@@ -3,7 +3,14 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const DBL = require('dblapi.js');
 const bot = new Discord.Client({ disableEveryone: true });
+
+bot.prefixes = [];
+bot.inprompt = [];
+bot.reporttimeout = [];
+bot.requesttimeout = [];
+
 bot.counter = false;
+
 process.on('unhandledRejection', console.error)
 const request = require('request-promise-native');
 bot.commands = new Discord.Collection();
@@ -46,6 +53,16 @@ bot.on("ready", async () => {
 			})
 		})
 	})
+	let dbguild = bot.guilds.get("443929284411654144");
+	let channels = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
+	async function getPrefixes() {
+		const nestedMessages = await Promise.all(channels.map(ch => ch.fetchMessages({ limit: 100 })));
+		const flatMessages = nestedMessages.reduce((a, b) => a.concat(b))
+		return flatMessages;
+	}
+	var prefixMessages = await getPrefixes();
+	bot.prefixes = prefixMessages
+	console.log(bot.prefixes);
 	bot.fetchUser("291367352476631040").then(user => {
 		if (!user.presence.game) return bot.user.setActivity("for !help", { type: "WATCHING" });
 		if (!user.presence.game.streaming) return bot.user.setActivity("for !help", { type: "WATCHING" });
@@ -96,17 +113,7 @@ bot.on("message", async message => {
 	let args = messageArray.slice(1);
 	let guildid = message.guild.id;
 	var val = false;
-	let dbguild = bot.guilds.get("443929284411654144");
-	let channels = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
-	async function getPrefix(bot, message, args) {
-		const nestedMessages = await Promise.all(channels.map(ch => ch.fetchMessages({ limit: 100 })));
-		const flatMessages = nestedMessages.reduce((a, b) => a.concat(b))
-		const msg = flatMessages.find(msg => msg.content.startsWith(message.guild.id));
-		return msg && msg.content.substr(1 + message.guild.id.length);
-	}
-	const aprefix = await getPrefix(bot, message, args)
-	if (aprefix) var prefix = aprefix;
-	if (!aprefix) var prefix = botconfig.prefix;
+	var prefix = bot.prefixes.find(value => value.startsWith(message.guild.id)).substr(1 + message.guild.id.length); || "!";
 	if ((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix"))) {
 		return message.reply(`My prefix is \`${prefix}\``);
 	}
@@ -114,17 +121,13 @@ bot.on("message", async message => {
 		message.delete(180000);
 	}
 	if ((message.isMemberMentioned(bot.user)) && (message.content.endsWith("prefix reset")) && (message.member.hasPermission("MANAGE_GUILD"))) {
-		let aaa = dbguild.channels.filter(m => RegExp("prefix-database", "gi").test(m.name));
-		aaa.forEach(chl => {
-			chl.fetchMessages({ limit: 100 }).then(msgs => {
-				msgs.forEach(msg => {
-					if (msg.content.startsWith(`${message.guild.id}`)) {
-						msg.delete();
-					}
-				});
-			});
-		});
-		message.react("\u2705");
+		if (prefix !== "!") {
+			bot.prefixes.splice(bot.prefixes.indexOf(bot.prefixes.find(value => value.content.startsWith(message.guild.id)), 1));
+			await bot.prefixes.find(value => value.content.startsWith(message.guild.id)).delete()
+			message.react("\u2705");
+		} else {
+			message.react("\u2705");
+		}
 	}
 	if (!message.content.startsWith(prefix)) return;
 	let commandfile = bot.commands.get(cmd.slice(prefix.length));
