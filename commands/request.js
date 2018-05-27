@@ -1,15 +1,15 @@
 async function awaitReply(message, question, limit = 300000) {
         const filter = m => m.author.id === message.author.id;
-        await message.reply(question);
+        await message.author.dmChannel.send(question);
         try {
-                const collected = await message.channel.awaitMessages(filter, {
+                const collected = await message.author.dmChannel.awaitMessages(filter, {
                         max: 1
                         , time: limit
                         , errors: ['time']
                 });
                 return collected.first().content;
         } catch (error) {
-                return message.reply("**Prompt cancelled, no response after five minutes.**");
+                return message.author.dmChannel.send("**Prompt cancelled, no response after five minutes.**");
         }
 }
 
@@ -51,7 +51,7 @@ if (rblxname.content) {
             }
             if (rblxn.toLowerCase() === "cancel") {
                     await check2.delete()
-                    return await message.reply("**Prompt Cancelled**")
+                    return await message.author.dmChannel.send("**Prompt Cancelled**")
             }
 
 
@@ -69,7 +69,7 @@ if (rblxname.content) {
                         }
                         if (typo.toLowerCase() === "cancel") {
                           await check2.delete()
-                          return await message.reply("**Prompt Cancelled**")
+                          return await message.author.dmChannel.send("**Prompt Cancelled**")
                         }
 
                         let desc = await awaitReply(message, "Please give a detailed description of what you want.\nSay **cancel** to cancel prompt.", 300000);
@@ -86,7 +86,7 @@ if (rblxname.content) {
                                     }
                                     if (deco.toLowerCase() === "cancel") {
                                       await check2.delete()
-                                      return await message.reply("**Prompt Cancelled**")
+                                      return await message.author.dmChannel.send("**Prompt Cancelled**")
                                     }
 
 
@@ -104,7 +104,7 @@ if (rblxname.content) {
                                                 }
                                                 if (cont.toLowerCase() === "cancel") {
                                                   await check2.delete()
-                                                  return await message.reply("**Prompt Cancelled**")
+                                                  return await message.author.dmChannel.send("**Prompt Cancelled**")
                                                 }
 
 
@@ -123,7 +123,7 @@ if (rblxname.content) {
                                                             }
                                                             if (con.toLowerCase() === "cancel") {
                                                               await check2.delete()
-                                                              return await message.reply("**Prompt Cancelled**")
+                                                              return await message.author.dmChannel.send("**Prompt Cancelled**")
                                                             }
 
 
@@ -138,7 +138,7 @@ if (rblxname.content) {
                                                         .addField("How To Contact", contact);
                                                 await pchannel.send(reportEmbed);
                                                await check2.delete()
-                                                return message.reply("Sent your request!")
+                                                return message.author.dmChannel.send("Sent your request!")
 
 
 
