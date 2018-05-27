@@ -162,10 +162,10 @@ if (rblxname.content) {
                                                         .addField("How To Contact", contact);
                                                 await pchannel.send(reportEmbed);
                                                await check2.delete()
-                                                return message.author.send("Sent your request!")
-
-
-
+						var bye = new Discord.RichEmbed()
+                        				.setColor("#0000FF")
+                        				.setDescription("Your request was sent!")
+               						 await message.author.send(bye)
 }
 
 
