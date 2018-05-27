@@ -1,20 +1,34 @@
 async function awaitReply(message, question, limit = 300000) {
         const filter = m => m.author.id === message.author.id;
-        await message.author.dmChannel.send(question);
+        var questionembed = new Discord.RichEmbed()
+                .setColor("#0000FF")
+                .setDescription(question)
+                .setFooter("This prompt will automatically cancel if you do not reply in 5 minutes.")
+        await message.author.send(questionembed);
         try {
                 const collected = await message.author.dmChannel.awaitMessages(filter, {
                         max: 1
                         , time: limit
                         , errors: ['time']
                 });
+                if(collected.first().content.toLowerCase() === "cancel") {
+                        return ("cancel");
+                } else {
                 return collected.first().content;
+                }
         } catch (error) {
-                return message.author.dmChannel.send("**Prompt cancelled, no response after five minutes.**");
+                return ("**Prompt cancelled, no response after five minutes.**")
         }
 }
 
 const Discord = require("discord.js");
 module.exports.run = async (bot, message, args, prefix) => {
+         var timelimitembed = new Discord.RichEmbed()
+                .setColor("#0000FF")
+                .setDescription("Prompt cancelled, no response after five minutes");
+        var cancelembed = new Discord.RichEmbed()
+                .setColor("#0000FF")
+                .setDescription("Prompt Cancelled");
   let userid = message.author.id
   let userschannel = bot.channels.find(`id`, "444588564056113162")
   let pusers = await userschannel.fetchMessages({
@@ -37,7 +51,17 @@ let ttmessages = await tchannel.fetchMessages({
         limit: 100
 })
 let check2 = ttmessages.find(m => m.content === message.author.id)
-
+ try {
+         var helloembed = new Discord.RichEmbed()
+                        .setColor("#0000FF")
+                        .setDescription("Hello! This is the request prompt! Abusing this will cause you to get your premium removed without a refund.")
+                await message.author.send(helloembed)
+        } catch (e) {
+                await check2.delete()
+                return message.reply("I could not DM you the prompt! Check your privacy settings and try again!")
+        }
+        message.react("✅")
+        message.channel.send(`${message.author}, Prompt will continue in DMs! 📬`)
 let rblxname = await awaitReply(message, "What is your roblox username?\nSay **cancel** to cancel prompt.", 300000);
             var rblxn;
 if (rblxname.content) {
@@ -45,13 +69,13 @@ if (rblxname.content) {
 } else {
   rblxn = rblxname
 }
-            if (rblxn.endsWith("**Prompt cancelled, no response after five minutes.**")) {
+            if (rblxn === "**Prompt cancelled, no response after five minutes.**") {
               await check2.delete()
-              return;
+              return message.author.send(timelimitembed)
             }
-            if (rblxn.toLowerCase() === "cancel") {
+            if (rblxn === "cancel") {
                     await check2.delete()
-                    return await message.author.dmChannel.send("**Prompt Cancelled**")
+                    return await message.author.send(cancelembed)
             }
 
 
@@ -63,13 +87,14 @@ if (rblxname.content) {
             } else {
               typo = type
             }
-                        if (typo.endsWith("**Prompt cancelled, no response after five minutes.**")) {
+                        if (typo === "**Prompt cancelled, no response after five minutes.**") {
                                 await check2.delete()
-                                return;
+                                return message.author.send(timelimitembed)
+
                         }
-                        if (typo.toLowerCase() === "cancel") {
+                        if (typo === "cancel") {
                           await check2.delete()
-                          return await message.author.dmChannel.send("**Prompt Cancelled**")
+                          return await message.author.send(cancelembed)
                         }
 
                         let desc = await awaitReply(message, "Please give a detailed description of what you want.\nSay **cancel** to cancel prompt.", 300000);
@@ -79,14 +104,13 @@ if (rblxname.content) {
                         } else {
                           deco = desc
                         }
-                                    if (deco.endsWith("**Prompt cancelled, no response after five minutes.**")) {
-                                      await check2.delete()
-                                      return;
-
+                                    if (deco === "**Prompt cancelled, no response after five minutes.**") {
+					    await check2.delete()
+					    return message.author.send(timelimitembed)
                                     }
-                                    if (deco.toLowerCase() === "cancel") {
+                                    if (deco === "cancel") {
                                       await check2.delete()
-                                      return await message.author.dmChannel.send("**Prompt Cancelled**")
+                                      return await message.author.send(cancelembed)
                                     }
 
 
@@ -97,14 +121,14 @@ if (rblxname.content) {
                                     } else {
                                       cont = contact
                                     }
-                                                if (cont.endsWith("**Prompt cancelled, no response after five minutes.**")) {
+                                                if (cont === "**Prompt cancelled, no response after five minutes.**") {
                                                   await check2.delete()
-                                                  return;
+              					return message.author.send(timelimitembed)
 
                                                 }
-                                                if (cont.toLowerCase() === "cancel") {
+                                                if (cont === "cancel") {
                                                   await check2.delete()
-                                                  return await message.author.dmChannel.send("**Prompt Cancelled**")
+                                                  return await message.author.send(cancelembed)
                                                 }
 
 
@@ -116,14 +140,14 @@ if (rblxname.content) {
                                                 } else {
                                                   con = confirm
                                                 }
-                                                            if (con.endsWith("**Prompt cancelled, no response after five minutes.**")) {
+                                                            if (con === "**Prompt cancelled, no response after five minutes.**") {
                                                               await check2.delete()
-                                                              return;
+              							return message.author.send(timelimitembed)
 
                                                             }
-                                                            if (con.toLowerCase() === "cancel") {
+                                                            if (con === "cancel") {
                                                               await check2.delete()
-                                                              return await message.author.dmChannel.send("**Prompt Cancelled**")
+                                                              return await message.author.send(cancelembed)
                                                             }
 
 
@@ -138,7 +162,7 @@ if (rblxname.content) {
                                                         .addField("How To Contact", contact);
                                                 await pchannel.send(reportEmbed);
                                                await check2.delete()
-                                                return message.author.dmChannel.send("Sent your request!")
+                                                return message.author.send("Sent your request!")
 
 
 
