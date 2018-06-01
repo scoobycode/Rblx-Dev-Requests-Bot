@@ -8,19 +8,48 @@ bot.counter = false;
 process.on('unhandledRejection', console.error)
 const request = require('request-promise-native');
 
+bot.loaders = { enabledLoaders: [], disabledLoaders: [] };
+
+fs.readdirSync(__dirname + "/load").forEach(file => {
+	try {
+		const LOADER = require("./load/" + file);
+		bot.loaders.enabledLoaders.push(LOADER);
+	} catch(err) {
+		bot.loaders.disabledLoaders.push(file);
+		console.log(`\nThe ${file} load module failed to load:`);
+		console.log(err);
+	}
+});
+
 bot.commands = new Discord.Collection();
+bot.disabledCommands = [];
+var jsfiles;
+
+function checkCommand(command, name) {
+	var resultOfCheck = [true, null];
+	if (!command.run) resultOfCheck[0] = false; resultOfCheck[1] = `Missing Function: "module.run" of ${name}.`;
+	if (!command.help) resultOfCheck[0] = false; resultOfCheck[1] = `Missing Object: "module.help" of ${name}.`;
+	if (command.help && !command.help.name) resultOfCheck[0] = false; resultOfCheck[1] = `Missing String: "module.help.name" of ${name}.`;
+	return resultOfCheck;
+}
 
 fs.readdir("./commands/", (err, files) => {
 	if (err) console.log(err);
-	let jsfile = files.filter(f => f.split(".").pop() === "js")
-	if (jsfile.length <= 0) {
-		console.log("Couldn't find commands.");
-		return;
-	}
-	jsfile.forEach((f, i) => {
-		let props = require(`./commands/${f}`);
-		console.log(`${f} loaded!`);
-		bot.commands.set(props.help.name, props);
+	jsfiles = files.filter(f => f.endsWith(".js"));
+	if (jsfiles.length <= 0) return console.log("Couldn't find commands.");
+	jsfiles.forEach((f) => {
+		try {
+			var props = require(`./commands/${f}`);
+			if (checkCommand(props, f)[0]) {
+				bot.commands.set(props.help.name, props);
+			} else {
+				throw checkCommand(props, f)[1];
+			}
+		} catch(err) {
+			bot.disabledCommands.push(f);
+			console.log(`\nThe ${f} command failed to load:`);
+			console.log(err);
+		}
 	});
 });
 function postServerCount() {
@@ -36,6 +65,11 @@ function postServerCount() {
     });
 }
 bot.on("ready", async () => {
+	bot.loaders.enabledLoaders.forEach((loader) => {
+		if (loader.run != null && loader.id != null) loader.run(bot).catch((err) => {
+			console.log("\nError in loader " + loader.id + ":\n" + err);
+		});
+	});
 	postServerCount()
 	console.log(`${bot.user.username} is online!`);
 	let tchannel = bot.channels.find(`id`, `444588562550358016`);
