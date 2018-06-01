@@ -3,6 +3,7 @@ const REQUEST = require("request-promise-native");
 module.exports = {
 	id: "DBL_LOADER",
 	exec: (client) => {
+		console.log("Hello");
 		request.post({
 			uri: `https://discordbots.org/api/bots/${client.user.id}/stats`,
 			headers: {
