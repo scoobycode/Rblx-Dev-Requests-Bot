@@ -66,7 +66,7 @@ function postServerCount() {
 }
 bot.on("ready", async () => {
 	bot.loaders.enabledLoaders.forEach((loader) => {
-		if (loader.run != null && loader.id != null) loader.run(bot).catch((err) => {
+		if (loader.exec != null && loader.id != null) loader.exec(bot).catch((err) => {
 			console.log("\nError in loader " + loader.id + ":\n" + err);
 		});
 	});
